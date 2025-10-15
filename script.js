@@ -107,13 +107,15 @@ function startQuiz() {
   renderQuestion();
 }
 
-function finishQuiz() {
-  const total = quizQuestions.length;
+function finishQuiz() {const total = quizQuestions.length;
   const passed = score >= passMark;
   resultTitleEl.textContent = passed ? '✅ Pass' : '❌ Not Yet';
   const pct = total ? Math.round((score / total) * 100) : 0;
   resultStatsEl.textContent = `Score: ${score}/${total} (${pct}%) — Pass mark: ${passMark}/${mode === 'section' ? 10 : 100}`;
+  const bar = document.getElementById('progressBar');
+  if (bar) bar.style.width = '100%';
   setView('result');
+
 }
 
 function handleNext() {
