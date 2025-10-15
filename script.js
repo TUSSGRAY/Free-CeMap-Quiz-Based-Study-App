@@ -61,6 +61,11 @@ function renderQuestion() {
   });
 
   progressEl.textContent = `Question ${idx + 1} of ${quizQuestions.length}`;
+
+  // ➕ progress bar fill
+  const pct = Math.round(((idx) / Math.max(1, quizQuestions.length)) * 100);
+  const bar = document.getElementById('progressBar');
+  if (bar) bar.style.width = pct + '%';
 }
 
 function startQuiz() {
