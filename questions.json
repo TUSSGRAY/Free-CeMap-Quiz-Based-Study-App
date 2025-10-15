@@ -481,5 +481,368 @@
     ],
     "answer": 0,
     "explanation": "KYC underpins both AML and suitability by verifying identity and understanding customer circumstances."
-  }
-]
+  },
+  {
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "Which risk is MOST reduced by holding a mix of sectors within an equity fund?",
+  "options": [
+    "Systematic risk",
+    "Unsystematic (stock-specific) risk",
+    "Inflation risk",
+    "Liquidity risk"
+  ],
+  "answer": 1,
+  "explanation": "Diversifying across companies/sectors reduces idiosyncratic risk, not broad market risk."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "A tracker mortgage set at Bank Rate + 1.25% will most likely:",
+  "options": [
+    "Remain fixed for the deal term",
+    "Move whenever the MPC changes Bank Rate",
+    "Change only at lender discretion annually",
+    "Be capped at the lender’s SVR"
+  ],
+  "answer": 1,
+  "explanation": "Trackers follow a published rate (e.g., Bank Rate) plus a margin."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "Which investment would normally be expected to provide the MOST income certainty over a fixed period when held to maturity?",
+  "options": [
+    "UK government gilt held to redemption",
+    "UK equity income fund",
+    "Property REIT",
+    "Commodities ETF"
+  ],
+  "answer": 0,
+  "explanation": "Gilts pay fixed coupons and return par at redemption if held to maturity."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "For a client with a 2-year goal and no loss tolerance, which product is MOST suitable?",
+  "options": [
+    "100% equity ISA",
+    "High-yield bond fund",
+    "Cash ISA or fixed-term deposit (within FSCS limits)",
+    "Venture capital trust"
+  ],
+  "answer": 2,
+  "explanation": "Short horizon and zero loss tolerance prioritise capital security and liquidity."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "Which charging model most closely aligns adviser revenue with ongoing client service?",
+  "options": [
+    "One-off initial commission only",
+    "Ongoing adviser charge as a % of assets",
+    "Front-end sales load with no trail",
+    "Exit fee only"
+  ],
+  "answer": 1,
+  "explanation": "An ongoing adviser charge supports continuing service and reviews."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "Which of the following is a characteristic of an open-ended investment company (OEIC)?",
+  "options": [
+    "Fixed number of shares in issue",
+    "Traded only at launch",
+    "Single-priced dealing with creation/cancellation of shares",
+    "Guaranteed capital at maturity"
+  ],
+  "answer": 2,
+  "explanation": "OEICs are open-ended and typically single-priced; shares are created/cancelled based on flows."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "What is the typical effect of rising inflation on fixed-rate bond prices, all else equal?",
+  "options": [
+    "Prices rise as coupons become more attractive",
+    "No effect on pricing",
+    "Prices fall due to higher required yields",
+    "Prices become completely volatile without trend"
+  ],
+  "answer": 2,
+  "explanation": "Higher inflation expectations lift yields and depress fixed-coupon bond prices."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "Which mortgage feature allows overpayments without an early repayment charge up to a set limit?",
+  "options": [
+    "Portability",
+    "Drawdown facility",
+    "ERC-free annual overpayment allowance",
+    "Payment holiday"
+  ],
+  "answer": 2,
+  "explanation": "Many deals allow overpayments up to a percentage each year without triggering ERCs."
+},
+
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which PRA objective is PRIMARY?",
+  "options": [
+    "Securing an appropriate degree of consumer protection",
+    "Promoting the safety and soundness of firms",
+    "Ensuring fair value for retail customers",
+    "Running the Financial Ombudsman Service"
+  ],
+  "answer": 1,
+  "explanation": "The PRA’s core aim is safety and soundness (prudential regulation)."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which body handles eligible consumer complaints when a firm cannot resolve them?",
+  "options": [
+    "FCA",
+    "PRA",
+    "Financial Ombudsman Service (FOS)",
+    "FSCS"
+  ],
+  "answer": 2,
+  "explanation": "FOS adjudicates complaints and can make binding awards within limits."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Under the Consumer Duty, firms must monitor outcomes. Which metric best evidences the ‘consumer understanding’ outcome?",
+  "options": [
+    "Share price performance",
+    "Customer comprehension testing of key communications",
+    "Firm’s marketing spend",
+    "Number of branches"
+  ],
+  "answer": 1,
+  "explanation": "Testing whether customers understand disclosures supports the understanding outcome."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "A directly authorised mortgage broker must follow which conduct sourcebook?",
+  "options": [
+    "MCOB",
+    "COBS",
+    "BIPRU",
+    "MAR"
+  ],
+  "answer": 0,
+  "explanation": "Mortgage Conduct of Business (MCOB) applies to mortgage advice and sales."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which statement about FSCS is MOST accurate?",
+  "options": [
+    "It supervises firm conduct",
+    "It provides compensation when authorised firms fail, within limits",
+    "It sets the Bank Rate",
+    "It prosecutes market abuse"
+  ],
+  "answer": 1,
+  "explanation": "FSCS pays compensation to eligible claimants of failed authorised firms."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which is MOST likely a threshold condition for authorisation?",
+  "options": [
+    "Publishing quarterly marketing updates",
+    "Having appropriate resources and suitability",
+    "Being listed on the LSE",
+    "Maintaining a set dividend payout"
+  ],
+  "answer": 1,
+  "explanation": "Threshold conditions cover legal status, location of offices, and appropriate resources."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "The Payments Systems Regulator (PSR) focuses primarily on:",
+  "options": [
+    "Oversight of payment systems competition and innovation",
+    "Setting FSCS limits",
+    "Consumer complaints adjudication",
+    "Setting capital requirements for banks"
+  ],
+  "answer": 0,
+  "explanation": "PSR regulates payment systems for competition, innovation and service."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which is the BEST example of dual regulation?",
+  "options": [
+    "An adviser firm regulated by FCA only",
+    "A deposit-taking bank: PRA (prudential) and FCA (conduct)",
+    "A price comparison site: PRA only",
+    "A building society regulated solely by the CMA"
+  ],
+  "answer": 1,
+  "explanation": "Banks/building societies are typically dual-regulated: PRA and FCA."
+},
+
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "Under SM&CR, which document maps responsibilities to named senior managers?",
+  "options": [
+    "RRP",
+    "Statements of Responsibilities and a Management Responsibilities Map",
+    "Key Information Document",
+    "Client Agreement"
+  ],
+  "answer": 1,
+  "explanation": "SM&CR requires clear allocation and documentation of responsibilities."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "Which practice is LEAST compatible with the ‘price & value’ outcome?",
+  "options": [
+    "Fees that are reasonable for the benefits",
+    "Complex bundling that obscures total cost",
+    "Regular value assessments",
+    "Removing unfair exit barriers"
+  ],
+  "answer": 1,
+  "explanation": "Obscured pricing risks poor value and breaches the Duty."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "In an advised mortgage sale, suitability should be evidenced by:",
+  "options": [
+    "A record explaining how the recommendation meets needs and circumstances",
+    "Only a product brochure",
+    "A phone call with no notes",
+    "A generic risk warning"
+  ],
+  "answer": 0,
+  "explanation": "Firms must document why the recommendation is suitable for the customer."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "A firm dealing with a newly disabled customer should MOST likely:",
+  "options": [
+    "Insist on written correspondence only",
+    "Offer reasonable adjustments and accessible channels",
+    "Refuse to change processes",
+    "Charge extra support fees"
+  ],
+  "answer": 1,
+  "explanation": "Firms should support vulnerable customers and remove unreasonable barriers."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "An ESIS is intended to help customers:",
+  "options": [
+    "Compare mortgage deals on a like-for-like basis",
+    "Pick investment funds",
+    "Choose a current account",
+    "Select a conveyancer"
+  ],
+  "answer": 0,
+  "explanation": "ESIS provides standardised mortgage information for comparison."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "Which MOST closely aligns to ‘consumer understanding’?",
+  "options": [
+    "Burying key risks in footnotes",
+    "A/B testing of disclosures for clarity",
+    "Charging a loyalty penalty",
+    "Using only legal jargon"
+  ],
+  "answer": 1,
+  "explanation": "Testing clarity ensures customers can make informed decisions."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "What should a firm do if it identifies poor outcomes for a particular customer segment under the Duty?",
+  "options": [
+    "Do nothing if profits are rising",
+    "Remediate harm and adjust the product/distribution as needed",
+    "Blame third-party distributors only",
+    "Withdraw the product entirely without review"
+  ],
+  "answer": 1,
+  "explanation": "Duty requires monitoring and remediation to deliver good outcomes."
+},
+
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Enhanced due diligence (EDD) is MOST likely required when:",
+  "options": [
+    "Customer is a UK resident with standard salary",
+    "Transaction is small and routine",
+    "Customer is a politically exposed person (PEP)",
+    "Customer has been with the bank for 20 years"
+  ],
+  "answer": 2,
+  "explanation": "PEPs and higher-risk situations typically need EDD."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which action BEST avoids ‘tipping-off’?",
+  "options": [
+    "Informing the customer a SAR has been submitted",
+    "Discussing the suspicion with friends",
+    "Reporting internally to the MLRO and not alerting the customer",
+    "Posting about the case online anonymously"
+  ],
+  "answer": 2,
+  "explanation": "Report internally; do not alert the subject."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which is TRUE regarding complaint time limits for referring to FOS (standard retail cases)?",
+  "options": [
+    "Six months from the firm’s final response",
+    "Two weeks from initial complaint",
+    "No time limit",
+    "Two years from the product purchase only"
+  ],
+  "answer": 0,
+  "explanation": "Customers generally have six months from the final response letter to refer to FOS."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Under UK GDPR, ‘data minimisation’ means:",
+  "options": [
+    "Collect as much data as possible up front",
+    "Only collecting what is necessary for stated purposes",
+    "Sharing data freely with partners",
+    "Keeping personal data indefinitely"
+  ],
+  "answer": 1,
+  "explanation": "Firms should collect only the data needed for specified purposes."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which statement about contracts is MOST accurate?",
+  "options": [
+    "Consideration must always be money",
+    "All contracts must be in writing",
+    "A valid offer, acceptance, consideration and intention to create legal relations are typically required",
+    "An invitation to treat creates a binding contract"
+  ],
+  "answer": 2,
+  "explanation": "Core elements include offer, acceptance, consideration and intent."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which situation MOST likely leads to an FSCS investment claim (not deposit)?",
+  "options": [
+    "An authorised investment firm fails and cannot meet liabilities to clients",
+    "A bank reduces its savings rate",
+    "A customer loses money due to market falls",
+    "A provider moves office"
+  ],
+  "answer": 0,
+  "explanation": "FSCS may compensate eligible claims when an authorised investment firm fails."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "The ethical principle of ‘conflict of interest management’ primarily requires firms to:",
+  "options": [
+    "Always refuse any commission",
+    "Identify, prevent or manage conflicts and disclose where appropriate",
+    "Ignore conflicts if legal",
+    "Let advisers decide case by case without policy"
+  ],
+  "answer": 1,
+  "explanation": "Firms need policies to identify and manage conflicts to avoid customer harm."
+}
+    ]
