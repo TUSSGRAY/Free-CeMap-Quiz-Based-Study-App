@@ -140,14 +140,14 @@ function revealAnswer(){
 }
 
 function finishQuiz(){
-  const total = quizQuestions.length;
+    const total = quizQuestions.length;
   const passed = score >= passMark;
   resultTitleEl.textContent = passed ? '✅ Pass' : '❌ Not Yet';
   const pct = total ? Math.round((score / total) * 100) : 0;
   resultStatsEl.textContent = `Score: ${score}/${total} (${pct}%) — Pass mark: ${passMark}/${mode === 'section' ? 10 : 100}`;
   if (progressBar) progressBar.style.width = '100%';
 
-  // build review HTML (collapsed explanations)
+  // --- Build review list (same as before) ---
   reviewEl.innerHTML = reviewLog.map((r, n) => {
     const your = (r.chosen !== undefined) ? r.chosen : null;
     const yourText = (your !== null && r.options[your] !== undefined) ? r.options[your] : '—';
@@ -168,6 +168,59 @@ function finishQuiz(){
       </div>
     `;
   }).join('');
+
+  // --- NEW: Weakness analysis ---
+  const wrong = reviewLog.filter(r => r.chosen !== r.correct);
+  const sectionCount = {};
+  const keywordCount = {};
+
+  // pick out likely topic keywords from question + explanation
+  const keywordPattern = /\b(gilt|bond|equity|mortgage|fca|fscs|consumer|ethic|savings|isa|loan|broker|client|regulation|insurance|yield|interest|risk|tax)\b/gi;
+
+  wrong.forEach(r => {
+    // count sections
+    const s = r.section || 'Unspecified';
+    sectionCount[s] = (sectionCount[s] || 0) + 1;
+
+    // find key words
+    const text = `${r.question} ${r.explanation}`.toLowerCase();
+    const matches = text.match(keywordPattern);
+    if (matches) {
+      matches.forEach(k => {
+        keywordCount[k] = (keywordCount[k] || 0) + 1;
+      });
+    }
+  });
+
+  // build feedback summary
+  let feedbackHTML = '';
+  const sectionEntries = Object.entries(sectionCount);
+  const keywordEntries = Object.entries(keywordCount);
+
+  if (wrong.length > 0) {
+    feedbackHTML += `<div class="card" style="margin-top:12px;">
+      <h3>Feedback</h3>
+      <p>You answered <strong>${wrong.length}</strong> question(s) incorrectly.</p>`;
+
+    if (sectionEntries.length > 0) {
+      feedbackHTML += `<ul>`;
+      sectionEntries.sort((a,b) => b[1]-a[1]).forEach(([sec, count]) => {
+        feedbackHTML += `<li><strong>${esc(sec)}</strong>: ${count} incorrect</li>`;
+      });
+      feedbackHTML += `</ul>`;
+    }
+
+    if (keywordEntries.length > 0) {
+      const topKeywords = keywordEntries.sort((a,b) => b[1]-a[1]).slice(0,5).map(k => k[0]);
+      feedbackHTML += `<p><strong>Common topics to review:</strong> ${topKeywords.join(', ')}</p>`;
+    }
+
+    feedbackHTML += `<p>Focus revision on these areas before your next practice test.</p></div>`;
+  } else {
+    feedbackHTML = `<div class="card" style="margin-top:12px;"><p>🎉 Excellent! No incorrect answers detected — keep practising to maintain consistency.</p></div>`;
+  }
+
+  reviewEl.insertAdjacentHTML('beforebegin', feedbackHTML);
 
   // hide review by default
   reviewEl.classList.add('hidden');
