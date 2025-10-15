@@ -844,5 +844,416 @@
   ],
   "answer": 1,
   "explanation": "Firms need policies to identify and manage conflicts to avoid customer harm."
+},
+  {
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "Which life policy provides cover for a fixed term with no investment element?",
+  "options": [
+    "Whole of life assurance",
+    "Endowment policy",
+    "Term assurance",
+    "With-profits bond"
+  ],
+  "answer": 2,
+  "explanation": "Term assurance covers a defined period and pays out only if death occurs within that term."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "An annuity primarily converts:",
+  "options": [
+    "Regular income into capital",
+    "A lump sum into guaranteed income",
+    "Capital gains into dividends",
+    "Equity holdings into unit trusts"
+  ],
+  "answer": 1,
+  "explanation": "An annuity exchanges a lump sum for an agreed stream of income."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "Which saving product allows government bonus contributions for first-time home buyers?",
+  "options": [
+    "Junior ISA",
+    "Lifetime ISA",
+    "Cash ISA",
+    "Corporate bond fund"
+  ],
+  "answer": 1,
+  "explanation": "Lifetime ISAs offer a government bonus for eligible home purchase or retirement saving."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "A client wishes to invest £10,000 but can accept only minimal risk. Which product fits best?",
+  "options": [
+    "Equity growth fund",
+    "Cash deposit within FSCS limits",
+    "Venture capital trust",
+    "Emerging markets ETF"
+  ],
+  "answer": 1,
+  "explanation": "Cash deposits carry minimal capital risk and are FSCS-protected up to £85,000."
+},
+{
+  "section": "Unit 1: Financial Services Environment & Products",
+  "question": "A key feature distinguishing investment trusts from unit trusts is:",
+  "options": [
+    "They are open-ended",
+    "They are closed-ended and can trade at a discount or premium",
+    "They guarantee capital",
+    "They are only available from banks"
+  ],
+  "answer": 1,
+  "explanation": "Investment trusts have a fixed capital structure and trade on stock exchanges at discounts/premiums."
+},
+
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which of the following is a statutory regulator?",
+  "options": [
+    "The Financial Services Compensation Scheme",
+    "The Prudential Regulation Authority",
+    "The Council of Mortgage Lenders",
+    "The Financial Ombudsman Service"
+  ],
+  "answer": 1,
+  "explanation": "The PRA is a statutory regulator under the Financial Services Act 2012."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "The FCA’s ‘threshold conditions’ must be met:",
+  "options": [
+    "Only at authorisation",
+    "At authorisation and maintained on an ongoing basis",
+    "Only during the first year",
+    "Once every five years"
+  ],
+  "answer": 1,
+  "explanation": "Firms must meet and continue to satisfy threshold conditions to remain authorised."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Under Consumer Duty, firms must monitor:",
+  "options": [
+    "Market share only",
+    "Customer outcomes and evidence of good outcomes",
+    "Employee bonuses",
+    "Competitor pricing only"
+  ],
+  "answer": 1,
+  "explanation": "Duty requires firms to assess, test and evidence that outcomes are good for customers."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which statement best describes the FCA’s perimeter?",
+  "options": [
+    "All financial activities worldwide",
+    "Only activities specified as regulated under FSMA",
+    "Any commercial transaction",
+    "Insurance business only"
+  ],
+  "answer": 1,
+  "explanation": "The perimeter defines which activities require FCA authorisation under the Financial Services and Markets Act."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "The UK Money Laundering Regulations are derived primarily from:",
+  "options": [
+    "European Union directives and FATF recommendations",
+    "The Bank of England Act",
+    "The Companies Act",
+    "The Data Protection Act"
+  ],
+  "answer": 0,
+  "explanation": "UK AML rules implement FATF guidance and former EU directives into domestic law."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which body sets the Bank Rate?",
+  "options": [
+    "HM Treasury",
+    "Prudential Regulation Authority",
+    "Monetary Policy Committee of the Bank of England",
+    "Financial Conduct Authority"
+  ],
+  "answer": 2,
+  "explanation": "The MPC at the Bank of England sets Bank Rate to meet the inflation target."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "A retail firm must provide ‘clear, fair and not misleading’ communications under:",
+  "options": [
+    "Principles for Businesses",
+    "CASS rules",
+    "MiFID transaction reporting",
+    "Basel capital requirements"
+  ],
+  "answer": 0,
+  "explanation": "Principle 7 requires firms’ communications to be clear, fair and not misleading."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "What is the maximum FSCS compensation for investment business (2025)?",
+  "options": [
+    "£50,000 per firm",
+    "£85,000 per person per firm",
+    "£100,000 per account",
+    "Unlimited"
+  ],
+  "answer": 1,
+  "explanation": "FSCS investment claims are protected up to £85,000 per person per authorised firm."
+},
+{
+  "section": "Unit 2: UK Financial Services & Regulation",
+  "question": "Which organisation provides independent oversight of the FCA and PRA?",
+  "options": [
+    "The National Audit Office",
+    "HM Treasury and Parliamentary committees",
+    "The Competition and Markets Authority",
+    "The Financial Ombudsman Service"
+  ],
+  "answer": 1,
+  "explanation": "HM Treasury and Parliament hold the regulators accountable."
+},
+
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "Under Consumer Duty, firms must act to:",
+  "options": [
+    "Minimise regulatory costs",
+    "Deliver good outcomes for retail customers",
+    "Avoid innovation",
+    "Meet capital requirements"
+  ],
+  "answer": 1,
+  "explanation": "The overarching Duty requires firms to act to deliver good outcomes for customers."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "The Duty’s ‘consumer support’ outcome means firms should:",
+  "options": [
+    "Offer complex complaint channels",
+    "Ensure customers can realise benefits and act in their interests easily",
+    "Prioritise firm convenience over client needs",
+    "Provide support only during sales"
+  ],
+  "answer": 1,
+  "explanation": "Support outcome demands effective post-sale help and removal of unreasonable barriers."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "Which principle is REPLACED by the new Consumer Principle (PRIN 12)?",
+  "options": [
+    "Principle 6 – Treating customers fairly",
+    "Principle 7 – Communications",
+    "Principle 8 – Conflicts of interest",
+    "None are replaced"
+  ],
+  "answer": 0,
+  "explanation": "The new Consumer Principle (Act to deliver good outcomes) builds on and supersedes Principle 6."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "Which document records how a recommendation meets the customer’s needs?",
+  "options": [
+    "Illustration",
+    "Suitability report",
+    "ESIS",
+    "Key Investor Information Document"
+  ],
+  "answer": 1,
+  "explanation": "A suitability report documents why a recommendation is appropriate."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "What must an adviser disclose under MCOB 4 about remuneration?",
+  "options": [
+    "Only commission",
+    "All fees and commission the customer will pay",
+    "Nothing until after offer",
+    "Only broker fee"
+  ],
+  "answer": 1,
+  "explanation": "Firms must disclose all fees and commission to ensure transparency."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "A firm must keep complaint records for at least:",
+  "options": [
+    "Six months",
+    "One year",
+    "Three years (mortgages – five)",
+    "Ten years"
+  ],
+  "answer": 2,
+  "explanation": "COBS/MCOB specify minimum record-retention periods for complaints."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "What is the maximum redress award the FOS can require a firm to pay (2025)?",
+  "options": [
+    "£150,000",
+    "£350,000 for post-Apr 2019 complaints",
+    "£500,000",
+    "Unlimited"
+  ],
+  "answer": 1,
+  "explanation": "The FOS award limit is £350 k for complaints referred on/after Apr 2019."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "Which FCA Handbook block includes COBS and MCOB?",
+  "options": [
+    "Prudential sourcebooks",
+    "Business Standards block",
+    "Specialist sourcebooks",
+    "Glossary"
+  ],
+  "answer": 1,
+  "explanation": "Business Standards covers conduct of business rules such as COBS, ICOBS, MCOB."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "What must firms do before approving a financial promotion?",
+  "options": [
+    "Submit to PRA",
+    "Ensure it is fair, clear and not misleading",
+    "Charge a fee to the advertiser",
+    "Obtain client signatures"
+  ],
+  "answer": 1,
+  "explanation": "FCA rules require all promotions to be fair, clear and not misleading."
+},
+{
+  "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+  "question": "Which of the following would likely breach Consumer Duty ‘price and value’?",
+  "options": [
+    "Offering competitive charges",
+    "Charging loyalty penalties to existing customers",
+    "Annual reviews at no extra cost",
+    "Transparent pricing tables"
+  ],
+  "answer": 1,
+  "explanation": "Charging higher prices for existing customers without justification may breach the Duty."
+},
+
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Under the Proceeds of Crime Act, which offence involves failing to disclose a suspicion?",
+  "options": [
+    "Tipping-off",
+    "Failure to report",
+    "Concealing",
+    "Arranging"
+  ],
+  "answer": 1,
+  "explanation": "Employees commit an offence if they fail to report a suspicion to the MLRO."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which UK law primarily implements international sanctions?",
+  "options": [
+    "Sanctions and Anti-Money Laundering Act 2018",
+    "Financial Services Act 2012",
+    "Companies Act 2006",
+    "Consumer Rights Act 2015"
+  ],
+  "answer": 0,
+  "explanation": "The 2018 Act provides powers for the UK to apply financial and trade sanctions."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which ethical principle is best described as ‘acting honestly and with integrity’?",
+  "options": [
+    "Competence",
+    "Integrity",
+    "Objectivity",
+    "Confidentiality"
+  ],
+  "answer": 1,
+  "explanation": "Integrity underpins all professional behaviour standards."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which organisation sets the UK’s main ethical code for financial advisers?",
+  "options": [
+    "Chartered Insurance Institute (CII)",
+    "FCA",
+    "HM Treasury",
+    "FSCS"
+  ],
+  "answer": 0,
+  "explanation": "The CII and similar bodies publish professional codes of ethics for advisers."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which is an example of market abuse under the UK Market Abuse Regulation?",
+  "options": [
+    "Insider dealing",
+    "Valid research note publication",
+    "Normal market-making",
+    "Holding shares long-term"
+  ],
+  "answer": 0,
+  "explanation": "Insider dealing and improper disclosure are types of market abuse."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "In law, an ‘offer’ becomes binding when:",
+  "options": [
+    "It is advertised",
+    "It is accepted unconditionally",
+    "It is discussed",
+    "The offeror changes their mind"
+  ],
+  "answer": 1,
+  "explanation": "Acceptance of an offer creates an agreement, subject to consideration and intent."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which of the following best describes a trust?",
+  "options": [
+    "A legal arrangement where trustees hold assets for beneficiaries",
+    "A company issuing shares to the public",
+    "An insurance policy",
+    "A type of mortgage"
+  ],
+  "answer": 0,
+  "explanation": "A trust separates legal and beneficial ownership of assets."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Which is a key purpose of the Data Protection Impact Assessment (DPIA)?",
+  "options": [
+    "To record marketing budgets",
+    "To identify and mitigate privacy risks in new processing",
+    "To replace customer consent",
+    "To assess creditworthiness"
+  ],
+  "answer": 1,
+  "explanation": "DPIAs help identify and mitigate privacy risks before data processing."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "A client believes a firm mishandled their personal data. Which regulator handles such complaints?",
+  "options": [
+    "Financial Conduct Authority",
+    "Information Commissioner’s Office (ICO)",
+    "HM Treasury",
+    "FSCS"
+  ],
+  "answer": 1,
+  "explanation": "The ICO enforces data protection law and handles data-related complaints."
+},
+{
+  "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+  "question": "Under AML rules, what is ‘placement’?",
+  "options": [
+    "Integrating criminal funds into legitimate assets",
+    "Introducing illicit funds into the financial system",
+    "Moving legitimate savings abroad",
+    "Reporting a suspicious activity"
+  ],
+  "answer": 1,
+  "explanation": "Placement is the first stage of money laundering, introducing funds into the system."
 }
     ]
