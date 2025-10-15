@@ -2,55 +2,215 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>CeMAP Paper 1 Quiz</title>
+  <title>CeMAP Paper 1 Study Quiz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#2442A2" />
   <link rel="stylesheet" href="./styles.css" />
+
+  <!-- tiny emoji favicon (no extra files needed) -->
+  <link rel="icon" href="data:image/svg+xml,
+  %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E
+    %3Ctext y='90' x='12' font-size='90'%3E%F0%9F%8F%A0%3C/text%3E
+  %3C/svg%3E" />
 </head>
 <body>
-  <div class="container">
-    <h1>CeMAP Paper 1 Quiz</h1>
 
-    <section id="setup">
-      <div class="card">
-        <h2>Choose Mode</h2>
-        <label><input type="radio" name="mode" value="section" checked> Section Quiz (10 Q, pass 8)</label><br>
-        <label><input type="radio" name="mode" value="practice"> Practice Exam (100 Q, pass 70)</label>
+  <!-- SVG ICONS (inline so no external assets needed) -->
+  <svg width="0" height="0" style="position:absolute;visibility:hidden">
+    <defs>
+      <symbol id="icon-house" viewBox="0 0 24 24">
+        <path d="M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5H4.5A1.5 1.5 0 0 1 3 19.5v-9z" fill="currentColor" opacity=".15"/>
+        <path d="M12 3 3 10.5m9-7.5 9 7.5M5 21V12h14v9" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 21v-4h4v4" fill="currentColor"/>
+      </symbol>
+      <symbol id="icon-pound" viewBox="0 0 24 24">
+        <path d="M6 18h12M8 14c0-3 2-4 2-6a4 4 0 1 1 8 0" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+        <path d="M8 14h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" fill="currentColor" opacity=".2"/>
+        <circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        <path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="icon-briefcase" viewBox="0 0 24 24">
+        <rect x="3" y="7" width="18" height="13" rx="2" fill="currentColor" opacity=".12"/>
+        <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        <path d="M3 12h18" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="icon-doc" viewBox="0 0 24 24">
+        <path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" fill="none"/>
+        <path d="M14 3v5h5" stroke="currentColor" stroke-width="1.6" fill="none"/>
+      </symbol>
+    </defs>
+  </svg>
 
-        <div id="sectionPicker" class="mt">
-          <label for="sectionSelect">Section:</label>
-          <select id="sectionSelect"></select>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <svg class="i"><use href="#icon-house"/></svg>
+        <span>CeMAP Study</span>
+      </div>
+      <nav class="nav">
+        <a href="#setup">Quiz</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1>CeMAP Paper 1 – Study & Practice</h1>
+        <p>Section quizzes (10 Q • pass 8) and full practice exams (100 Q • pass 70), with clean UI and instant scoring.</p>
+        <a href="#setup" class="btn btn-primary">Start Revising</a>
+      </div>
+      <div class="hero-art">
+        <div class="tile"><svg class="i big"><use href="#icon-pound"/></svg><span>Money</span></div>
+        <div class="tile"><svg class="i big"><use href="#icon-briefcase"/></svg><span>Broker</span></div>
+        <div class="tile"><svg class="i big"><use href="#icon-user"/></svg><span>Customer</span></div>
+        <div class="tile"><svg class="i big"><use href="#icon-house"/></svg><span>Mortgage</span></div>
+      </div>
+    </div>
+    <div class="pattern"></div>
+  </section>
+
+  <!-- Main app container -->
+  <main class="wrap app">
+
+    <!-- Mode cards -->
+    <section id="setup" class="stack">
+      <div class="cards">
+        <div class="card">
+          <div class="card-head">
+            <svg class="i"><use href="#icon-doc"/></svg>
+            <h2>Choose Mode</h2>
+          </div>
+
+          <div class="options-grid">
+            <label class="option">
+              <input type="radio" name="mode" value="section" checked>
+              <div class="option-body">
+                <strong>Section Quiz</strong>
+                <span>10 questions • pass 8</span>
+              </div>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="mode" value="practice">
+              <div class="option-body">
+                <strong>Practice Exam</strong>
+                <span>100 questions • pass 70</span>
+              </div>
+            </label>
+          </div>
+
+          <div id="sectionPicker" class="field">
+            <label for="sectionSelect">Section</label>
+            <select id="sectionSelect"></select>
+          </div>
+
+          <div class="actions">
+            <button id="startBtn" class="btn btn-primary">Start Quiz</button>
+            <span id="dataNote" class="note"></span>
+          </div>
         </div>
 
-        <button id="startBtn" class="primary mt">Start</button>
-        <p id="dataNote" class="muted mt"></p>
+        <aside class="card tips">
+          <h3>Study Tips</h3>
+          <ul>
+            <li>Target weak sections first.</li>
+            <li>Review explanations after each session.</li>
+            <li>Mix section quizzes with full exams.</li>
+          </ul>
+          <div class="badges">
+            <span class="badge">FSCS</span>
+            <span class="badge">Consumer Duty</span>
+            <span class="badge">MCOB</span>
+            <span class="badge">SM&CR</span>
+          </div>
+        </aside>
       </div>
     </section>
 
+    <!-- Quiz UI -->
     <section id="quiz" class="hidden">
       <div class="card">
-        <div class="quiz-header">
-          <div id="modeLabel"></div>
-          <div id="progress"></div>
+        <div class="quiz-top">
+          <div id="modeLabel" class="chip"></div>
+          <div class="progress-wrap">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <div id="progress" class="progress-txt"></div>
         </div>
 
-        <h2 id="questionText"></h2>
-        <form id="optionsForm"></form>
+        <h2 id="questionText" class="question"></h2>
+        <form id="optionsForm" class="choices"></form>
 
         <div class="actions">
-          <button id="nextBtn" class="primary">Next</button>
+          <button id="nextBtn" class="btn btn-primary">Next</button>
         </div>
       </div>
     </section>
 
+    <!-- Result -->
     <section id="result" class="hidden">
-      <div class="card">
-        <h2 id="resultTitle"></h2>
-        <p id="resultStats"></p>
-        <button id="restartBtn" class="secondary">Take another quiz</button>
+      <div class="card result">
+        <div class="result-head">
+          <h2 id="resultTitle"></h2>
+          <svg class="i"><use href="#icon-pound"/></svg>
+        </div>
+        <p id="resultStats" class="lead"></p>
+        <div class="actions">
+          <button id="restartBtn" class="btn btn-secondary">Take another quiz</button>
+          <a href="#setup" class="btn btn-link">Change mode</a>
+        </div>
       </div>
     </section>
-  </div>
 
+    <!-- About / FAQ -->
+    <section id="about" class="stack">
+      <div class="card">
+        <h3>About this site</h3>
+        <p>Designed for quick, focused CeMAP Paper 1 revision with realistic pass marks and clean UI. Works on mobile and desktop.</p>
+      </div>
+      <div id="faq" class="card">
+        <h3>FAQ</h3>
+        <details>
+          <summary>Where do questions come from?</summary>
+          <p>They’re original practice questions aligned with the 2025 syllabus.</p>
+        </details>
+        <details>
+          <summary>How do I add more questions?</summary>
+          <p>Edit <code>questions.json</code> in your repo and paste new items following the same format.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> CeMAP Study — Practice for Paper 1</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // small enhancement: year + lightweight toast
+    document.getElementById('year').textContent = new Date().getFullYear();
+    window.showToast = (msg) => {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
+    };
+  </script>
+
+  <!-- your existing logic -->
   <script src="./script.js"></script>
 </body>
 </html>
