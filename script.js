@@ -1,4 +1,4 @@
-// Robust CeMAP quiz script — safer loading & clear errors
+// Robust CeMAP quiz script — validates JSON and explains what's wrong
 document.addEventListener('DOMContentLoaded', () => {
   const QUESTIONS_URL = './questions.json';
 
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function startQuiz(){
     if (!allQuestions.length) {
-      dataNoteEl.textContent = 'No questions loaded. Check that questions.json exists next to index.html and is valid JSON.';
+      dataNoteEl.textContent = 'No questions loaded. Ensure questions.json is next to index.html and contains valid items.';
       return;
     }
 
@@ -122,11 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const selected = optionsFormEl.querySelector('input[name="answer"]:checked');
     const chosenIdx = selected ? Number(selected.value) : null;
 
-    // score once
     const correct = (chosenIdx !== null && chosenIdx === q.answer);
     if (correct) score += 1;
 
-    // decorate options
     const labels = [...optionsFormEl.querySelectorAll('label')];
     labels.forEach((label, i) => {
       label.classList.add('choice-disabled');
@@ -136,15 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
       labels[chosenIdx]?.classList.add('choice-wrong');
     }
 
-    // lock inputs
     [...optionsFormEl.querySelectorAll('input')].forEach(inp => inp.disabled = true);
 
-    // explanation
     const exp = q.explanation ? esc(q.explanation) : 'No explanation provided.';
     explainEl.innerHTML = `<strong>Why:</strong> ${exp}`;
     explainEl.classList.remove('hidden');
 
-    // log for review
     reviewLog.push({
       idx,
       section: q.section || 'Unspecified',
@@ -167,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resultStatsEl.textContent = `Score: ${score}/${total} (${pct}%) — Pass mark: ${passMark}/${mode === 'section' ? 10 : 100}`;
     if (progressBar) progressBar.style.width = '100%';
 
-    // Build review list
     reviewEl.innerHTML = reviewLog.map((r, n) => {
       const your = (r.chosen !== undefined) ? r.chosen : null;
       const yourText = (your !== null && r.options[your] !== undefined) ? r.options[your] : '—';
@@ -189,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }).join('');
 
-    // review collapsed by default
     reviewEl.classList.add('hidden');
     toggleReviewBtn.textContent = 'Review answers';
 
@@ -225,37 +218,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===== LOAD QUESTIONS (defensive) =====
+  // ===== LOAD QUESTIONS with validation and helpful messages =====
   (async () => {
     try {
       const res = await fetch(QUESTIONS_URL, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status} — cannot fetch questions.json`);
-      const data = await res.json();
+      if (!res.ok) throw new Error(`HTTP ${res.status} — can't fetch questions.json (wrong path/name?)`);
+      const raw = await res.text();
 
-      if (!Array.isArray(data)) throw new Error('questions.json must be a JSON array [ ... ]');
-
-      // Validate minimal shape
-      const valid = data.filter(q =>
-        q && typeof q.question === 'string' &&
-        Array.isArray(q.options) && typeof q.answer === 'number'
-      );
-
-      if (valid.length === 0) {
-        throw new Error('No valid questions found (each item needs question, options[], answer index).');
+      // Try to parse; if it fails, show parse error (often due to trailing commas)
+      let data;
+      try { data = JSON.parse(raw); }
+      catch (e) {
+        throw new Error(`JSON parse error in questions.json: ${e.message}. Tip: remove trailing commas and ensure it starts with [ and ends with ].`);
       }
 
-      allQuestions = valid;
-      const sections = uniqueSections(allQuestions);
-      sectionSelectEl.innerHTML = sections.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+      if (!Array.isArray(data)) throw new Error('questions.json must be a JSON array [ ... ].');
 
-      dataNoteEl.textContent = `Loaded ${allQuestions.length} question(s) across ${sections.length} section(s).`;
-      startBtn.disabled = false;
+      const issues = []; // collect reasons for invalid items
+      const valid = [];
+
+      data.forEach((q, i) => {
+        const path = `#${i+1}`;
+        if (!q || typeof q !== 'object') { issues.push(`${path} not an object`); return; }
+        if (typeof q.question !== 'string' || !q.question.trim()) { issues.push(`${path} missing "question" text`); return; }
+        if (!Array.isArray(q.options) || q.options.length < 2) { issues.push(`${path} "options" must be array of 2+`); return; }
+
+        // Accept numeric or numeric string for answer; coerce to number
+        let ans = (typeof q.answer === 'string') ? Number(q.answer) : q.answer;
+        if (!Number.isInteger(ans)) { issues.push(`${path} "answer" must be an integer index`); return; }
+        if (ans < 0 || ans >= q.options.length) { issues.push(`${path} "answer" index ${ans} out of range (0..${q.options.length-1})`); return; }
+
+        valid.push({
+          section: q.section || 'Unspecified',
+          question: q.question,
+          options: q.options,
+          answer: ans,
+          explanation: q.explanation || ''
+        });
+      });
+
+      allQuestions = valid;
+
+      // Fill sections if we have any
+      if (allQuestions.length > 0) {
+        const sections = uniqueSections(allQuestions);
+        sectionSelectEl.innerHTML = sections.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+      } else {
+        sectionSelectEl.innerHTML = '';
+      }
+
+      // Build helpful status message
+      const msgParts = [];
+      msgParts.push(`Found ${data.length} item(s); using ${allQuestions.length} valid.`);
+      if (issues.length) {
+        const top = issues.slice(0, 3).join(' • ');
+        msgParts.push(`Ignored ${issues.length} invalid item(s): ${top}${issues.length > 3 ? ' …' : ''}`);
+      }
+      dataNoteEl.textContent = msgParts.join('  ');
+
+      // Enable/disable Start
+      startBtn.disabled = allQuestions.length === 0;
+
     } catch (err) {
       console.error(err);
       startBtn.disabled = true;
       dataNoteEl.textContent =
         `Error loading questions: ${err.message}. ` +
-        `Ensure "questions.json" is next to index.html and contains a valid JSON array.`;
+        `Checklist: 1) questions.json sits next to index.html, 2) name matches exactly, 3) valid JSON array.`;
     }
   })();
 });
