@@ -1,7 +1,9 @@
-// CeMAP quiz engine with after-answer explanation + end-of-quiz review
+// CeMAP Paper 1 quiz engine — reveal + explanations + review + weakness feedback
+// expects: index.html with IDs used below, styles.css from previous step, questions.json in same folder
+
 const QUESTIONS_URL = './questions.json';
 
-// DOM
+// DOM references
 const setupEl = document.getElementById('setup');
 const sectionPickerEl = document.getElementById('sectionPicker');
 const sectionSelectEl = document.getElementById('sectionSelect');
@@ -24,6 +26,7 @@ const reviewEl = document.getElementById('review');
 const toggleReviewBtn = document.getElementById('toggleReviewBtn');
 const restartBtn = document.getElementById('restartBtn');
 
+// state
 let allQuestions = [];
 let quizQuestions = [];
 let idx = 0;
@@ -31,21 +34,25 @@ let score = 0;
 let mode = 'section';
 let passMark = 8;
 let revealed = false;
-let reviewLog = []; // stores per-question results
+let reviewLog = []; // {section, question, options[], correct, chosen, explanation}
 
-// Helpers
+// utils
 const shuffle = arr => arr.sort(() => Math.random() - 0.5);
 const showToast = window.showToast || (m => alert(m));
-const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]) );
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]) );
+const uniqueSections = qs => [...new Set(qs.map(q => q.section || 'Unspecified'))].sort();
+const pickRandom = (arr, n) => { const copy=[...arr]; shuffle(copy); return copy.slice(0, n); };
 
-function uniqueSections(qs){ return [...new Set(qs.map(q => q.section || 'Unspecified'))].sort(); }
-function pickRandom(arr, n){ const copy=[...arr]; shuffle(copy); return copy.slice(0,n); }
 function setView(view){
   setupEl.classList.toggle('hidden', view !== 'setup');
   quizEl.classList.toggle('hidden', view !== 'quiz');
   resultEl.classList.toggle('hidden', view !== 'result');
 }
-function updateProgressBar(){ const pct = Math.round((idx / Math.max(1, quizQuestions.length)) * 100); if (progressBar) progressBar.style.width = pct + '%'; }
+
+function updateProgressBar(){
+  const pct = Math.round((idx / Math.max(1, quizQuestions.length)) * 100);
+  if (progressBar) progressBar.style.width = pct + '%';
+}
 
 function renderQuestion(){
   const q = quizQuestions[idx];
@@ -80,17 +87,22 @@ function startQuiz(){
     const need = 10;
     const take = Math.min(need, pool.length);
     quizQuestions = pickRandom(pool, take);
-    dataNoteEl.textContent = (take < need) ? `Note: Only ${take} question(s) found in "${sel}". Add more to reach 10.` : '';
+    dataNoteEl.textContent = (take < need)
+      ? `Note: Only ${take} question(s) found in "${sel}". Add more to reach 10.`
+      : '';
     modeLabelEl.textContent = `Section: ${sel} · Pass: ${passMark}/${need}`;
   } else {
     passMark = 70;
     const need = 100;
     const take = Math.min(need, allQuestions.length);
     quizQuestions = pickRandom(allQuestions, take);
-    dataNoteEl.textContent = (take < need) ? `Note: Only ${take} total question(s). Add more to reach 100.` : '';
+    dataNoteEl.textContent = (take < need)
+      ? `Note: Only ${take} total question(s). Add more to reach 100.`
+      : '';
     modeLabelEl.textContent = `Practice Exam · Pass: ${passMark}/100`;
   }
 
+  // reset state
   idx = 0;
   score = 0;
   reviewLog = [];
@@ -103,11 +115,11 @@ function revealAnswer(){
   const selected = optionsFormEl.querySelector('input[name="answer"]:checked');
   const chosenIdx = selected ? Number(selected.value) : null;
 
-  // score once here
+  // score once
   const correct = (chosenIdx !== null && chosenIdx === q.answer);
   if (correct) score += 1;
 
-  // decorate labels
+  // decorate options
   const labels = [...optionsFormEl.querySelectorAll('label')];
   labels.forEach((label, i) => {
     label.classList.add('choice-disabled');
@@ -116,10 +128,11 @@ function revealAnswer(){
   if (chosenIdx !== null && chosenIdx !== q.answer) {
     labels[chosenIdx]?.classList.add('choice-wrong');
   }
-  // freeze inputs
+
+  // lock inputs
   [...optionsFormEl.querySelectorAll('input')].forEach(inp => inp.disabled = true);
 
-  // show explanation panel (if provided)
+  // explanation
   const exp = q.explanation ? esc(q.explanation) : 'No explanation provided.';
   explainEl.innerHTML = `<strong>Why:</strong> ${exp}`;
   explainEl.classList.remove('hidden');
@@ -139,15 +152,69 @@ function revealAnswer(){
   revealed = true;
 }
 
+function buildFeedbackCard(){
+  // analyze incorrect answers
+  const wrong = reviewLog.filter(r => r.chosen !== r.correct);
+
+  const sectionCount = {};
+  const keywordCount = {};
+
+  // extend this list freely with syllabus keywords you care about
+  const keywordPattern = /\b(gilt|gilts|bond|bonds|equity|equities|mortgage|mortgages|fca|fscs|consumer|duty|ethic|ethics|savings|isa|isas|loan|loans|broker|client|clients|regulation|regulated|insurance|yield|yields|interest|rate|rates|risk|risks|tax|taxation|mrt|mco(b)?|sm&cr)\b/gi;
+
+  wrong.forEach(r => {
+    const s = r.section || 'Unspecified';
+    sectionCount[s] = (sectionCount[s] || 0) + 1;
+
+    const text = `${r.question} ${r.explanation}`.toLowerCase();
+    const matches = text.match(keywordPattern);
+    if (matches) {
+      matches.forEach(k => {
+        const key = k.toLowerCase();
+        keywordCount[key] = (keywordCount[key] || 0) + 1;
+      });
+    }
+  });
+
+  // build HTML
+  let html = '';
+  if (wrong.length === 0) {
+    html = `<div class="card" style="margin-top:12px;"><p>🎉 Excellent! No incorrect answers detected — keep practising to maintain consistency.</p></div>`;
+    return html;
+  }
+
+  const sectionEntries = Object.entries(sectionCount).sort((a,b)=>b[1]-a[1]);
+  const keywordEntries = Object.entries(keywordCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  html += `<div class="card" style="margin-top:12px;">
+    <h3>Feedback</h3>
+    <p>You answered <strong>${wrong.length}</strong> question(s) incorrectly.</p>`;
+
+  if (sectionEntries.length){
+    html += `<ul>`;
+    sectionEntries.forEach(([sec, count]) => {
+      html += `<li><strong>${esc(sec)}</strong>: ${count} incorrect</li>`;
+    });
+    html += `</ul>`;
+  }
+
+  if (keywordEntries.length){
+    html += `<p><strong>Common topics to review:</strong> ${keywordEntries.map(([k])=>esc(k)).join(', ')}</p>`;
+  }
+
+  html += `<p>Focus revision on these areas before your next practice test.</p></div>`;
+  return html;
+}
+
 function finishQuiz(){
-    const total = quizQuestions.length;
+  const total = quizQuestions.length;
   const passed = score >= passMark;
   resultTitleEl.textContent = passed ? '✅ Pass' : '❌ Not Yet';
   const pct = total ? Math.round((score / total) * 100) : 0;
   resultStatsEl.textContent = `Score: ${score}/${total} (${pct}%) — Pass mark: ${passMark}/${mode === 'section' ? 10 : 100}`;
   if (progressBar) progressBar.style.width = '100%';
 
-  // --- Build review list (same as before) ---
+  // Build review list
   reviewEl.innerHTML = reviewLog.map((r, n) => {
     const your = (r.chosen !== undefined) ? r.chosen : null;
     const yourText = (your !== null && r.options[your] !== undefined) ? r.options[your] : '—';
@@ -169,60 +236,11 @@ function finishQuiz(){
     `;
   }).join('');
 
-  // --- NEW: Weakness analysis ---
-  const wrong = reviewLog.filter(r => r.chosen !== r.correct);
-  const sectionCount = {};
-  const keywordCount = {};
-
-  // pick out likely topic keywords from question + explanation
-  const keywordPattern = /\b(gilt|bond|equity|mortgage|fca|fscs|consumer|ethic|savings|isa|loan|broker|client|regulation|insurance|yield|interest|risk|tax)\b/gi;
-
-  wrong.forEach(r => {
-    // count sections
-    const s = r.section || 'Unspecified';
-    sectionCount[s] = (sectionCount[s] || 0) + 1;
-
-    // find key words
-    const text = `${r.question} ${r.explanation}`.toLowerCase();
-    const matches = text.match(keywordPattern);
-    if (matches) {
-      matches.forEach(k => {
-        keywordCount[k] = (keywordCount[k] || 0) + 1;
-      });
-    }
-  });
-
-  // build feedback summary
-  let feedbackHTML = '';
-  const sectionEntries = Object.entries(sectionCount);
-  const keywordEntries = Object.entries(keywordCount);
-
-  if (wrong.length > 0) {
-    feedbackHTML += `<div class="card" style="margin-top:12px;">
-      <h3>Feedback</h3>
-      <p>You answered <strong>${wrong.length}</strong> question(s) incorrectly.</p>`;
-
-    if (sectionEntries.length > 0) {
-      feedbackHTML += `<ul>`;
-      sectionEntries.sort((a,b) => b[1]-a[1]).forEach(([sec, count]) => {
-        feedbackHTML += `<li><strong>${esc(sec)}</strong>: ${count} incorrect</li>`;
-      });
-      feedbackHTML += `</ul>`;
-    }
-
-    if (keywordEntries.length > 0) {
-      const topKeywords = keywordEntries.sort((a,b) => b[1]-a[1]).slice(0,5).map(k => k[0]);
-      feedbackHTML += `<p><strong>Common topics to review:</strong> ${topKeywords.join(', ')}</p>`;
-    }
-
-    feedbackHTML += `<p>Focus revision on these areas before your next practice test.</p></div>`;
-  } else {
-    feedbackHTML = `<div class="card" style="margin-top:12px;"><p>🎉 Excellent! No incorrect answers detected — keep practising to maintain consistency.</p></div>`;
-  }
-
+  // Feedback card (weak sections + keywords)
+  const feedbackHTML = buildFeedbackCard();
   reviewEl.insertAdjacentHTML('beforebegin', feedbackHTML);
 
-  // hide review by default
+  // review collapsed by default
   reviewEl.classList.add('hidden');
   toggleReviewBtn.textContent = 'Review answers';
 
@@ -243,7 +261,7 @@ function handleNext(){
   else renderQuestion();
 }
 
-// wire up
+// event wires
 startBtn.addEventListener('click', startQuiz);
 nextBtn.addEventListener('click', handleNext);
 restartBtn.addEventListener('click', () => setView('setup'));
@@ -253,7 +271,7 @@ toggleReviewBtn.addEventListener('click', () => {
   toggleReviewBtn.textContent = isHidden ? 'Hide review' : 'Review answers';
 });
 
-// toggle section picker
+// toggle section picker on mode change
 document.querySelectorAll('input[name="mode"]').forEach(r => {
   r.addEventListener('change', (e) => {
     sectionPickerEl.style.display = (e.target.value === 'section') ? 'block' : 'none';
