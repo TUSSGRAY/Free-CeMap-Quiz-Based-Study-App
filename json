@@ -1,0 +1,485 @@
+[
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "What is the primary objective of the Bank of England’s Monetary Policy Committee (MPC)?",
+    "options": [
+      "Set tax policy to meet fiscal targets",
+      "Set interest rates to achieve the inflation target",
+      "Regulate retail banks’ conduct",
+      "Operate the Financial Ombudsman Service"
+    ],
+    "answer": 1,
+    "explanation": "The MPC sets Bank Rate to meet the government’s inflation target and support monetary stability."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "Which of the following best describes a unit trust?",
+    "options": [
+      "A closed-ended company with shares traded on an exchange",
+      "An open-ended collective investment where investors hold units",
+      "A deposit account with a fixed interest rate",
+      "A with-profits insurance bond with guaranteed bonuses"
+    ],
+    "answer": 1,
+    "explanation": "Unit trusts are open-ended funds; the manager creates/cancels units based on demand."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "In the financial advice process, a fact-find primarily aims to:",
+    "options": [
+      "Sell the highest-commission product",
+      "Meet the regulator’s training requirements",
+      "Gather client objectives, needs and circumstances",
+      "Set the adviser’s charging structure"
+    ],
+    "answer": 2,
+    "explanation": "The fact-find collects personal and financial details to identify suitable solutions."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "Which product typically carries the highest investment risk over the long term?",
+    "options": [
+      "Cash ISA",
+      "UK government gilt held to maturity",
+      "Equity fund",
+      "Fixed-rate savings bond"
+    ],
+    "answer": 2,
+    "explanation": "Equity funds are higher risk/return compared with cash or fixed-income held to maturity."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "Which body is responsible for prudential regulation of significant UK banks and insurers?",
+    "options": [
+      "Financial Ombudsman Service",
+      "Financial Conduct Authority",
+      "Prudential Regulation Authority",
+      "Payments Systems Regulator"
+    ],
+    "answer": 2,
+    "explanation": "The PRA (part of the Bank of England) oversees the safety and soundness of firms."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "What is the main purpose of diversification in a portfolio?",
+    "options": [
+      "Maximise fees",
+      "Eliminate all risk",
+      "Reduce unsystematic risk by spreading exposures",
+      "Guarantee positive returns"
+    ],
+    "answer": 2,
+    "explanation": "Diversification spreads asset-specific risk, though market (systematic) risk remains."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "Which mortgage type typically has interest that can move with Bank Rate?",
+    "options": [
+      "Fixed-rate mortgage",
+      "Tracker mortgage",
+      "Discounted fixed mortgage",
+      "Capped-rate mortgage with fixed cap"
+    ],
+    "answer": 1,
+    "explanation": "Trackers follow a published rate (e.g., Bank Rate) plus a margin."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "A with-profits policy usually offers which smoothing feature?",
+    "options": [
+      "Daily mark-to-market NAV",
+      "Regular bonuses that may be reduced in poor markets",
+      "Guaranteed minimum surrender value from day one",
+      "Statutory compensation for market losses"
+    ],
+    "answer": 1,
+    "explanation": "With-profits use smoothing and declare bonuses; bonuses can be adjusted based on performance."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "An adviser recommends an ISA to a client with short-term savings goals and no tolerance for loss. Which ISA is most consistent with that aim?",
+    "options": [
+      "Stocks & Shares ISA investing 100% in equities",
+      "Innovative Finance ISA funding P2P loans",
+      "Cash ISA with FSCS protection within limits",
+      "Lifetime ISA used for retirement only"
+    ],
+    "answer": 2,
+    "explanation": "A Cash ISA prioritises capital preservation and liquidity (subject to provider terms)."
+  },
+  {
+    "section": "Unit 1: Financial Services Environment & Products",
+    "question": "Which of the following best describes inflation risk for a cash saver?",
+    "options": [
+      "The risk interest rates fall and loan repayments rise",
+      "The risk cash’s real purchasing power falls over time",
+      "The risk of default by the saver",
+      "The risk of dividend volatility"
+    ],
+    "answer": 1,
+    "explanation": "Inflation can erode the real value of cash if interest earned is below inflation."
+  },
+
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "Which regulator focuses primarily on conduct of firms toward retail consumers?",
+    "options": [
+      "Prudential Regulation Authority",
+      "Financial Conduct Authority",
+      "Payment Systems Regulator",
+      "Competition and Markets Authority"
+    ],
+    "answer": 1,
+    "explanation": "The FCA is responsible for conduct regulation and consumer protection across financial services."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "Under Consumer Duty, firms must:",
+    "options": [
+      "Maximise shareholder returns at all costs",
+      "Act to deliver good outcomes for retail customers",
+      "Provide advice free of charge",
+      "Avoid using any digital channels"
+    ],
+    "answer": 1,
+    "explanation": "Consumer Duty sets higher standards and requires firms to deliver good outcomes for customers."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "Which of the following is NOT typically a statutory objective of the FCA?",
+    "options": [
+      "Protecting consumers",
+      "Enhancing market integrity",
+      "Promoting effective competition",
+      "Setting UK interest rates"
+    ],
+    "answer": 3,
+    "explanation": "Setting interest rates is the MPC’s role, not the FCA’s."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "A firm authorised by the FCA must comply with which high-level requirement?",
+    "options": [
+      "Only the Client Assets Sourcebook (CASS)",
+      "Only the Senior Managers & Certification Regime (SM&CR)",
+      "The Principles for Businesses and applicable FCA Handbook rules",
+      "Only SYSC provisions on outsourcing"
+    ],
+    "answer": 2,
+    "explanation": "High-level standards include the FCA Principles, supported by detailed Handbook rules (e.g., COBS, MCOB)."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "Which organisation provides deposit compensation if an authorised bank fails?",
+    "options": [
+      "Financial Ombudsman Service",
+      "Financial Services Compensation Scheme",
+      "Competition and Markets Authority",
+      "Treasury Select Committee"
+    ],
+    "answer": 1,
+    "explanation": "FSCS compensates eligible customers of failed authorised firms within set limits."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "Current deposit protection for eligible deposits under FSCS is generally up to:",
+    "options": [
+      "£50,000 per firm",
+      "£75,000 per person, per account",
+      "£85,000 per person, per authorised firm",
+      "Unlimited for all retail deposits"
+    ],
+    "answer": 2,
+    "explanation": "As of 2025, the standard deposit limit is £85,000 per person per PRA-authorised firm (higher temporary protection may apply)."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "Temporary High Balances (THBs) from eligible events (e.g., home sale proceeds) are usually protected up to what level and for how long?",
+    "options": [
+      "£500,000 for 12 months",
+      "£1,000,000 for 6 months",
+      "£85,000 for 3 months",
+      "£150,000 for 6 months"
+    ],
+    "answer": 1,
+    "explanation": "THBs can be protected up to £1m for six months for certain qualifying events."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "Which firm type is most likely to be dual-regulated by both the PRA and FCA?",
+    "options": [
+      "Small independent mortgage broker",
+      "Large retail bank taking deposits",
+      "Price comparison website",
+      "Debt advice charity"
+    ],
+    "answer": 1,
+    "explanation": "Deposit-taking banks are prudentially supervised by the PRA and conduct-regulated by the FCA."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "Who ultimately makes appointments of the FCA’s Chair and Chief Executive?",
+    "options": [
+      "House of Lords",
+      "The Treasury (with oversight by Parliament)",
+      "Bank of England",
+      "Financial Ombudsman Service"
+    ],
+    "answer": 1,
+    "explanation": "HM Treasury appoints senior leadership, with Parliamentary scrutiny via committees."
+  },
+  {
+    "section": "Unit 2: UK Financial Services & Regulation",
+    "question": "A firm offering mortgage advice must primarily comply with which FCA sourcebook?",
+    "options": [
+      "COBS",
+      "MCOB",
+      "CASS",
+      "BIPRU"
+    ],
+    "answer": 1,
+    "explanation": "Mortgage Conduct of Business (MCOB) contains the key conduct rules for mortgage advice and sales."
+  },
+
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "Under Consumer Duty, which outcome focuses on products being designed for and sold to the right target market?",
+    "options": [
+      "Consumer understanding",
+      "Price & value",
+      "Products & services",
+      "Consumer support"
+    ],
+    "answer": 2,
+    "explanation": "The Products & services outcome requires suitable design and distribution to the intended target market."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "A firm’s ‘fair value assessment’ is MOST closely linked to which Consumer Duty outcome?",
+    "options": [
+      "Consumer understanding",
+      "Price & value",
+      "Products & services",
+      "Consumer support"
+    ],
+    "answer": 1,
+    "explanation": "Price & value requires firms to consider whether the total price represents fair value for the benefits."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "‘Consumer understanding’ under the Duty mainly requires firms to:",
+    "options": [
+      "Provide the longest possible disclosures",
+      "Use clear, timely and helpful communications that aid decisions",
+      "Avoid all digital channels",
+      "Charge no fees to vulnerable customers"
+    ],
+    "answer": 1,
+    "explanation": "Communications should be clear and support effective decision-making."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "Under MCOB, an advised sale requires the firm to:",
+    "options": [
+      "Only present a list of products",
+      "Recommend a suitable product based on a full assessment",
+      "Rely on the customer to choose with no guidance",
+      "Refuse to discuss fees until after application"
+    ],
+    "answer": 1,
+    "explanation": "Advised sales involve personal recommendations that must be suitable for the customer’s needs."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "Which client would most likely be classed as ‘vulnerable’ under FCA guidance?",
+    "options": [
+      "A financially literate investor using a discretionary manager",
+      "A recently bereaved customer struggling to manage accounts",
+      "A high-net-worth professional",
+      "A corporate treasury department"
+    ],
+    "answer": 1,
+    "explanation": "Recent bereavement can impair decision-making and increase risk of harm; firms must provide appropriate support."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "What is the main aim of the Senior Managers & Certification Regime (SM&CR)?",
+    "options": [
+      "To set deposit protection limits",
+      "To clarify individual accountability and fitness & propriety",
+      "To remove all firm-level responsibilities",
+      "To regulate stock exchange listing rules"
+    ],
+    "answer": 1,
+    "explanation": "SM&CR strengthens accountability of senior managers and requires certification of certain staff."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "Which of the following BEST demonstrates ‘consumer support’ under the Duty?",
+    "options": [
+      "Charging exit fees that make switching impractical",
+      "Offering only chatbots for complaints",
+      "Providing responsive, effective help channels that don’t create unreasonable barriers",
+      "Requiring branch visits for all changes"
+    ],
+    "answer": 2,
+    "explanation": "Firms should avoid unreasonable barriers and provide appropriate support to customers."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "A mortgage ESIS must be provided:",
+    "options": [
+      "Before the customer first visits a branch",
+      "After completion only",
+      "In good time before application or when a binding offer is made",
+      "Only on request from the conveyancer"
+    ],
+    "answer": 2,
+    "explanation": "An ESIS gives key information to help customers compare deals in good time to decide."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "Which disclosure is MOST likely required where a firm offers both advised and execution-only mortgage sales?",
+    "options": [
+      "Disclosure of advice scope and charges",
+      "Disclosure of branch opening hours",
+      "Disclosure of the lender’s share price",
+      "Disclosure of the firm’s staff bonus pool"
+    ],
+    "answer": 0,
+    "explanation": "Firms must explain the service type (advised vs execution-only) and charges so customers understand the differences."
+  },
+  {
+    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
+    "question": "A firm’s product governance arrangements should primarily ensure that:",
+    "options": [
+      "Marketing spend is maximised",
+      "Products deliver good outcomes to a defined target market",
+      "Only in-house products are recommended",
+      "All products have the same price"
+    ],
+    "answer": 1,
+    "explanation": "Governance should oversee design, distribution and monitoring for good outcomes in the target market."
+  },
+
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "Under anti-money laundering rules, ‘customer due diligence’ mainly means:",
+    "options": [
+      "Collecting marketing preferences",
+      "Verifying identity and understanding the relationship’s purpose",
+      "Reporting all transactions over £5,000 to HMRC",
+      "Only checking credit scores"
+    ],
+    "answer": 1,
+    "explanation": "CDD involves ID verification and understanding purpose/nature of the relationship, with enhanced checks where needed."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "What is the correct order for reporting a suspicion of money laundering inside a firm?",
+    "options": [
+      "Tell the client → call the police",
+      "Report to the firm’s MLRO → MLRO decides whether to file a SAR",
+      "Post on social media → notify the FCA",
+      "Refuse service and destroy all records"
+    ],
+    "answer": 1,
+    "explanation": "Staff escalate to the MLRO, who considers a Suspicious Activity Report; tipping-off must be avoided."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "The Financial Ombudsman Service primarily:",
+    "options": [
+      "Sets conduct rules for firms",
+      "Hears eligible consumer complaints and can make binding awards",
+      "Insures deposits if a bank fails",
+      "Sets interest rates for loans"
+    ],
+    "answer": 1,
+    "explanation": "FOS resolves disputes between consumers and firms; decisions can be binding within limits."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "Which of the following is MOST accurate regarding FSCS coverage for deposits?",
+    "options": [
+      "Unlimited cover per account",
+      "£85,000 per person per authorised firm, with special temporary high balance rules",
+      "£50,000 per bank brand name only",
+      "Only covers current accounts, not savings"
+    ],
+    "answer": 1,
+    "explanation": "Standard deposit protection is £85k per person per firm; THBs may be protected up to £1m for six months."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "‘Tipping-off’ in AML refers to:",
+    "options": [
+      "Telling a client that a SAR may be filed about them",
+      "Notifying a colleague to complete CDD",
+      "Telling the MLRO about a suspicion",
+      "Publishing general AML guidance"
+    ],
+    "answer": 0,
+    "explanation": "Tipping-off can prejudice an investigation and is a criminal offence."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "A key ethical risk with commission-based distribution is that it can:",
+    "options": [
+      "Eliminate conflicts of interest",
+      "Create incentives misaligned with customer outcomes",
+      "Reduce disclosure needs",
+      "Remove the need for suitability assessments"
+    ],
+    "answer": 1,
+    "explanation": "Remuneration can bias recommendations; firms must manage conflicts and ensure suitability."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "Under UK GDPR/data protection, firms must ensure personal data is:",
+    "options": [
+      "Kept indefinitely for convenience",
+      "Processed lawfully, fairly and transparently for specified purposes",
+      "Shared with any third party that requests it",
+      "Stored only on paper"
+    ],
+    "answer": 1,
+    "explanation": "Core principles include lawfulness, fairness, transparency and purpose limitation."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "In contract law, ‘consideration’ best describes:",
+    "options": [
+      "A promise without value",
+      "The legal capacity to contract",
+      "Something of value exchanged by both parties",
+      "A court’s remedy for breach"
+    ],
+    "answer": 2,
+    "explanation": "Consideration is the value exchanged that supports a binding contract."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "Which complaint handling step is CORRECT for an FCA-regulated firm?",
+    "options": [
+      "Issue a final response within 8 weeks where unresolved",
+      "Always reject complaints after 4 weeks",
+      "Only accept written complaints",
+      "Refer to FSCS immediately"
+    ],
+    "answer": 0,
+    "explanation": "Firms must provide a prompt final response and signpost FOS within required timescales (typically 8 weeks)."
+  },
+  {
+    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
+    "question": "The ‘Know Your Customer’ (KYC) process mainly supports:",
+    "options": [
+      "Suitability and AML requirements",
+      "Marketing segmentation only",
+      "Tax policy design",
+      "Setting the Bank Rate"
+    ],
+    "answer": 0,
+    "explanation": "KYC underpins both AML and suitability by verifying identity and understanding customer circumstances."
+  }
+]
