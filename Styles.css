@@ -160,4 +160,58 @@ select{
 
 /* ===== Helpers ===== */
 .hidden{ display:none !important; }
-code{ background:#f3f4f6; padding:2px 6px; border-radius:6px; }
+code{ background:#f3f4f6; padding:2px 6px; border-radius:6px; },
+/* ===== SPACING/RHYTHM TUNE-UP (overrides) ===== */
+
+/* 1) container width + vertical rhythm */
+.wrap{ max-width: 980px; }
+.stack{ gap: 16px; margin: 28px 0; }
+
+/* 2) typography scale (less jumpy) */
+body{ line-height: 1.6; font-size: 16px; }
+h1{ font-size: clamp(1.4rem, 2.2vw, 1.9rem); letter-spacing:.2px; margin: 0 0 8px; }
+h2{ font-size: clamp(1.05rem, 1.7vw, 1.25rem); margin: 0 0 6px; }
+h3{ font-size: 1rem; margin: 0 0 6px; }
+p, li{ max-width: 62ch; }
+
+/* 3) hero: less height, tighter grid */
+.hero-inner{ grid-template-columns: 1fr .9fr; gap: 18px; padding: 22px 0 16px; }
+.hero-copy p{ margin: 0 0 12px; }
+.hero-art{ grid-template-columns: repeat(2, minmax(110px,1fr)); gap:10px; }
+.tile{ padding: 12px; border-radius: 12px; box-shadow: 0 6px 14px rgba(18,29,74,.05); }
+
+/* 4) cards: reduce padding and shadow; unify gaps */
+.card{ padding: 16px; border-radius: 12px; box-shadow: 0 6px 14px rgba(18,29,74,.05); }
+.cards{ gap: 16px; }
+.card-head{ margin-bottom: 6px; }
+
+/* 5) options + fields: denser, but comfy */
+.options-grid{ gap: 10px; margin: 8px 0 6px; }
+.option{ padding: 10px; border-radius: 10px; }
+.field{ gap: 4px; margin: 6px 0 4px; }
+select{ padding: 8px 10px; border-radius: 8px; }
+
+/* 6) buttons + actions: tuck in spacing */
+.actions{ gap: 10px; margin-top: 10px; }
+.btn{ padding: 9px 14px; border-radius: 9px; }
+
+/* 7) quiz area: bring content closer */
+.quiz-top{ gap: 10px; margin-bottom: 6px; }
+.question{ margin: 2px 0 8px; }
+.choices{ gap: 8px; }
+.choices label{ padding: 10px; border-radius: 10px; }
+
+/* 8) progress bar: thinner */
+.progress-wrap{ height: 8px; }
+
+/* 9) footer: slimmer */
+.footer{ margin-top: 28px; padding: 16px 0; }
+
+/* 10) mobile refinements */
+@media (max-width: 900px){
+  .hero-inner{ grid-template-columns: 1fr; padding: 18px 0 10px; }
+}
+@media (max-width: 600px){
+  .wrap{ padding: 0 16px; }
+  .options-grid{ grid-template-columns: 1fr; }
+}
