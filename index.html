@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CeMAP Paper 1 Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>CeMAP Paper 1 Quiz</h1>
+
+    <section id="setup">
+      <div class="card">
+        <h2>Choose Mode</h2>
+        <label><input type="radio" name="mode" value="section" checked> Section Quiz (10 Q, pass 8)</label><br>
+        <label><input type="radio" name="mode" value="practice"> Practice Exam (100 Q, pass 70)</label>
+
+        <div id="sectionPicker" class="mt">
+          <label for="sectionSelect">Section:</label>
+          <select id="sectionSelect"></select>
+        </div>
+
+        <button id="startBtn" class="primary mt">Start</button>
+        <p id="dataNote" class="muted mt"></p>
+      </div>
+    </section>
+
+    <section id="quiz" class="hidden">
+      <div class="card">
+        <div class="quiz-header">
+          <div id="modeLabel"></div>
+          <div id="progress"></div>
+        </div>
+
+        <h2 id="questionText"></h2>
+        <form id="optionsForm"></form>
+
+        <div class="actions">
+          <button id="nextBtn" class="primary">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="hidden">
+      <div class="card">
+        <h2 id="resultTitle"></h2>
+        <p id="resultStats"></p>
+        <button id="restartBtn" class="secondary">Take another quiz</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
