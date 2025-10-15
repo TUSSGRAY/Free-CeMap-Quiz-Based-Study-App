@@ -1,0 +1,26 @@
+[
+  {
+    "section": "Unit 1",
+    "question": "What is the main role of the Bank of England?",
+    "options": [
+      "Regulate the stock exchange",
+      "Set monetary policy and oversee financial stability",
+      "Manage pension schemes",
+      "Advise the Treasury on taxation"
+    ],
+    "answer": 1,
+    "explanation": "The Bank of England’s key role is to set monetary policy and maintain financial stability."
+  },
+  {
+    "section": "Unit 2",
+    "question": "Which body regulates mortgage advisers in the UK?",
+    "options": [
+      "The Prudential Regulation Authority",
+      "The Financial Conduct Authority",
+      "The Bank of England",
+      "The Financial Ombudsman Service"
+    ],
+    "answer": 1,
+    "explanation": "Mortgage advisers are regulated by the Financial Conduct Authority (FCA)."
+  }
+]
