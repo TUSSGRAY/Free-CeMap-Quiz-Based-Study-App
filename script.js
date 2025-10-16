@@ -1,5 +1,5 @@
 /* ===========================
-   CeMAP Quiz App (grouped 24 topics → 5 quizzes)
+   CeMAP Quiz App (grouped 24 topics + full practice mode)
    =========================== */
 
 const CANDIDATE_URLS = [
@@ -18,7 +18,7 @@ const PRACTICE_SIZE = 100;
 const PASS_SECTION = 8;
 const PASS_PRACTICE = 70;
 
-// Grouped quiz structure
+// Grouped section quizzes
 const QUIZ_GROUPS = [
   { label: "Quiz 1: Topics 1–5", range: [1, 5] },
   { label: "Quiz 2: Topics 6–10", range: [6, 10] },
@@ -60,6 +60,7 @@ async function bootstrap() {
   els.modeRadios.forEach(r => r.addEventListener("change", () => {
     mode = document.querySelector('input[name="mode"]:checked').value;
     updateModeChip();
+    toggleDropdownForMode();
   }));
   updateModeChip();
 
@@ -73,6 +74,8 @@ async function bootstrap() {
   }
 
   populateQuizDropdown();
+  toggleDropdownForMode();
+
   if (els.dataNote) els.dataNote.textContent = `Loaded ${QUESTIONS.length} questions`;
 }
 
@@ -124,7 +127,7 @@ function normalizeBank(arr) {
 }
 
 /* ----------------
-   Populate grouped quiz dropdown
+   Populate section dropdown
 ------------------*/
 function populateQuizDropdown() {
   const sel = els.sectionSelect;
@@ -139,30 +142,53 @@ function populateQuizDropdown() {
   });
 }
 
+function toggleDropdownForMode() {
+  // hide the grouped dropdown when in practice mode
+  els.sectionSelect.disabled = (mode === "practice");
+  els.sectionSelect.style.opacity = (mode === "practice") ? "0.5" : "1";
+}
+
 /* ----------------
    Start Quiz
 ------------------*/
 function startQuiz() {
-  const selectedIndex = parseInt(els.sectionSelect.value);
-  const selectedGroup = QUIZ_GROUPS[selectedIndex];
-  if (!selectedGroup) {
-    toast("Please select a quiz group.");
-    return;
+  let pool = [];
+
+  if (mode === "practice") {
+    // full 24-topic random 100-question practice exam
+    pool = QUESTIONS;
+    if (pool.length < PRACTICE_SIZE) {
+      toast("Not enough questions in total — using all available.");
+    }
+    ACTIVE = sampleN(pool, PRACTICE_SIZE);
+    document.getElementById("modeLabel").textContent =
+      "Full Practice Exam • 100 Questions";
+  } else {
+    // grouped section quiz
+    const selectedIndex = parseInt(els.sectionSelect.value);
+    const selectedGroup = QUIZ_GROUPS[selectedIndex];
+    if (!selectedGroup) {
+      toast("Please select a quiz group.");
+      return;
+    }
+
+    const [start, end] = selectedGroup.range;
+    pool = QUESTIONS.filter(q => {
+      const m = q.section.match(/^Topic\s+(\d+)/i);
+      const topicNum = m ? parseInt(m[1]) : 0;
+      return topicNum >= start && topicNum <= end;
+    });
+
+    if (pool.length === 0) {
+      toast("No questions found for this quiz range.");
+      return;
+    }
+
+    ACTIVE = sampleN(pool, SECTION_SIZE);
+    document.getElementById("modeLabel").textContent =
+      `${selectedGroup.label} • ${SECTION_SIZE} Questions`;
   }
 
-  const [start, end] = selectedGroup.range;
-  const pool = QUESTIONS.filter(q => {
-    const m = q.section.match(/^Topic\s+(\d+)/i);
-    const topicNum = m ? parseInt(m[1]) : 0;
-    return topicNum >= start && topicNum <= end;
-  });
-
-  if (pool.length === 0) {
-    toast("No questions found for this quiz range.");
-    return;
-  }
-
-  ACTIVE = sampleN(pool, SECTION_SIZE);
   USER = new Array(ACTIVE.length).fill(null);
   idx = 0;
 
@@ -171,13 +197,8 @@ function startQuiz() {
   els.quiz.classList.remove("hidden");
   els.review.classList.add("hidden");
 
-  updateModeChip();
   renderQuestion();
   updateProgress();
-
-  // Show current quiz label
-  document.getElementById("modeLabel").textContent =
-    `${selectedGroup.label} • ${SECTION_SIZE} Questions`;
 }
 
 /* ----------------
