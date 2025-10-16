@@ -1,28 +1,31 @@
 /* ===========================
-   CeMAP Quiz App (Topic dropdown fix)
+   CeMAP Quiz App (robust topic loader)
    =========================== */
 
-/* ---- Try these URLs in order; edit to match your repo if needed ---- */
+/* 1) EDIT THIS LIST to include the exact path to your JSON if you know it.
+      The script will try each, in order, until one works. */
 const CANDIDATE_URLS = [
   "data/cemap_topics_1_24_combined.json",
+  "./data/cemap_topics_1_24_combined.json",
+  "cemap_topics_1_24_combined.json",
+  "./cemap_topics_1_24_combined.json",
   "data/questions.json",
-  "questions.json"
+  "./data/questions.json",
+  "questions.json",
+  "./questions.json"
 ];
 
-/* ---- Sizes / pass marks (kept same as your UI text) ---- */
 const SECTION_SIZE = 10;
 const PRACTICE_SIZE = 100;
 const PASS_SECTION = 8;
 const PASS_PRACTICE = 70;
 
-/* ---- State ---- */
 let QUESTIONS = [];   // full bank
 let ACTIVE = [];      // current quiz set
 let USER = [];        // user answers
 let idx = 0;
 let mode = "section";
 
-/* ---- Elements ---- */
 const els = {
   modeRadios: [...document.querySelectorAll('input[name="mode"]')],
   sectionSelect: document.getElementById("sectionSelect"),
@@ -48,60 +51,86 @@ const els = {
   restartBtn: document.getElementById("restartBtn"),
 };
 
-/* ----------------
-   Bootstrap
-------------------*/
 bootstrap();
 
 async function bootstrap() {
-  // Mode toggle
   els.modeRadios.forEach(r => r.addEventListener("change", () => {
     mode = document.querySelector('input[name="mode"]:checked').value;
     updateModeChip();
   }));
   updateModeChip();
 
-  // Buttons
   els.startBtn.addEventListener("click", startQuiz);
   els.nextBtn.addEventListener("click", onNext);
   els.toggleReviewBtn.addEventListener("click", () => els.review.classList.toggle("hidden"));
   els.restartBtn.addEventListener("click", resetToSetup);
 
-  // Load questions (robust)
   QUESTIONS = await loadQuestionsRobust();
 
-  // If still empty but some other script already loaded a bank:
+  // If some other script already loaded a bank into window.QUESTIONS, use it
   if ((!QUESTIONS || QUESTIONS.length === 0) && Array.isArray(window.QUESTIONS)) {
+    console.warn("[quiz] Falling back to window.QUESTIONS");
     QUESTIONS = normalizeBank(window.QUESTIONS);
   }
 
-  // Build the Topic dropdown from QUESTIONS
   populateTopicDropdown(QUESTIONS);
-
-  // Status note
-  if (els.dataNote) {
-    els.dataNote.textContent = `Loaded ${QUESTIONS.length} questions`;
-  }
+  if (els.dataNote) els.dataNote.textContent = `Loaded ${QUESTIONS.length} questions`;
 }
 
 /* ----------------
-   Robust loader
+   Robust loader with diagnostics
 ------------------*/
 async function loadQuestionsRobust() {
   for (const url of CANDIDATE_URLS) {
     try {
+      console.log(`[quiz] Trying ${url}`);
       const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) continue;
-      const payload = await res.json();
+      if (!res.ok) {
+        console.warn(`[quiz] ${url} -> HTTP ${res.status}`);
+        continue;
+      }
+      const text = await res.text();
+      // quick sanity: empty file?
+      if (!text || !text.trim()) {
+        console.warn(`[quiz] ${url} -> empty file`);
+        continue;
+      }
+      // Try parse JSON
+      let payload;
+      try {
+        payload = JSON.parse(text);
+      } catch (e) {
+        console.error(`[quiz] ${url} -> JSON parse error:`, e);
+        console.error(`[quiz] First 200 chars:\n${text.slice(0,200)}…`);
+        continue;
+      }
       const bank = extractQuestions(payload);
-      if (bank.length) return bank;
+      if (bank.length) {
+        console.log(`[quiz] Loaded ${bank.length} questions from ${url}`);
+        // show a quick “open data” link for debugging
+        addDataLink(url);
+        return bank;
+      } else {
+        console.warn(`[quiz] ${url} parsed, but did not contain questions[] or an array`);
+      }
     } catch (e) {
-      // try next URL
+      console.warn(`[quiz] Fetch failed for ${url}:`, e);
     }
   }
-  // Last resort: empty array
-  toast("Could not load topics JSON (check file path/name and JSON shape).");
+  toast("Could not load topics JSON. Check the file path/name and JSON shape.");
   return [];
+}
+
+function addDataLink(url) {
+  const note = els.dataNote;
+  if (!note) return;
+  const a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener";
+  a.style.marginLeft = "6px";
+  a.textContent = "(view data)";
+  note.appendChild(a);
 }
 
 /* Accepts {questions:[...]} or raw [...] */
@@ -112,14 +141,14 @@ function extractQuestions(payload) {
   return [];
 }
 
-/* Normalize each item to {section, question, options, answer, explanation} */
+/* Normalize to {section, question, options, answer, explanation} */
 function normalizeBank(arr) {
   return arr.map(x => {
     const section = (x.section || x.topic || "").toString();
     const question = (x.question || x.q || "").toString();
     const options = (x.options || x.choices || []).map(o => o.toString());
     let answer = Number.isInteger(x.answer) ? x.answer : x.answerIndex;
-    // If the correct is a string, map to index
+
     if (!Number.isInteger(answer) && typeof x.correct === "string") {
       const i = options.findIndex(o => o.trim().toLowerCase() === x.correct.trim().toLowerCase());
       if (i >= 0) answer = i;
@@ -132,18 +161,18 @@ function normalizeBank(arr) {
 }
 
 /* ----------------
-   Topic dropdown
+   Topic dropdown from QUESTIONS
 ------------------*/
 function populateTopicDropdown(bank) {
   const sel = els.sectionSelect;
   if (!sel) return;
 
   const topics = buildTopicIndex(bank); // [{num, title, count}]
-  sel.innerHTML = ""; // wipe Unit 1–4 or any previous options
+  sel.innerHTML = ""; // wipe any Unit options
   sel.appendChild(new Option("All topics", "__ALL__"));
 
   topics.forEach(t => {
-    // If you want to restrict strictly to 1..24, uncomment:
+    // Strictly 1..24? uncomment next line:
     // if (t.num < 1 || t.num > 24) return;
     const label = `Topic ${t.num}: ${t.title} (${t.count})`;
     sel.appendChild(new Option(label, String(t.num)));
@@ -193,7 +222,6 @@ function startQuiz() {
   USER = new Array(ACTIVE.length).fill(null);
   idx = 0;
 
-  // Show quiz UI
   els.setup.classList.add("hidden");
   els.result.classList.add("hidden");
   els.review.classList.add("hidden");
@@ -278,7 +306,6 @@ function submitQuiz() {
   const passReq = (mode === "practice") ? PASS_PRACTICE : PASS_SECTION;
   const passed = correct >= passReq;
 
-  // Fill Review
   els.reviewList.innerHTML = "";
   rows.forEach(r => {
     const div = document.createElement("div");
@@ -325,5 +352,3 @@ function updateModeChip(){
     ? "Practice exam (100 Q • pass 70)"
     : "Section quiz (10 Q • pass 8)";
 }
-
-/* End of script.js */
