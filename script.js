@@ -1,5 +1,5 @@
 /* ===========================
-   CeMAP Quiz App (Section review only + colour feedback)
+   CeMAP Quiz App (no review button)
    =========================== */
 
 const CANDIDATE_URLS = [
@@ -35,7 +35,6 @@ const els = {
   questionText: document.getElementById("questionText"),
   optionsForm: document.getElementById("optionsForm"),
   nextBtn: document.getElementById("nextBtn"),
-  toggleReviewBtn: document.getElementById("toggleReviewBtn"),
   modeLabel: document.getElementById("modeLabel"),
   progressBar: document.getElementById("progressBar"),
   progressTxt: document.getElementById("progress"),
@@ -55,21 +54,12 @@ async function bootstrap() {
   }));
   updateModeChip();
 
-  // Review button toggles the review panel (only enabled in section mode after submit)
-  els.toggleReviewBtn.addEventListener("click", () => {
-    const hidden = els.review.classList.toggle("hidden");
-    els.toggleReviewBtn.textContent = hidden ? "Review answers" : "Hide review";
-  });
-  // Hide review button by default on load
-  els.toggleReviewBtn.classList.add("hidden");
-
   els.startBtn.addEventListener("click", startQuiz);
   els.nextBtn.addEventListener("click", onNext);
   els.restartBtn.addEventListener("click", resetToSetup);
 
   QUESTIONS = await loadQuestionsRobust();
   if ((!QUESTIONS || QUESTIONS.length === 0) && Array.isArray(window.QUESTIONS)) {
-    console.warn("[quiz] Falling back to window.QUESTIONS");
     QUESTIONS = normalizeBank(window.QUESTIONS);
   }
 
@@ -89,35 +79,14 @@ async function loadQuestionsRobust() {
       if (!text.trim()) continue;
 
       let payload;
-      try {
-        payload = JSON.parse(text);
-      } catch {
-        continue;
-      }
+      try { payload = JSON.parse(text); } catch { continue; }
 
       const bank = extractQuestions(payload);
-      if (bank.length) {
-        addDataLink(url);
-        return bank;
-      }
-    } catch (e) {
-      console.warn(`[quiz] Fetch failed for ${url}:`, e);
-    }
+      if (bank.length) return bank;
+    } catch (e) { console.warn(`[quiz] Fetch failed for ${url}:`, e); }
   }
-  toast("Could not load topics JSON. Check file path or JSON shape.");
+  toast("Could not load topics JSON.");
   return [];
-}
-
-function addDataLink(url) {
-  const note = els.dataNote;
-  if (!note) return;
-  const a = document.createElement("a");
-  a.href = url;
-  a.target = "_blank";
-  a.rel = "noopener";
-  a.style.marginLeft = "6px";
-  a.textContent = "(view data)";
-  note.appendChild(a);
 }
 
 function extractQuestions(payload) {
@@ -133,7 +102,6 @@ function normalizeBank(arr) {
     const question = (x.question || x.q || "").toString();
     const options = (x.options || x.choices || []).map(o => o.toString());
     let answer = Number.isInteger(x.answer) ? x.answer : x.answerIndex;
-
     if (!Number.isInteger(answer) && typeof x.correct === "string") {
       const i = options.findIndex(o => o.trim().toLowerCase() === x.correct.trim().toLowerCase());
       if (i >= 0) answer = i;
@@ -141,7 +109,8 @@ function normalizeBank(arr) {
     const explanation = (x.explanation || x.explain || "").toString();
     return { section, question, options, answer, explanation };
   }).filter(q =>
-    q.section && q.question && Array.isArray(q.options) && q.options.length > 1 && Number.isInteger(q.answer)
+    q.section && q.question && Array.isArray(q.options) &&
+    q.options.length > 1 && Number.isInteger(q.answer)
   );
 }
 
@@ -151,23 +120,19 @@ function normalizeBank(arr) {
 function populateTopicDropdown(bank) {
   const sel = els.sectionSelect;
   if (!sel) return;
-
   const topics = buildTopicIndex(bank);
   sel.innerHTML = "";
   sel.appendChild(new Option("All topics", "__ALL__"));
-
   topics.forEach(t => {
     const label = `Topic ${t.num}: ${t.title} (${t.count})`;
     sel.appendChild(new Option(label, String(t.num)));
   });
-
   sel.value = "__ALL__";
 }
 
 function buildTopicIndex(bank) {
   const map = new Map();
   const re = /^Topic\s*(\d{1,2})\s*:\s*(.+)$/i;
-
   for (const q of bank) {
     const sec = (q.section || "").trim();
     const m = sec.match(re);
@@ -204,15 +169,10 @@ function startQuiz() {
   USER = new Array(ACTIVE.length).fill(null);
   idx = 0;
 
-  // Reset UI states
   els.setup.classList.add("hidden");
   els.result.classList.add("hidden");
-  els.review.classList.add("hidden");
-  // Hide the review toggle while taking the quiz
-  els.toggleReviewBtn.classList.add("hidden");
-  els.toggleReviewBtn.textContent = "Review answers";
-
   els.quiz.classList.remove("hidden");
+  els.review.classList.add("hidden"); // never shown now
 
   updateModeChip();
   renderQuestion();
@@ -220,7 +180,7 @@ function startQuiz() {
 }
 
 /* ----------------
-   Render Question + Colour Feedback
+   Render Question + Feedback
 ------------------*/
 function renderQuestion() {
   const q = ACTIVE[idx];
@@ -238,7 +198,6 @@ function renderQuestion() {
     els.optionsForm.appendChild(label);
   });
 
-  // Process only the first selection for this question
   els.optionsForm.addEventListener("change", handleAnswerSelection, { once: true });
   els.nextBtn.textContent = (idx === ACTIVE.length - 1) ? "Submit" : "Next";
 }
@@ -249,23 +208,18 @@ function handleAnswerSelection(e) {
   USER[idx] = selected;
 
   const labels = [...els.optionsForm.querySelectorAll("label")];
-
-  // Disable all inputs, apply classes matching CSS ( .choice.correct / .choice.wrong / .choice.disabled )
   labels.forEach((lbl, i) => {
     lbl.classList.add("disabled");
-    if (i === q.answer) lbl.classList.add("correct");         // correct → green
-    if (i === selected && selected !== q.answer) lbl.classList.add("wrong"); // selected wrong → red
-    const input = lbl.querySelector("input");
-    if (input) input.disabled = true;
+    if (i === q.answer) lbl.classList.add("correct");
+    if (i === selected && selected !== q.answer) lbl.classList.add("wrong");
+    lbl.querySelector("input").disabled = true;
   });
 
-  // Explanation under the question
   const expl = document.createElement("p");
   expl.className = "explanation";
   expl.textContent = q.explanation || "No explanation provided.";
   els.optionsForm.appendChild(expl);
 
-  // Toast feedback
   if (selected === q.answer) {
     toast("✅ Correct!");
   } else {
@@ -287,7 +241,7 @@ function onNext() {
 }
 
 /* ----------------
-   Progress & Score + Review
+   Progress & Score
 ------------------*/
 function updateProgress() {
   const total = ACTIVE.length;
@@ -299,20 +253,9 @@ function updateProgress() {
 
 function submitQuiz() {
   let correct = 0;
-  const rows = [];
-
   ACTIVE.forEach((q, i) => {
     const user = USER[i];
-    const ok = user === q.answer;
-    if (ok) correct++;
-    rows.push({
-      section: q.section,
-      question: q.question,
-      correctText: q.options[q.answer],
-      userText: user !== null ? q.options[user] : "—",
-      ok,
-      explanation: q.explanation || ""
-    });
+    if (user === q.answer) correct++;
   });
 
   const total = ACTIVE.length;
@@ -320,37 +263,8 @@ function submitQuiz() {
   const passReq = (mode === "practice") ? PASS_PRACTICE : PASS_SECTION;
   const passed = correct >= passReq;
 
-  // Build review list (but only shown for section mode when user clicks "Review answers")
-  els.reviewList.innerHTML = "";
-  rows.forEach(r => {
-    const div = document.createElement("div");
-    div.className = "review-item";
-    div.innerHTML = `
-      <div class="review-q"><strong>${escapeHtml(r.section)}</strong><br>${escapeHtml(r.question)}</div>
-      <div class="review-a">
-        Correct: <strong>${escapeHtml(r.correctText)}</strong>
-      </div>
-      <div class="review-u">
-        Your answer: ${escapeHtml(r.userText)} ${r.ok ? "✅" : "❌"}
-      </div>
-      ${r.explanation ? `<div class="review-expl">${escapeHtml(r.explanation)}</div>` : ""}`;
-    els.reviewList.appendChild(div);
-  });
-
-  // End-of-quiz UI
   els.quiz.classList.add("hidden");
   els.result.classList.remove("hidden");
-
-  // Section (10-Q) → show review toggle; Practice (100-Q) → hide it
-  if (mode === "section") {
-    els.review.classList.add("hidden");            // keep hidden until user opts to view
-    els.toggleReviewBtn.classList.remove("hidden");
-    els.toggleReviewBtn.textContent = "Review answers";
-  } else {
-    els.review.classList.add("hidden");
-    els.toggleReviewBtn.classList.add("hidden");
-  }
-
   els.resultTitle.textContent = passed ? "Pass 🎉" : "Try again 💪";
   els.resultStats.textContent = `Score: ${correct}/${total} (${pct}%) — required pass ${passReq}`;
   els.progressBar.style.width = "100%";
@@ -364,12 +278,7 @@ function resetToSetup() {
   els.quiz.classList.add("hidden");
   els.result.classList.add("hidden");
   els.setup.classList.remove("hidden");
-  els.review.classList.add("hidden");
-  els.toggleReviewBtn.classList.add("hidden");
-  els.toggleReviewBtn.textContent = "Review answers";
-  idx = 0;
-  USER = [];
-  ACTIVE = [];
+  idx = 0; USER = []; ACTIVE = [];
 }
 
 function sampleN(arr, n) {
