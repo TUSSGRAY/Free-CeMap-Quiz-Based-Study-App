@@ -1,5 +1,5 @@
 /* ===========================
-   CeMAP Quiz App (with visual feedback fixed)
+   CeMAP Quiz App (Section review only + colour feedback)
    =========================== */
 
 const CANDIDATE_URLS = [
@@ -55,9 +55,16 @@ async function bootstrap() {
   }));
   updateModeChip();
 
+  // Review button toggles the review panel (only enabled in section mode after submit)
+  els.toggleReviewBtn.addEventListener("click", () => {
+    const hidden = els.review.classList.toggle("hidden");
+    els.toggleReviewBtn.textContent = hidden ? "Review answers" : "Hide review";
+  });
+  // Hide review button by default on load
+  els.toggleReviewBtn.classList.add("hidden");
+
   els.startBtn.addEventListener("click", startQuiz);
   els.nextBtn.addEventListener("click", onNext);
-  els.toggleReviewBtn.addEventListener("click", () => els.review.classList.toggle("hidden"));
   els.restartBtn.addEventListener("click", resetToSetup);
 
   QUESTIONS = await loadQuestionsRobust();
@@ -197,9 +204,14 @@ function startQuiz() {
   USER = new Array(ACTIVE.length).fill(null);
   idx = 0;
 
+  // Reset UI states
   els.setup.classList.add("hidden");
   els.result.classList.add("hidden");
   els.review.classList.add("hidden");
+  // Hide the review toggle while taking the quiz
+  els.toggleReviewBtn.classList.add("hidden");
+  els.toggleReviewBtn.textContent = "Review answers";
+
   els.quiz.classList.remove("hidden");
 
   updateModeChip();
@@ -226,7 +238,7 @@ function renderQuestion() {
     els.optionsForm.appendChild(label);
   });
 
-  // Ensure we only process the first selection for this question
+  // Process only the first selection for this question
   els.optionsForm.addEventListener("change", handleAnswerSelection, { once: true });
   els.nextBtn.textContent = (idx === ACTIVE.length - 1) ? "Submit" : "Next";
 }
@@ -238,20 +250,16 @@ function handleAnswerSelection(e) {
 
   const labels = [...els.optionsForm.querySelectorAll("label")];
 
-  // Disable all inputs, apply classes aligned with CSS: .choice.correct / .choice.wrong / .choice.disabled
+  // Disable all inputs, apply classes matching CSS ( .choice.correct / .choice.wrong / .choice.disabled )
   labels.forEach((lbl, i) => {
     lbl.classList.add("disabled");
-    if (i === q.answer) {
-      lbl.classList.add("correct");   // highlight the correct answer
-    }
-    if (i === selected && selected !== q.answer) {
-      lbl.classList.add("wrong");     // selected wrong goes red
-    }
+    if (i === q.answer) lbl.classList.add("correct");         // correct → green
+    if (i === selected && selected !== q.answer) lbl.classList.add("wrong"); // selected wrong → red
     const input = lbl.querySelector("input");
     if (input) input.disabled = true;
   });
 
-  // Explanation block
+  // Explanation under the question
   const expl = document.createElement("p");
   expl.className = "explanation";
   expl.textContent = q.explanation || "No explanation provided.";
@@ -312,14 +320,14 @@ function submitQuiz() {
   const passReq = (mode === "practice") ? PASS_PRACTICE : PASS_SECTION;
   const passed = correct >= passReq;
 
-  // Build review list with clear reveal of each question's correct answer
+  // Build review list (but only shown for section mode when user clicks "Review answers")
   els.reviewList.innerHTML = "";
   rows.forEach(r => {
     const div = document.createElement("div");
     div.className = "review-item";
     div.innerHTML = `
       <div class="review-q"><strong>${escapeHtml(r.section)}</strong><br>${escapeHtml(r.question)}</div>
-      <div class="review-a ${r.ok ? "correct" : "wrong"}">
+      <div class="review-a">
         Correct: <strong>${escapeHtml(r.correctText)}</strong>
       </div>
       <div class="review-u">
@@ -329,9 +337,19 @@ function submitQuiz() {
     els.reviewList.appendChild(div);
   });
 
+  // End-of-quiz UI
   els.quiz.classList.add("hidden");
-  els.review.classList.remove("hidden");
   els.result.classList.remove("hidden");
+
+  // Section (10-Q) → show review toggle; Practice (100-Q) → hide it
+  if (mode === "section") {
+    els.review.classList.add("hidden");            // keep hidden until user opts to view
+    els.toggleReviewBtn.classList.remove("hidden");
+    els.toggleReviewBtn.textContent = "Review answers";
+  } else {
+    els.review.classList.add("hidden");
+    els.toggleReviewBtn.classList.add("hidden");
+  }
 
   els.resultTitle.textContent = passed ? "Pass 🎉" : "Try again 💪";
   els.resultStats.textContent = `Score: ${correct}/${total} (${pct}%) — required pass ${passReq}`;
@@ -340,13 +358,15 @@ function submitQuiz() {
 }
 
 /* ----------------
-   Reset / Helpers
+   Helpers
 ------------------*/
 function resetToSetup() {
   els.quiz.classList.add("hidden");
   els.result.classList.add("hidden");
   els.setup.classList.remove("hidden");
   els.review.classList.add("hidden");
+  els.toggleReviewBtn.classList.add("hidden");
+  els.toggleReviewBtn.textContent = "Review answers";
   idx = 0;
   USER = [];
   ACTIVE = [];
