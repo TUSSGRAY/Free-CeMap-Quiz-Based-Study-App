@@ -1,5 +1,5 @@
 /* ===========================
-   CeMAP Quiz App — Grouped Topics + Ad Popup
+   CeMAP Quiz App — Grouped Topics + AdSense Popup
    =========================== */
 
 const CANDIDATE_URLS = [
@@ -44,7 +44,6 @@ const els = {
   modeLabel: document.getElementById("modeLabel"),
   progressBar: document.getElementById("progressBar"),
   progressTxt: document.getElementById("progress"),
-  review: document.getElementById("review"),
   resultTitle: document.getElementById("resultTitle"),
   resultStats: document.getElementById("resultStats"),
   restartBtn: document.getElementById("restartBtn"),
@@ -250,7 +249,7 @@ function handleAnswerSelection(e) {
 }
 
 /* ===========================
-   NAVIGATION + AD POPUP
+   AD POPUP + NAVIGATION
    =========================== */
 function showAdvert(callback) {
   const modal = els.adModal;
@@ -258,6 +257,21 @@ function showAdvert(callback) {
   if (!modal || !countdownEl) {
     if (callback) callback();
     return;
+  }
+
+  // Inject AdSense if not already done
+  if (!modal.querySelector(".adsbygoogle")) {
+    const ad = document.createElement("div");
+    ad.innerHTML = `
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXX"
+           data-ad-slot="YYYYYYYYYY"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    `;
+    modal.querySelector("div").appendChild(ad);
   }
 
   let counter = 5;
@@ -276,7 +290,7 @@ function showAdvert(callback) {
 }
 
 function onNext() {
-  // Show ad every 9th question (except the last)
+  // Show ad every 9th question (except last)
   if ((idx + 1) % 9 === 0 && idx < ACTIVE.length - 1) {
     showAdvert(() => nextStep());
   } else {
