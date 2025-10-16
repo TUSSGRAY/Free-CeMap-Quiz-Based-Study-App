@@ -1,290 +1,76 @@
-// Robust CeMAP quiz script — validates JSON and explains what's wrong
-document.addEventListener('DOMContentLoaded', () => {
-  const QUESTIONS_URL = './questions.json';
+:root { --primary:#2442A2; --bg:#0e1222; --card:#161b2e; --text:#e9edff; --muted:#a9b2d6; }
 
-  // DOM
-  const setupEl = document.getElementById('setup');
-  const sectionPickerEl = document.getElementById('sectionPicker');
-  const sectionSelectEl = document.getElementById('sectionSelect');
-  const startBtn = document.getElementById('startBtn');
-  const dataNoteEl = document.getElementById('dataNote');
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--text); background: linear-gradient(180deg, #0d1120, #0b0f1b); }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
 
-  const quizEl = document.getElementById('quiz');
-  const modeLabelEl = document.getElementById('modeLabel');
-  const progressEl = document.getElementById('progress');
-  const questionTextEl = document.getElementById('questionText');
-  const optionsFormEl = document.getElementById('optionsForm');
-  const explainEl = document.getElementById('explain');
-  const nextBtn = document.getElementById('nextBtn');
-  const progressBar = document.getElementById('progressBar');
+.topbar { position: sticky; top: 0; background: rgba(10,14,30,.7); backdrop-filter: blur(8px); border-bottom: 1px solid #222944; z-index: 10; }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight: 700; }
+.i { width: 20px; height: 20px; color: var(--text); }
+.i.big { width: 36px; height: 36px; }
 
-  const resultEl = document.getElementById('result');
-  const resultTitleEl = document.getElementById('resultTitle');
-  const resultStatsEl = document.getElementById('resultStats');
-  const reviewEl = document.getElementById('review');
-  const toggleReviewBtn = document.getElementById('toggleReviewBtn');
-  const restartBtn = document.getElementById('restartBtn');
+.nav a { color: var(--muted); text-decoration: none; margin-left: 16px; }
+.nav a:hover { color: var(--text); }
 
-  // State
-  let allQuestions = [];
-  let quizQuestions = [];
-  let idx = 0;
-  let score = 0;
-  let mode = 'section';
-  let passMark = 8;
-  let revealed = false;
-  let reviewLog = [];
+.hero { padding: 48px 0 24px; background: radial-gradient(1200px 400px at 50% -80px, rgba(36,66,162,.25), transparent); }
+.hero-inner { display:flex; align-items:center; justify-content: space-between; gap: 24px; }
+.hero-copy h1 { margin: 0 0 8px; }
+.hero-copy p { color: var(--muted); margin: 0 0 16px; }
+.hero-art { display:grid; grid-template-columns: repeat(2, minmax(120px, 1fr)); gap: 12px; }
+.hero .tile { background: #151a2d; border: 1px solid #20274a; border-radius: 10px; padding: 12px; display:flex; align-items:center; gap: 10px; }
 
-  // Utils
-  const shuffle = arr => arr.sort(() => Math.random() - 0.5);
-  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]) );
-  const uniqueSections = qs => [...new Set(qs.map(q => q.section || 'Unspecified'))].sort();
-  const pickRandom = (arr, n) => { const copy=[...arr]; shuffle(copy); return copy.slice(0, n); };
-  const showToast = window.showToast || (m => alert(m));
+.app { padding: 24px 0 64px; }
+.stack { margin: 32px 0; }
+.cards { display:grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+.card { background: var(--card); border: 1px solid #20274a; border-radius: 12px; padding: 16px; }
+.card-head { display:flex; align-items:center; gap: 10px; margin-bottom: 12px; }
 
-  function setView(view){
-    setupEl.classList.toggle('hidden', view !== 'setup');
-    quizEl.classList.toggle('hidden', view !== 'quiz');
-    resultEl.classList.toggle('hidden', view !== 'result');
-  }
-  function updateProgressBar(){
-    const pct = Math.round((idx / Math.max(1, quizQuestions.length)) * 100);
-    if (progressBar) progressBar.style.width = pct + '%';
-  }
+.field { margin: 12px 0; }
+.field label { display:block; margin-bottom: 6px; color: var(--muted); }
+select { background: #0f1430; color: var(--text); border: 1px solid #2a315a; border-radius: 8px; padding: 10px; width: 100%; }
 
-  function renderQuestion(){
-    const q = quizQuestions[idx];
-    revealed = false;
-    nextBtn.textContent = 'Check answer';
-    explainEl.classList.add('hidden');
-    explainEl.innerHTML = '';
+.options-grid { display:grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin: 12px 0 8px; }
+.option { display:flex; gap: 10px; align-items:center; padding: 10px; border: 1px solid #283058; border-radius: 10px; cursor: pointer; }
+.option input { accent-color: var(--primary); }
 
-    questionTextEl.textContent = q.question;
-    optionsFormEl.innerHTML = '';
+.actions { display:flex; align-items:center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.btn { border: 1px solid #2a315a; background: #141a33; color: var(--text); padding: 10px 14px; border-radius: 10px; cursor: pointer; }
+.btn-primary { background: var(--primary); border-color: #2f50bf; }
+.btn-secondary { background: #202955; }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+.btn-link { background: transparent; border: none; color: var(--primary); text-decoration: underline; cursor: pointer; }
 
-    (q.options || []).forEach((opt, i) => {
-      const id = `opt-${idx}-${i}`;
-      const label = document.createElement('label');
-      label.setAttribute('for', id);
-      label.innerHTML = `<input type="radio" name="answer" id="${id}" value="${i}"> ${esc(opt)}`;
-      optionsFormEl.appendChild(label);
-    });
+.note { color: #9fb0ff; font-size: .9rem; }
 
-    progressEl.textContent = `Question ${idx + 1} of ${quizQuestions.length}`;
-    updateProgressBar();
-  }
+.quiz-top { display:flex; align-items:center; gap: 10px; }
+.chip { background: #202955; padding: 6px 10px; border-radius: 999px; }
+.progress-wrap { background: #0f1430; border: 1px solid #2a315a; border-radius: 999px; height: 10px; flex: 1; overflow: hidden; }
+.progress-bar { background: var(--primary); height: 100%; width: 0%; transition: width .2s ease; }
+.progress-txt { min-width: 64px; text-align: right; color: var(--muted); }
 
-  function startQuiz(){
-    if (!allQuestions.length) {
-      dataNoteEl.textContent = 'No questions loaded. Ensure questions.json is next to index.html and contains valid items.';
-      return;
-    }
+.question { margin: 16px 0 10px; }
+.choices { display:grid; gap: 10px; }
+.choice { display:flex; gap: 10px; align-items:flex-start; padding: 10px; border: 1px solid #283058; border-radius: 10px; cursor: pointer; }
+.choice input { margin-top: 4px; accent-color: var(--primary); }
 
-    const chosen = [...document.querySelectorAll('input[name="mode"]')].find(r => r.checked)?.value || 'section';
-    mode = chosen;
+.result .lead { color: var(--muted); }
 
-    if (mode === 'section') {
-      passMark = 8;
-      const sel = sectionSelectEl.value;
-      const pool = allQuestions.filter(q => (q.section || 'Unspecified') === sel);
-      const need = 10;
-      const take = Math.min(need, pool.length);
-      quizQuestions = pickRandom(pool, take);
-      dataNoteEl.textContent = (take < need)
-        ? `Note: Only ${take} question(s) found in "${sel}". Add more to reach 10.`
-        : '';
-      modeLabelEl.textContent = `Section: ${sel} · Pass: ${passMark}/${need}`;
-    } else {
-      passMark = 70;
-      const need = 100;
-      const take = Math.min(need, allQuestions.length);
-      quizQuestions = pickRandom(allQuestions, take);
-      dataNoteEl.textContent = (take < need)
-        ? `Note: Only ${take} total question(s). Add more to reach 100.`
-        : '';
-      modeLabelEl.textContent = `Practice Exam · Pass: ${passMark}/100`;
-    }
+.footer { border-top: 1px solid #222944; padding: 16px 0; color: var(--muted); }
 
-    if (!quizQuestions.length) {
-      dataNoteEl.textContent = 'No questions available for this selection.';
-      return;
-    }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: #111735; border: 1px solid #2a315a; color: #e9edff; padding: 10px 14px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.toast.show { opacity: 1; }
 
-    idx = 0;
-    score = 0;
-    reviewLog = [];
-    setView('quiz');
-    renderQuestion();
-  }
+.badges { display:flex; gap: 8px; flex-wrap: wrap; }
+.badge { background:#1a1f3a; border:1px solid #293262; padding:4px 8px; border-radius:999px; color:#a9b2d6; font-size:.85rem; }
 
-  function revealAnswer(){
-    const q = quizQuestions[idx];
-    const selected = optionsFormEl.querySelector('input[name="answer"]:checked');
-    const chosenIdx = selected ? Number(selected.value) : null;
+.hidden { display: none !important; }
 
-    const correct = (chosenIdx !== null && chosenIdx === q.answer);
-    if (correct) score += 1;
+@media (max-width: 900px) {
+  .cards { grid-template-columns: 1fr; }
+  .hero-inner { flex-direction: column; align-items: flex-start; }
+}
 
-    const labels = [...optionsFormEl.querySelectorAll('label')];
-    labels.forEach((label, i) => {
-      label.classList.add('choice-disabled');
-      if (i === q.answer) label.classList.add('choice-correct');
-    });
-    if (chosenIdx !== null && chosenIdx !== q.answer) {
-      labels[chosenIdx]?.classList.add('choice-wrong');
-    }
 
-    [...optionsFormEl.querySelectorAll('input')].forEach(inp => inp.disabled = true);
 
-    const exp = q.explanation ? esc(q.explanation) : 'No explanation provided.';
-    explainEl.innerHTML = `<strong>Why:</strong> ${exp}`;
-    explainEl.classList.remove('hidden');
 
-    reviewLog.push({
-      idx,
-      section: q.section || 'Unspecified',
-      question: q.question,
-      options: q.options || [],
-      correct: q.answer,
-      chosen: (chosenIdx !== null ? chosenIdx : undefined),
-      explanation: q.explanation || ''
-    });
-
-    nextBtn.textContent = (idx + 1 >= quizQuestions.length) ? 'See result' : 'Next question';
-    revealed = true;
-  }
-
-  function finishQuiz(){
-    const total = quizQuestions.length;
-    const passed = score >= passMark;
-    resultTitleEl.textContent = passed ? '✅ Pass' : '❌ Not Yet';
-    const pct = total ? Math.round((score / total) * 100) : 0;
-    resultStatsEl.textContent = `Score: ${score}/${total} (${pct}%) — Pass mark: ${passMark}/${mode === 'section' ? 10 : 100}`;
-    if (progressBar) progressBar.style.width = '100%';
-
-    reviewEl.innerHTML = reviewLog.map((r, n) => {
-      const your = (r.chosen !== undefined) ? r.chosen : null;
-      const yourText = (your !== null && r.options[your] !== undefined) ? r.options[your] : '—';
-      const correctText = r.options[r.correct] ?? '—';
-      const badge = (your === r.correct) ? `<span class="badge-correct">Correct</span>` : `<span class="badge-wrong">Review</span>`;
-      return `
-        <div class="review-item">
-          <h4>Q${n+1}. ${esc(r.question)} ${badge}</h4>
-          <div class="answer-row">
-            <div><strong>Your answer:</strong> <code>${esc(yourText)}</code></div>
-            <div><strong>Correct:</strong> <code>${esc(correctText)}</code></div>
-            <div><strong>Section:</strong> <code>${esc(r.section)}</code></div>
-          </div>
-          <details>
-            <summary>Explanation</summary>
-            <p>${esc(r.explanation || 'No explanation provided.')}</p>
-          </details>
-        </div>
-      `;
-    }).join('');
-
-    reviewEl.classList.add('hidden');
-    toggleReviewBtn.textContent = 'Review answers';
-
-    setView('result');
-  }
-
-  function handleNext(){
-    const selected = optionsFormEl.querySelector('input[name="answer"]:checked');
-
-    if (!revealed) {
-      if (!selected) { showToast('Select an answer to continue'); return; }
-      revealAnswer();
-      return;
-    }
-
-    idx += 1;
-    if (idx >= quizQuestions.length) finishQuiz();
-    else renderQuestion();
-  }
-
-  // Events
-  startBtn.addEventListener('click', startQuiz);
-  nextBtn.addEventListener('click', handleNext);
-  restartBtn.addEventListener('click', () => setView('setup'));
-  toggleReviewBtn.addEventListener('click', () => {
-    const isHidden = reviewEl.classList.contains('hidden');
-    reviewEl.classList.toggle('hidden', !isHidden);
-    toggleReviewBtn.textContent = isHidden ? 'Hide review' : 'Review answers';
-  });
-  document.querySelectorAll('input[name="mode"]').forEach(r => {
-    r.addEventListener('change', (e) => {
-      sectionPickerEl.style.display = (e.target.value === 'section') ? 'block' : 'none';
-    });
-  });
-
-  // ===== LOAD QUESTIONS with validation and helpful messages =====
-  (async () => {
-    try {
-      const res = await fetch(QUESTIONS_URL, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status} — can't fetch questions.json (wrong path/name?)`);
-      const raw = await res.text();
-
-      // Try to parse; if it fails, show parse error (often due to trailing commas)
-      let data;
-      try { data = JSON.parse(raw); }
-      catch (e) {
-        throw new Error(`JSON parse error in questions.json: ${e.message}. Tip: remove trailing commas and ensure it starts with [ and ends with ].`);
-      }
-
-      if (!Array.isArray(data)) throw new Error('questions.json must be a JSON array [ ... ].');
-
-      const issues = []; // collect reasons for invalid items
-      const valid = [];
-
-      data.forEach((q, i) => {
-        const path = `#${i+1}`;
-        if (!q || typeof q !== 'object') { issues.push(`${path} not an object`); return; }
-        if (typeof q.question !== 'string' || !q.question.trim()) { issues.push(`${path} missing "question" text`); return; }
-        if (!Array.isArray(q.options) || q.options.length < 2) { issues.push(`${path} "options" must be array of 2+`); return; }
-
-        // Accept numeric or numeric string for answer; coerce to number
-        let ans = (typeof q.answer === 'string') ? Number(q.answer) : q.answer;
-        if (!Number.isInteger(ans)) { issues.push(`${path} "answer" must be an integer index`); return; }
-        if (ans < 0 || ans >= q.options.length) { issues.push(`${path} "answer" index ${ans} out of range (0..${q.options.length-1})`); return; }
-
-        valid.push({
-          section: q.section || 'Unspecified',
-          question: q.question,
-          options: q.options,
-          answer: ans,
-          explanation: q.explanation || ''
-        });
-      });
-
-      allQuestions = valid;
-
-      // Fill sections if we have any
-      if (allQuestions.length > 0) {
-        const sections = uniqueSections(allQuestions);
-        sectionSelectEl.innerHTML = sections.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
-      } else {
-        sectionSelectEl.innerHTML = '';
-      }
-
-      // Build helpful status message
-      const msgParts = [];
-      msgParts.push(`Found ${data.length} item(s); using ${allQuestions.length} valid.`);
-      if (issues.length) {
-        const top = issues.slice(0, 3).join(' • ');
-        msgParts.push(`Ignored ${issues.length} invalid item(s): ${top}${issues.length > 3 ? ' …' : ''}`);
-      }
-      dataNoteEl.textContent = msgParts.join('  ');
-
-      // Enable/disable Start
-      startBtn.disabled = allQuestions.length === 0;
-
-    } catch (err) {
-      console.error(err);
-      startBtn.disabled = true;
-      dataNoteEl.textContent =
-        `Error loading questions: ${err.message}. ` +
-        `Checklist: 1) questions.json sits next to index.html, 2) name matches exactly, 3) valid JSON array.`;
-    }
-  })();
-});
