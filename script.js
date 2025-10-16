@@ -1,5 +1,5 @@
 /* ===========================
-   CeMAP Quiz App (with visual feedback)
+   CeMAP Quiz App (Full Version with Colour Feedback + Review Fixes)
    =========================== */
 
 const CANDIDATE_URLS = [
@@ -71,7 +71,7 @@ async function bootstrap() {
 }
 
 /* ----------------
-   Robust loader with diagnostics
+   Robust loader
 ------------------*/
 async function loadQuestionsRobust() {
   for (const url of CANDIDATE_URLS) {
@@ -98,7 +98,7 @@ async function loadQuestionsRobust() {
       console.warn(`[quiz] Fetch failed for ${url}:`, e);
     }
   }
-  toast("Could not load topics JSON. Check the file path/name and JSON shape.");
+  toast("Could not load topics JSON. Check file path or JSON shape.");
   return [];
 }
 
@@ -209,7 +209,7 @@ function startQuiz() {
 }
 
 /* ----------------
-   Render Question + Feedback
+   Render Question + Colour Feedback
 ------------------*/
 function renderQuestion() {
   const q = ACTIVE[idx];
@@ -238,7 +238,12 @@ function handleAnswerSelection(e) {
 
   const labels = [...els.optionsForm.querySelectorAll("label")];
   labels.forEach((lbl, i) => {
-    lbl.classList.add(i === q.answer ? "correct" : i === selected ? "wrong" : "");
+    lbl.classList.add("choice-disabled");
+    if (i === q.answer) {
+      lbl.classList.add("choice-correct");
+    } else if (i === selected) {
+      lbl.classList.add("choice-wrong");
+    }
     lbl.querySelector("input").disabled = true;
   });
 
@@ -268,7 +273,7 @@ function onNext() {
 }
 
 /* ----------------
-   Progress & Score
+   Progress & Score + Review
 ------------------*/
 function updateProgress() {
   const total = ACTIVE.length;
@@ -307,8 +312,12 @@ function submitQuiz() {
     div.className = "review-item";
     div.innerHTML = `
       <div class="review-q"><strong>${escapeHtml(r.section)}</strong><br>${escapeHtml(r.question)}</div>
-      <div class="review-a">Correct: <strong>${escapeHtml(r.correctText)}</strong></div>
-      <div class="review-u">Your answer: ${escapeHtml(r.userText)} ${r.ok ? "✅" : "❌"}</div>
+      <div class="review-a ${r.ok ? "choice-correct" : "choice-wrong"}">
+        Correct: <strong>${escapeHtml(r.correctText)}</strong>
+      </div>
+      <div class="review-u">
+        Your answer: ${escapeHtml(r.userText)} ${r.ok ? "✅" : "❌"}
+      </div>
       ${r.explanation ? `<div class="review-expl">${escapeHtml(r.explanation)}</div>` : ""}`;
     els.reviewList.appendChild(div);
   });
