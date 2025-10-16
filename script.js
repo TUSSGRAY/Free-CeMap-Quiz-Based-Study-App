@@ -1,5 +1,5 @@
 /* ===========================
-   CeMAP Quiz App (no review button)
+   CeMAP Quiz App (grouped 24 topics → 5 quizzes)
    =========================== */
 
 const CANDIDATE_URLS = [
@@ -17,6 +17,15 @@ const SECTION_SIZE = 10;
 const PRACTICE_SIZE = 100;
 const PASS_SECTION = 8;
 const PASS_PRACTICE = 70;
+
+// Grouped quiz structure
+const QUIZ_GROUPS = [
+  { label: "Quiz 1: Topics 1–5", range: [1, 5] },
+  { label: "Quiz 2: Topics 6–10", range: [6, 10] },
+  { label: "Quiz 3: Topics 11–15", range: [11, 15] },
+  { label: "Quiz 4: Topics 16–20", range: [16, 20] },
+  { label: "Quiz 5: Topics 21–24", range: [21, 24] }
+];
 
 let QUESTIONS = [];
 let ACTIVE = [];
@@ -63,7 +72,7 @@ async function bootstrap() {
     QUESTIONS = normalizeBank(window.QUESTIONS);
   }
 
-  populateTopicDropdown(QUESTIONS);
+  populateQuizDropdown();
   if (els.dataNote) els.dataNote.textContent = `Loaded ${QUESTIONS.length} questions`;
 }
 
@@ -115,68 +124,60 @@ function normalizeBank(arr) {
 }
 
 /* ----------------
-   Topic dropdown
+   Populate grouped quiz dropdown
 ------------------*/
-function populateTopicDropdown(bank) {
+function populateQuizDropdown() {
   const sel = els.sectionSelect;
   if (!sel) return;
-  const topics = buildTopicIndex(bank);
-  sel.innerHTML = "";
-  sel.appendChild(new Option("All topics", "__ALL__"));
-  topics.forEach(t => {
-    const label = `Topic ${t.num}: ${t.title} (${t.count})`;
-    sel.appendChild(new Option(label, String(t.num)));
-  });
-  sel.value = "__ALL__";
-}
 
-function buildTopicIndex(bank) {
-  const map = new Map();
-  const re = /^Topic\s*(\d{1,2})\s*:\s*(.+)$/i;
-  for (const q of bank) {
-    const sec = (q.section || "").trim();
-    const m = sec.match(re);
-    if (!m) continue;
-    const num = Number(m[1]);
-    const title = m[2].trim();
-    const item = map.get(num) || { num, title, count: 0 };
-    item.count += 1;
-    map.set(num, item);
-  }
-  return [...map.values()].sort((a, b) => a.num - b.num);
+  sel.innerHTML = "";
+  QUIZ_GROUPS.forEach((group, i) => {
+    const opt = document.createElement("option");
+    opt.value = i;
+    opt.textContent = group.label;
+    sel.appendChild(opt);
+  });
 }
 
 /* ----------------
    Start Quiz
 ------------------*/
 function startQuiz() {
-  const selected = els.sectionSelect.value || "__ALL__";
-  const isAll = selected === "__ALL__";
-  let pool = QUESTIONS;
-
-  if (!isAll) {
-    const prefix = `Topic ${selected}:`;
-    pool = QUESTIONS.filter(q => (q.section || "").startsWith(prefix));
-  }
-
-  if (pool.length === 0) {
-    toast("No questions found for this topic.");
+  const selectedIndex = parseInt(els.sectionSelect.value);
+  const selectedGroup = QUIZ_GROUPS[selectedIndex];
+  if (!selectedGroup) {
+    toast("Please select a quiz group.");
     return;
   }
 
-  const size = (mode === "practice") ? PRACTICE_SIZE : SECTION_SIZE;
-  ACTIVE = sampleN(pool, size);
+  const [start, end] = selectedGroup.range;
+  const pool = QUESTIONS.filter(q => {
+    const m = q.section.match(/^Topic\s+(\d+)/i);
+    const topicNum = m ? parseInt(m[1]) : 0;
+    return topicNum >= start && topicNum <= end;
+  });
+
+  if (pool.length === 0) {
+    toast("No questions found for this quiz range.");
+    return;
+  }
+
+  ACTIVE = sampleN(pool, SECTION_SIZE);
   USER = new Array(ACTIVE.length).fill(null);
   idx = 0;
 
   els.setup.classList.add("hidden");
   els.result.classList.add("hidden");
   els.quiz.classList.remove("hidden");
-  els.review.classList.add("hidden"); // never shown now
+  els.review.classList.add("hidden");
 
   updateModeChip();
   renderQuestion();
   updateProgress();
+
+  // Show current quiz label
+  document.getElementById("modeLabel").textContent =
+    `${selectedGroup.label} • ${SECTION_SIZE} Questions`;
 }
 
 /* ----------------
