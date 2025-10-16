@@ -1,485 +1,3424 @@
-[
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "What is the primary objective of the Bank of England’s Monetary Policy Committee (MPC)?",
-    "options": [
-      "Set tax policy to meet fiscal targets",
-      "Set interest rates to achieve the inflation target",
-      "Regulate retail banks’ conduct",
-      "Operate the Financial Ombudsman Service"
-    ],
-    "answer": 1,
-    "explanation": "The MPC sets Bank Rate to meet the government’s inflation target and support monetary stability."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "Which of the following best describes a unit trust?",
-    "options": [
-      "A closed-ended company with shares traded on an exchange",
-      "An open-ended collective investment where investors hold units",
-      "A deposit account with a fixed interest rate",
-      "A with-profits insurance bond with guaranteed bonuses"
-    ],
-    "answer": 1,
-    "explanation": "Unit trusts are open-ended funds; the manager creates/cancels units based on demand."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "In the financial advice process, a fact-find primarily aims to:",
-    "options": [
-      "Sell the highest-commission product",
-      "Meet the regulator’s training requirements",
-      "Gather client objectives, needs and circumstances",
-      "Set the adviser’s charging structure"
-    ],
-    "answer": 2,
-    "explanation": "The fact-find collects personal and financial details to identify suitable solutions."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "Which product typically carries the highest investment risk over the long term?",
-    "options": [
-      "Cash ISA",
-      "UK government gilt held to maturity",
-      "Equity fund",
-      "Fixed-rate savings bond"
-    ],
-    "answer": 2,
-    "explanation": "Equity funds are higher risk/return compared with cash or fixed-income held to maturity."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "Which body is responsible for prudential regulation of significant UK banks and insurers?",
-    "options": [
-      "Financial Ombudsman Service",
-      "Financial Conduct Authority",
-      "Prudential Regulation Authority",
-      "Payments Systems Regulator"
-    ],
-    "answer": 2,
-    "explanation": "The PRA (part of the Bank of England) oversees the safety and soundness of firms."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "What is the main purpose of diversification in a portfolio?",
-    "options": [
-      "Maximise fees",
-      "Eliminate all risk",
-      "Reduce unsystematic risk by spreading exposures",
-      "Guarantee positive returns"
-    ],
-    "answer": 2,
-    "explanation": "Diversification spreads asset-specific risk, though market (systematic) risk remains."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "Which mortgage type typically has interest that can move with Bank Rate?",
-    "options": [
-      "Fixed-rate mortgage",
-      "Tracker mortgage",
-      "Discounted fixed mortgage",
-      "Capped-rate mortgage with fixed cap"
-    ],
-    "answer": 1,
-    "explanation": "Trackers follow a published rate (e.g., Bank Rate) plus a margin."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "A with-profits policy usually offers which smoothing feature?",
-    "options": [
-      "Daily mark-to-market NAV",
-      "Regular bonuses that may be reduced in poor markets",
-      "Guaranteed minimum surrender value from day one",
-      "Statutory compensation for market losses"
-    ],
-    "answer": 1,
-    "explanation": "With-profits use smoothing and declare bonuses; bonuses can be adjusted based on performance."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "An adviser recommends an ISA to a client with short-term savings goals and no tolerance for loss. Which ISA is most consistent with that aim?",
-    "options": [
-      "Stocks & Shares ISA investing 100% in equities",
-      "Innovative Finance ISA funding P2P loans",
-      "Cash ISA with FSCS protection within limits",
-      "Lifetime ISA used for retirement only"
-    ],
-    "answer": 2,
-    "explanation": "A Cash ISA prioritises capital preservation and liquidity (subject to provider terms)."
-  },
-  {
-    "section": "Unit 1: Financial Services Environment & Products",
-    "question": "Which of the following best describes inflation risk for a cash saver?",
-    "options": [
-      "The risk interest rates fall and loan repayments rise",
-      "The risk cash’s real purchasing power falls over time",
-      "The risk of default by the saver",
-      "The risk of dividend volatility"
-    ],
-    "answer": 1,
-    "explanation": "Inflation can erode the real value of cash if interest earned is below inflation."
-  },
-
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "Which regulator focuses primarily on conduct of firms toward retail consumers?",
-    "options": [
-      "Prudential Regulation Authority",
-      "Financial Conduct Authority",
-      "Payment Systems Regulator",
-      "Competition and Markets Authority"
-    ],
-    "answer": 1,
-    "explanation": "The FCA is responsible for conduct regulation and consumer protection across financial services."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "Under Consumer Duty, firms must:",
-    "options": [
-      "Maximise shareholder returns at all costs",
-      "Act to deliver good outcomes for retail customers",
-      "Provide advice free of charge",
-      "Avoid using any digital channels"
-    ],
-    "answer": 1,
-    "explanation": "Consumer Duty sets higher standards and requires firms to deliver good outcomes for customers."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "Which of the following is NOT typically a statutory objective of the FCA?",
-    "options": [
-      "Protecting consumers",
-      "Enhancing market integrity",
-      "Promoting effective competition",
-      "Setting UK interest rates"
-    ],
-    "answer": 3,
-    "explanation": "Setting interest rates is the MPC’s role, not the FCA’s."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "A firm authorised by the FCA must comply with which high-level requirement?",
-    "options": [
-      "Only the Client Assets Sourcebook (CASS)",
-      "Only the Senior Managers & Certification Regime (SM&CR)",
-      "The Principles for Businesses and applicable FCA Handbook rules",
-      "Only SYSC provisions on outsourcing"
-    ],
-    "answer": 2,
-    "explanation": "High-level standards include the FCA Principles, supported by detailed Handbook rules (e.g., COBS, MCOB)."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "Which organisation provides deposit compensation if an authorised bank fails?",
-    "options": [
-      "Financial Ombudsman Service",
-      "Financial Services Compensation Scheme",
-      "Competition and Markets Authority",
-      "Treasury Select Committee"
-    ],
-    "answer": 1,
-    "explanation": "FSCS compensates eligible customers of failed authorised firms within set limits."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "Current deposit protection for eligible deposits under FSCS is generally up to:",
-    "options": [
-      "£50,000 per firm",
-      "£75,000 per person, per account",
-      "£85,000 per person, per authorised firm",
-      "Unlimited for all retail deposits"
-    ],
-    "answer": 2,
-    "explanation": "As of 2025, the standard deposit limit is £85,000 per person per PRA-authorised firm (higher temporary protection may apply)."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "Temporary High Balances (THBs) from eligible events (e.g., home sale proceeds) are usually protected up to what level and for how long?",
-    "options": [
-      "£500,000 for 12 months",
-      "£1,000,000 for 6 months",
-      "£85,000 for 3 months",
-      "£150,000 for 6 months"
-    ],
-    "answer": 1,
-    "explanation": "THBs can be protected up to £1m for six months for certain qualifying events."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "Which firm type is most likely to be dual-regulated by both the PRA and FCA?",
-    "options": [
-      "Small independent mortgage broker",
-      "Large retail bank taking deposits",
-      "Price comparison website",
-      "Debt advice charity"
-    ],
-    "answer": 1,
-    "explanation": "Deposit-taking banks are prudentially supervised by the PRA and conduct-regulated by the FCA."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "Who ultimately makes appointments of the FCA’s Chair and Chief Executive?",
-    "options": [
-      "House of Lords",
-      "The Treasury (with oversight by Parliament)",
-      "Bank of England",
-      "Financial Ombudsman Service"
-    ],
-    "answer": 1,
-    "explanation": "HM Treasury appoints senior leadership, with Parliamentary scrutiny via committees."
-  },
-  {
-    "section": "Unit 2: UK Financial Services & Regulation",
-    "question": "A firm offering mortgage advice must primarily comply with which FCA sourcebook?",
-    "options": [
-      "COBS",
-      "MCOB",
-      "CASS",
-      "BIPRU"
-    ],
-    "answer": 1,
-    "explanation": "Mortgage Conduct of Business (MCOB) contains the key conduct rules for mortgage advice and sales."
-  },
-
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "Under Consumer Duty, which outcome focuses on products being designed for and sold to the right target market?",
-    "options": [
-      "Consumer understanding",
-      "Price & value",
-      "Products & services",
-      "Consumer support"
-    ],
-    "answer": 2,
-    "explanation": "The Products & services outcome requires suitable design and distribution to the intended target market."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "A firm’s ‘fair value assessment’ is MOST closely linked to which Consumer Duty outcome?",
-    "options": [
-      "Consumer understanding",
-      "Price & value",
-      "Products & services",
-      "Consumer support"
-    ],
-    "answer": 1,
-    "explanation": "Price & value requires firms to consider whether the total price represents fair value for the benefits."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "‘Consumer understanding’ under the Duty mainly requires firms to:",
-    "options": [
-      "Provide the longest possible disclosures",
-      "Use clear, timely and helpful communications that aid decisions",
-      "Avoid all digital channels",
-      "Charge no fees to vulnerable customers"
-    ],
-    "answer": 1,
-    "explanation": "Communications should be clear and support effective decision-making."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "Under MCOB, an advised sale requires the firm to:",
-    "options": [
-      "Only present a list of products",
-      "Recommend a suitable product based on a full assessment",
-      "Rely on the customer to choose with no guidance",
-      "Refuse to discuss fees until after application"
-    ],
-    "answer": 1,
-    "explanation": "Advised sales involve personal recommendations that must be suitable for the customer’s needs."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "Which client would most likely be classed as ‘vulnerable’ under FCA guidance?",
-    "options": [
-      "A financially literate investor using a discretionary manager",
-      "A recently bereaved customer struggling to manage accounts",
-      "A high-net-worth professional",
-      "A corporate treasury department"
-    ],
-    "answer": 1,
-    "explanation": "Recent bereavement can impair decision-making and increase risk of harm; firms must provide appropriate support."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "What is the main aim of the Senior Managers & Certification Regime (SM&CR)?",
-    "options": [
-      "To set deposit protection limits",
-      "To clarify individual accountability and fitness & propriety",
-      "To remove all firm-level responsibilities",
-      "To regulate stock exchange listing rules"
-    ],
-    "answer": 1,
-    "explanation": "SM&CR strengthens accountability of senior managers and requires certification of certain staff."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "Which of the following BEST demonstrates ‘consumer support’ under the Duty?",
-    "options": [
-      "Charging exit fees that make switching impractical",
-      "Offering only chatbots for complaints",
-      "Providing responsive, effective help channels that don’t create unreasonable barriers",
-      "Requiring branch visits for all changes"
-    ],
-    "answer": 2,
-    "explanation": "Firms should avoid unreasonable barriers and provide appropriate support to customers."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "A mortgage ESIS must be provided:",
-    "options": [
-      "Before the customer first visits a branch",
-      "After completion only",
-      "In good time before application or when a binding offer is made",
-      "Only on request from the conveyancer"
-    ],
-    "answer": 2,
-    "explanation": "An ESIS gives key information to help customers compare deals in good time to decide."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "Which disclosure is MOST likely required where a firm offers both advised and execution-only mortgage sales?",
-    "options": [
-      "Disclosure of advice scope and charges",
-      "Disclosure of branch opening hours",
-      "Disclosure of the lender’s share price",
-      "Disclosure of the firm’s staff bonus pool"
-    ],
-    "answer": 0,
-    "explanation": "Firms must explain the service type (advised vs execution-only) and charges so customers understand the differences."
-  },
-  {
-    "section": "Unit 3: FCA Rules, Conduct & Customer Outcomes",
-    "question": "A firm’s product governance arrangements should primarily ensure that:",
-    "options": [
-      "Marketing spend is maximised",
-      "Products deliver good outcomes to a defined target market",
-      "Only in-house products are recommended",
-      "All products have the same price"
-    ],
-    "answer": 1,
-    "explanation": "Governance should oversee design, distribution and monitoring for good outcomes in the target market."
-  },
-
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "Under anti-money laundering rules, ‘customer due diligence’ mainly means:",
-    "options": [
-      "Collecting marketing preferences",
-      "Verifying identity and understanding the relationship’s purpose",
-      "Reporting all transactions over £5,000 to HMRC",
-      "Only checking credit scores"
-    ],
-    "answer": 1,
-    "explanation": "CDD involves ID verification and understanding purpose/nature of the relationship, with enhanced checks where needed."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "What is the correct order for reporting a suspicion of money laundering inside a firm?",
-    "options": [
-      "Tell the client → call the police",
-      "Report to the firm’s MLRO → MLRO decides whether to file a SAR",
-      "Post on social media → notify the FCA",
-      "Refuse service and destroy all records"
-    ],
-    "answer": 1,
-    "explanation": "Staff escalate to the MLRO, who considers a Suspicious Activity Report; tipping-off must be avoided."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "The Financial Ombudsman Service primarily:",
-    "options": [
-      "Sets conduct rules for firms",
-      "Hears eligible consumer complaints and can make binding awards",
-      "Insures deposits if a bank fails",
-      "Sets interest rates for loans"
-    ],
-    "answer": 1,
-    "explanation": "FOS resolves disputes between consumers and firms; decisions can be binding within limits."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "Which of the following is MOST accurate regarding FSCS coverage for deposits?",
-    "options": [
-      "Unlimited cover per account",
-      "£85,000 per person per authorised firm, with special temporary high balance rules",
-      "£50,000 per bank brand name only",
-      "Only covers current accounts, not savings"
-    ],
-    "answer": 1,
-    "explanation": "Standard deposit protection is £85k per person per firm; THBs may be protected up to £1m for six months."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "‘Tipping-off’ in AML refers to:",
-    "options": [
-      "Telling a client that a SAR may be filed about them",
-      "Notifying a colleague to complete CDD",
-      "Telling the MLRO about a suspicion",
-      "Publishing general AML guidance"
-    ],
-    "answer": 0,
-    "explanation": "Tipping-off can prejudice an investigation and is a criminal offence."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "A key ethical risk with commission-based distribution is that it can:",
-    "options": [
-      "Eliminate conflicts of interest",
-      "Create incentives misaligned with customer outcomes",
-      "Reduce disclosure needs",
-      "Remove the need for suitability assessments"
-    ],
-    "answer": 1,
-    "explanation": "Remuneration can bias recommendations; firms must manage conflicts and ensure suitability."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "Under UK GDPR/data protection, firms must ensure personal data is:",
-    "options": [
-      "Kept indefinitely for convenience",
-      "Processed lawfully, fairly and transparently for specified purposes",
-      "Shared with any third party that requests it",
-      "Stored only on paper"
-    ],
-    "answer": 1,
-    "explanation": "Core principles include lawfulness, fairness, transparency and purpose limitation."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "In contract law, ‘consideration’ best describes:",
-    "options": [
-      "A promise without value",
-      "The legal capacity to contract",
-      "Something of value exchanged by both parties",
-      "A court’s remedy for breach"
-    ],
-    "answer": 2,
-    "explanation": "Consideration is the value exchanged that supports a binding contract."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "Which complaint handling step is CORRECT for an FCA-regulated firm?",
-    "options": [
-      "Issue a final response within 8 weeks where unresolved",
-      "Always reject complaints after 4 weeks",
-      "Only accept written complaints",
-      "Refer to FSCS immediately"
-    ],
-    "answer": 0,
-    "explanation": "Firms must provide a prompt final response and signpost FOS within required timescales (typically 8 weeks)."
-  },
-  {
-    "section": "Unit 4: Financial Crime, Ethics & Legal Concepts",
-    "question": "The ‘Know Your Customer’ (KYC) process mainly supports:",
-    "options": [
-      "Suitability and AML requirements",
-      "Marketing segmentation only",
-      "Tax policy design",
-      "Setting the Bank Rate"
-    ],
-    "answer": 0,
-    "explanation": "KYC underpins both AML and suitability by verifying identity and understanding customer circumstances."
-  }
-]
+{
+  "questions": [
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "Which of the following appears under KEY TERMS for Topic 1?",
+      "options": [
+        "Real",
+        "Medium of exchange",
+        "Consumer Prices Index (CPI)",
+        "Prudential regulation"
+      ],
+      "answer": 1,
+      "explanation": "'Medium of exchange' is listed as a key term for Topic 1."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "Which of the following appears under KEY TERMS for Topic 1?",
+      "options": [
+        "Legal tender",
+        "Estate",
+        "Stair",
+        "BASIC BANK ACCOUNTS"
+      ],
+      "answer": 0,
+      "explanation": "'Legal tender' is listed as a key term for Topic 1."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "Which of the following appears under KEY TERMS for Topic 1?",
+      "options": [
+        "Pension Commencement Lump Sum (PCLS)",
+        "Earned and Unearned income",
+        "Dividends",
+        "Store of value"
+      ],
+      "answer": 3,
+      "explanation": "'Store of value' is listed as a key term for Topic 1."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "Which of the following appears under KEY TERMS for Topic 1?",
+      "options": [
+        "Assessment",
+        "Actualauthority.",
+        "Committed expenditure",
+        "Unit of account"
+      ],
+      "answer": 3,
+      "explanation": "'Unit of account' is listed as a key term for Topic 1."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "Which of the following appears under KEY TERMS for Topic 1?",
+      "options": [
+        "Intermediation & disintermediation",
+        "Gross Domestic Product (GDP)",
+        "Dividend cover",
+        "based"
+      ],
+      "answer": 0,
+      "explanation": "'Intermediation & disintermediation' is listed as a key term for Topic 1."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "Which of the following appears under KEY TERMS for Topic 1?",
+      "options": [
+        "Demutualisation",
+        "Zero",
+        "Part IV permission",
+        "Medium of exchange"
+      ],
+      "answer": 0,
+      "explanation": "'Demutualisation' is listed as a key term for Topic 1."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "Which of the following appears under KEY TERMS for Topic 1?",
+      "options": [
+        "Deflation",
+        "Consumer Prices Index (CPI)",
+        "WHAT IS INTERMEDIATION?",
+        "Annual Exempt Amount"
+      ],
+      "answer": 2,
+      "explanation": "'WHAT IS INTERMEDIATION?' is listed as a key term for Topic 1."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "According to Topic 1, select the statement that best aligns with the material:",
+      "options": [
+        "A problem with money is that it may not always maintain its value. For example, inflation can reduce its purchasing power or exchange value.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 1: Introduction To The Financial Services Industry."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "According to Topic 1, select the statement that best aligns with the material:",
+      "options": [
+        "In an alternative system, individuals could ‘barter,’ but this is not very practical as both parties are then dependent on the wants and resources of each ot…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 1: Introduction To The Financial Services Industry."
+    },
+    {
+      "section": "Topic 1: Introduction To The Financial Services Industry",
+      "question": "What does the interbank/wholesale money market primarily facilitate?",
+      "options": [
+        "Short-term money market between banks",
+        "Retail deposit protection system",
+        "Equity issuance to the public",
+        "Government bond auctions to retail investors"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 1: Introduction To The Financial Services Industry."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 2?",
+      "options": [
+        "Psychometric testing",
+        "Equities",
+        "Inflation",
+        "Company memorandum"
+      ],
+      "answer": 2,
+      "explanation": "'Inflation' is listed as a key term for Topic 2."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 2?",
+      "options": [
+        "Additional Permitted Subscription",
+        "Lifetime Allowance",
+        "Restitution",
+        "Deflation"
+      ],
+      "answer": 3,
+      "explanation": "'Deflation' is listed as a key term for Topic 2."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 2?",
+      "options": [
+        "Dividends",
+        "Articles of association",
+        "Disinflation",
+        "Unit of account"
+      ],
+      "answer": 2,
+      "explanation": "'Disinflation' is listed as a key term for Topic 2."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 2?",
+      "options": [
+        "Regulated Mortgage Contract (RMC)",
+        "Market Capitalisation",
+        "Fixed interest security",
+        "Gross Domestic Product (GDP)"
+      ],
+      "answer": 3,
+      "explanation": "'Gross Domestic Product (GDP)' is listed as a key term for Topic 2."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 2?",
+      "options": [
+        "Rolled up interest",
+        "Pension Commencement Lump Sum (PCLS)",
+        "Consumer Prices Index (CPI)",
+        "Actualauthority."
+      ],
+      "answer": 2,
+      "explanation": "'Consumer Prices Index (CPI)' is listed as a key term for Topic 2."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 2?",
+      "options": [
+        "Reflection period",
+        "Capacity for loss",
+        "Regulations",
+        "Means"
+      ],
+      "answer": 2,
+      "explanation": "'Regulations' is listed as a key term for Topic 2."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 2?",
+      "options": [
+        "Directives",
+        "Deed of variation",
+        "Start",
+        "Fixed vs flexible portfolio"
+      ],
+      "answer": 0,
+      "explanation": "'Directives' is listed as a key term for Topic 2."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 2?",
+      "options": [
+        "Dispensation",
+        "Open Market Option (OMO)",
+        "Real",
+        "Means"
+      ],
+      "answer": 0,
+      "explanation": "'Dispensation' is listed as a key term for Topic 2."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "According to Topic 2, select the statement that best aligns with the material:",
+      "options": [
+        "Price Stability (inflation)",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "Which is a role linked to the Bank of England mentioned in this topic?",
+      "options": [
+        "Sets UK interest rates (MPC)",
+        "Runs retail branches",
+        "Sets income tax",
+        "Insures deposits"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS."
+    },
+    {
+      "section": "Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS",
+      "question": "According to Topic 2, select the statement that best aligns with the material:",
+      "options": [
+        "One measure of success of a government is the performance of the economy. The key performance indicator used is Gross Domestic Product (GDP), which helps to …",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 2: Economic Policy And Financial Regulation CONSUMER RIGHTS."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Domicile & Residence",
+        "Demutualisation",
+        "Settlor",
+        "Debenture"
+      ],
+      "answer": 0,
+      "explanation": "'Domicile & Residence' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Earned and Unearned income",
+        "Dividends",
+        "Taxable Income",
+        "Appointed"
+      ],
+      "answer": 2,
+      "explanation": "'Taxable Income' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Fiscal tax year",
+        "Offer/Bid prices",
+        "Debenture",
+        "Dividends"
+      ],
+      "answer": 3,
+      "explanation": "'Dividends' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Tax at Source",
+        "Closed",
+        "Attitude to risk",
+        "Authorised"
+      ],
+      "answer": 0,
+      "explanation": "'Tax at Source' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Gift inter",
+        "Term assurance",
+        "Fixed interest security",
+        "Earned and Unearned income"
+      ],
+      "answer": 3,
+      "explanation": "'Earned and Unearned income' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Consumer Prices Index (CPI)",
+        "Reversionary bonus",
+        "Self",
+        "Approved"
+      ],
+      "answer": 2,
+      "explanation": "'Self' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Actively managed funds",
+        "Offer/Bid prices",
+        "Assessment",
+        "ended"
+      ],
+      "answer": 2,
+      "explanation": "'Assessment' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "blowing",
+        "Occupation class",
+        "Deferred period",
+        "Deductions and Personal Allowance"
+      ],
+      "answer": 3,
+      "explanation": "'Deductions and Personal Allowance' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Alternative Dispute resolution",
+        "Dividends",
+        "Gross Domestic Product (GDP)",
+        "Fiscal tax year"
+      ],
+      "answer": 3,
+      "explanation": "'Fiscal tax year' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Offer/Bid prices",
+        "LEVEL TERM ASSURANCE (LTA)",
+        "© CeMap Mock Study 2024",
+        "Intermediation & disintermediation"
+      ],
+      "answer": 2,
+      "explanation": "'© CeMap Mock Study 2024' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "Which of the following appears under KEY TERMS for Topic 3?",
+      "options": [
+        "Deferred period",
+        "2025",
+        "Actively managed funds",
+        "Secondary market"
+      ],
+      "answer": 1,
+      "explanation": "'2025' is listed as a key term for Topic 3."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "According to Topic 3, select the statement that best aligns with the material:",
+      "options": [
+        "Income that hasn’t come from your employment/self-employment e.g., interest from savings, dividends from shares, rental income, trust income is referred to a…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "According to Topic 3, select the statement that best aligns with the material:",
+      "options": [
+        "INCOME TAX ON SAVINGS INTEREST",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE."
+    },
+    {
+      "section": "Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE",
+      "question": "According to Topic 3, select the statement that best aligns with the material:",
+      "options": [
+        "To support those on low incomes there is a potential rate of 0% on the first £5,000 of savings interest (unearned income). This is called the Starting Rate f…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 3: Uk Taxation (Part 1) – Income Tax OFFSHORE DEPOSITS RIGHTS ISSUE."
+    },
+    {
+      "section": "Topic 4: Uk Taxation (Part 2) Another option is to place assets in trust since trust property does not become part of the deceased’s estate. This is known as ‘ring fencing.’",
+      "question": "Which of the following appears under KEY TERMS for Topic 4?",
+      "options": [
+        "Hard & soft facts",
+        "Disposal",
+        "Actively managed funds",
+        "Equities"
+      ],
+      "answer": 1,
+      "explanation": "'Disposal' is listed as a key term for Topic 4."
+    },
+    {
+      "section": "Topic 4: Uk Taxation (Part 2) Another option is to place assets in trust since trust property does not become part of the deceased’s estate. This is known as ‘ring fencing.’",
+      "question": "Which of the following appears under KEY TERMS for Topic 4?",
+      "options": [
+        "Professional Client",
+        "Annual Exempt Amount",
+        "Bribery",
+        "Potentially Exempt Transfer"
+      ],
+      "answer": 1,
+      "explanation": "'Annual Exempt Amount' is listed as a key term for Topic 4."
+    },
+    {
+      "section": "Topic 4: Uk Taxation (Part 2) Another option is to place assets in trust since trust property does not become part of the deceased’s estate. This is known as ‘ring fencing.’",
+      "question": "Which of the following appears under KEY TERMS for Topic 4?",
+      "options": [
+        "Defined contribution",
+        "Estate",
+        "Restitution",
+        "Unfair terms (in a contract)"
+      ],
+      "answer": 1,
+      "explanation": "'Estate' is listed as a key term for Topic 4."
+    },
+    {
+      "section": "Topic 4: Uk Taxation (Part 2) Another option is to place assets in trust since trust property does not become part of the deceased’s estate. This is known as ‘ring fencing.’",
+      "question": "Which of the following appears under KEY TERMS for Topic 4?",
+      "options": [
+        "Company memorandum",
+        "Potentially Exempt Transfer",
+        "Cum Dividend / Ex",
+        "Pension Commencement Lump Sum (PCLS)"
+      ],
+      "answer": 1,
+      "explanation": "'Potentially Exempt Transfer' is listed as a key term for Topic 4."
+    },
+    {
+      "section": "Topic 4: Uk Taxation (Part 2) Another option is to place assets in trust since trust property does not become part of the deceased’s estate. This is known as ‘ring fencing.’",
+      "question": "Which of the following appears under KEY TERMS for Topic 4?",
+      "options": [
+        "Chargeable Lifetime Transfer",
+        "based",
+        "Insurance Premium Tax (IPT)",
+        "Rolled up interest"
+      ],
+      "answer": 0,
+      "explanation": "'Chargeable Lifetime Transfer' is listed as a key term for Topic 4."
+    },
+    {
+      "section": "Topic 4: Uk Taxation (Part 2) Another option is to place assets in trust since trust property does not become part of the deceased’s estate. This is known as ‘ring fencing.’",
+      "question": "Which of the following appears under KEY TERMS for Topic 4?",
+      "options": [
+        "Dividend",
+        "Ring",
+        "ApparentAuthority.",
+        "Bearer Instrument"
+      ],
+      "answer": 3,
+      "explanation": "'Bearer Instrument' is listed as a key term for Topic 4."
+    },
+    {
+      "section": "Topic 4: Uk Taxation (Part 2) Another option is to place assets in trust since trust property does not become part of the deceased’s estate. This is known as ‘ring fencing.’",
+      "question": "According to Topic 4, select the statement that best aligns with the material:",
+      "options": [
+        "Withholding tax is necessary to ensure that taxable income or interest earned by a non-UK resident does not leave the country without being taxed. The tax ma…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 4: Uk Taxation (Part 2) Another option is to place assets in trust since trust property does not become part of the deceased’s estate. This is known as ‘ring fencing.’."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "Which of the following appears under KEY TERMS for Topic 5?",
+      "options": [
+        "Universal Credit",
+        "Averaging",
+        "Means",
+        "Property"
+      ],
+      "answer": 2,
+      "explanation": "'Means' is listed as a key term for Topic 5."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "Which of the following appears under KEY TERMS for Topic 5?",
+      "options": [
+        "Clawback",
+        "Data processor",
+        "Tested",
+        "Disinflation"
+      ],
+      "answer": 2,
+      "explanation": "'Tested' is listed as a key term for Topic 5."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "Which of the following appears under KEY TERMS for Topic 5?",
+      "options": [
+        "Financial exclusion",
+        "Benefits cap",
+        "Means",
+        "Apparent authority"
+      ],
+      "answer": 1,
+      "explanation": "'Benefits cap' is listed as a key term for Topic 5."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "Which of the following appears under KEY TERMS for Topic 5?",
+      "options": [
+        "Committed expenditure",
+        "Independent advice",
+        "Contribution",
+        "Ring fencing"
+      ],
+      "answer": 2,
+      "explanation": "'Contribution' is listed as a key term for Topic 5."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "Which of the following appears under KEY TERMS for Topic 5?",
+      "options": [
+        "Approved",
+        "Reflection period",
+        "Endowment",
+        "based"
+      ],
+      "answer": 3,
+      "explanation": "'based' is listed as a key term for Topic 5."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "Which of the following appears under KEY TERMS for Topic 5?",
+      "options": [
+        "blowing",
+        "Income",
+        "Prudential regulation",
+        "Earned and Unearned income"
+      ],
+      "answer": 1,
+      "explanation": "'Income' is listed as a key term for Topic 5."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "Which of the following appears under KEY TERMS for Topic 5?",
+      "options": [
+        "Mediation",
+        "Triple Lock",
+        "Market Capitalisation",
+        "Part IV permission"
+      ],
+      "answer": 1,
+      "explanation": "'Triple Lock' is listed as a key term for Topic 5."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "Which of the following appears under KEY TERMS for Topic 5?",
+      "options": [
+        "Money laundering",
+        "Medium of exchange",
+        "Open Market Option (OMO)",
+        "Universal Credit"
+      ],
+      "answer": 3,
+      "explanation": "'Universal Credit' is listed as a key term for Topic 5."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "According to Topic 5, select the statement that best aligns with the material:",
+      "options": [
+        "● Paidgrossbuttaxable. Support for Mortgage Interest For those already in receipt of, or new claimants of certain benefits, a loan is available to help cover…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 5: Welfare State Benefits."
+    },
+    {
+      "section": "Topic 5: Welfare State Benefits",
+      "question": "According to Topic 5, select the statement that best aligns with the material:",
+      "options": [
+        "These are historic and in essence was known as the state second pension or SERPS, which was replaced by the state second pension (S2P). This was for employee…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 5: Welfare State Benefits."
+    },
+    {
+      "section": "Topic 6: Proprietary & Mutual Organisations EUROPEAN UNION | 38",
+      "question": "According to Topic 6, select the statement that best aligns with the material:",
+      "options": [
+        "Financial institutions tend to be mainly proprietary, i.e., they are owned by shareholders and are run for the benefit of their owners. Shareholders are usua…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 6: Proprietary & Mutual Organisations EUROPEAN UNION | 38."
+    },
+    {
+      "section": "Topic 6: Proprietary & Mutual Organisations EUROPEAN UNION | 38",
+      "question": "According to Topic 6, select the statement that best aligns with the material:",
+      "options": [
+        "Individuals with savings accounts or mortgages for example, enjoy a right to contribute to how the organisation is run through voting rights. The profits of …",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 6: Proprietary & Mutual Organisations EUROPEAN UNION | 38."
+    },
+    {
+      "section": "Topic 6: Proprietary & Mutual Organisations EUROPEAN UNION | 38",
+      "question": "According to Topic 6, select the statement that best aligns with the material:",
+      "options": [
+        "Members are given equal status through the purchase of a single £1 share and either pay interest or share their profits in the form of dividends to members.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 6: Proprietary & Mutual Organisations EUROPEAN UNION | 38."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Equities",
+        "Market Capitalisation",
+        "Gross Domestic Product (GDP)",
+        "term insurance"
+      ],
+      "answer": 0,
+      "explanation": "'Equities' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Authorised, Appointed, Approved",
+        "Diversification",
+        "Demutualisation",
+        "Financial lifecycle"
+      ],
+      "answer": 1,
+      "explanation": "'Diversification' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Ring fencing",
+        "Over the counter",
+        "Stair",
+        "Legal capacity"
+      ],
+      "answer": 1,
+      "explanation": "'Over the counter' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Demutualisation",
+        "Market Capitalisation",
+        "Self",
+        "Hard & soft facts"
+      ],
+      "answer": 1,
+      "explanation": "'Market Capitalisation' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Alternative Investment Market",
+        "Property",
+        "Concealing",
+        "Open Market Option (OMO)"
+      ],
+      "answer": 0,
+      "explanation": "'Alternative Investment Market' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Primary and secondary market",
+        "Liquidity risk",
+        "Open Market Option (OMO)",
+        "Capacity for loss"
+      ],
+      "answer": 0,
+      "explanation": "'Primary and secondary market' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Defined benefit",
+        "Floatation",
+        "Acquiring",
+        "real time promotions"
+      ],
+      "answer": 1,
+      "explanation": "'Floatation' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Mediation",
+        "Dividend cover",
+        "Restitution",
+        "Reflection period"
+      ],
+      "answer": 1,
+      "explanation": "'Dividend cover' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Price/earnings ratio",
+        "Real",
+        "Data processor",
+        "Articles of association"
+      ],
+      "answer": 0,
+      "explanation": "'Price/earnings ratio' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Consumer Prices Index (CPI)",
+        "Money market instruments",
+        "Apparent authority",
+        "Disposal"
+      ],
+      "answer": 1,
+      "explanation": "'Money market instruments' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Packaged product",
+        "Zero",
+        "Sum assured",
+        "Money laundering"
+      ],
+      "answer": 1,
+      "explanation": "'Zero' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "Which of the following appears under KEY TERMS for Topic 7?",
+      "options": [
+        "Debenture",
+        "Long",
+        "coupon security",
+        "Zero"
+      ],
+      "answer": 2,
+      "explanation": "'coupon security' is listed as a key term for Topic 7."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "According to Topic 7, select the statement that best aligns with the material:",
+      "options": [
+        "Individuals holding ordinary shares have two main rights: ● Toreceiveashareoftheprofitsthroughdividends. ● Tovoteatshareholders’meetings.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 7: Other Direct Investments."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "According to Topic 7, select the statement that best aligns with the material:",
+      "options": [
+        "There are 2 ways in which people are interested in investing in shares:",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 7: Other Direct Investments."
+    },
+    {
+      "section": "Topic 7: Other Direct Investments",
+      "question": "According to Topic 7, select the statement that best aligns with the material:",
+      "options": [
+        "● Capital–throughseeingthegrowthofthesharepriceleadingtoeventualencashmentfor a profit. Companies however are not obliged to distribute dividends to sharehol…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 7: Other Direct Investments."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Real rate of return",
+        "Personal data",
+        "Packaged product",
+        "Prudential"
+      ],
+      "answer": 0,
+      "explanation": "'Real rate of return' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Property",
+        "Deed of variation",
+        "Fixed interest security",
+        "Legal capacity"
+      ],
+      "answer": 2,
+      "explanation": "'Fixed interest security' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Key Person Cover",
+        "Secondary market",
+        "Total Loss Absorbing Capacity (TLAC)",
+        "Bribery"
+      ],
+      "answer": 1,
+      "explanation": "'Secondary market' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Par Value",
+        "casing",
+        "ended",
+        "Eligible Counterparty"
+      ],
+      "answer": 0,
+      "explanation": "'Par Value' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Lifetime Allowance",
+        "Coupon",
+        "Self",
+        "Settlor"
+      ],
+      "answer": 1,
+      "explanation": "'Coupon' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Cum Dividend / Ex",
+        "Equities",
+        "Offer/Bid prices",
+        "Restitution"
+      ],
+      "answer": 0,
+      "explanation": "'Cum Dividend / Ex' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Legal tender",
+        "Dividend",
+        "Alternative Investment Market",
+        "Money market instruments"
+      ],
+      "answer": 1,
+      "explanation": "'Dividend' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Assessment",
+        "Loan stock",
+        "Data subject",
+        "Gilt yield"
+      ],
+      "answer": 3,
+      "explanation": "'Gilt yield' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Market Capitalisation",
+        "Fixed vs flexible portfolio",
+        "Debenture",
+        "Reflection period"
+      ],
+      "answer": 2,
+      "explanation": "'Debenture' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Loan stock",
+        "certification",
+        "Smoothing",
+        "Peer to peer"
+      ],
+      "answer": 0,
+      "explanation": "'Loan stock' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Committed expenditure",
+        "Demutualisation",
+        "Peer to peer",
+        "Intestate"
+      ],
+      "answer": 2,
+      "explanation": "'Peer to peer' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "© CeMap Mock Study 2024",
+        "Repayment strategy",
+        "Dividend",
+        "fencing"
+      ],
+      "answer": 0,
+      "explanation": "'© CeMap Mock Study 2024' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "2025",
+        "Part IV permission",
+        "Activities of Daily Living (ADL)",
+        "Psychometric testing"
+      ],
+      "answer": 0,
+      "explanation": "'2025' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Annuity",
+        "Floatation",
+        "BASIC BANK ACCOUNTS",
+        "Closed"
+      ],
+      "answer": 2,
+      "explanation": "'BASIC BANK ACCOUNTS' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "BASIC BANK ACCOUNTS",
+        "Activities of Daily Living (ADL)",
+        "Open",
+        "Actual authority"
+      ],
+      "answer": 2,
+      "explanation": "'Open' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Whistle",
+        "Defined contribution",
+        "ended",
+        "Chargeable Lifetime Transfer"
+      ],
+      "answer": 2,
+      "explanation": "'ended' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Sensitive data",
+        "Term assurance",
+        "Closed",
+        "Ratification."
+      ],
+      "answer": 2,
+      "explanation": "'Closed' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "ApparentAuthority.",
+        "Data processing",
+        "PRIIP",
+        "Unit"
+      ],
+      "answer": 3,
+      "explanation": "'Unit' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "linked",
+        "2025",
+        "WHAT IS INTERMEDIATION?",
+        "Passively managed funds"
+      ],
+      "answer": 0,
+      "explanation": "'linked' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Eligible Counterparty",
+        "Actively managed funds",
+        "Pure interest only",
+        "Capital adequacy"
+      ],
+      "answer": 1,
+      "explanation": "'Actively managed funds' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Actual authority",
+        "Passively managed funds",
+        "Over the counter",
+        "Distribution funds"
+      ],
+      "answer": 1,
+      "explanation": "'Passively managed funds' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "term insurance",
+        "Demutualisation",
+        "Prudential Regulatory Authority",
+        "Accumulation funds"
+      ],
+      "answer": 3,
+      "explanation": "'Accumulation funds' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "blowing",
+        "Testator",
+        "Deflation",
+        "Distribution funds"
+      ],
+      "answer": 3,
+      "explanation": "'Distribution funds' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Alternative Dispute resolution",
+        "Offer/Bid prices",
+        "Committed expenditure",
+        "Tested"
+      ],
+      "answer": 1,
+      "explanation": "'Offer/Bid prices' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Last survivor policy",
+        "Equities",
+        "Eligible Complainant",
+        "Gearing"
+      ],
+      "answer": 3,
+      "explanation": "'Gearing' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "Which of the following appears under KEY TERMS for Topic 8?",
+      "options": [
+        "Term assurance",
+        "Qualifying life policy",
+        "Distribution funds",
+        "Potentially Exempt Transfer"
+      ],
+      "answer": 1,
+      "explanation": "'Qualifying life policy' is listed as a key term for Topic 8."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "According to Topic 8, select the statement that best aligns with the material:",
+      "options": [
+        "When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has b…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "According to Topic 8, select the statement that best aligns with the material:",
+      "options": [
+        "Some banks offer current accounts with additional benefit packages such as breakdown, travel insurance etc. for a monthly fee, called a packaged account. Int…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES."
+    },
+    {
+      "section": "Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES",
+      "question": "According to Topic 8, select the statement that best aligns with the material:",
+      "options": [
+        "Term accounts involve the money being locked away for a period of between 1-5 years, sometimes in return for a fixed rate – the longer the term and/or higher…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 8: When investing it is important to consider the impact of inflation – the real rate of return describes the rate of return after the effect of inflation has been considered. For example, if an investment returns 6% per year, but general inflation is running at 2.5% then the real rate of return is only 3.5%. COLLECTIVE INVESTMENT SCHEMES."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "Which of the following appears under KEY TERMS for Topic 9?",
+      "options": [
+        "up company",
+        "Additional Permitted Subscription",
+        "Dispensation",
+        "Financial Policy Committee"
+      ],
+      "answer": 1,
+      "explanation": "'Additional Permitted Subscription' is listed as a key term for Topic 9."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "Which of the following appears under KEY TERMS for Topic 9?",
+      "options": [
+        "Ratification.",
+        "Pure interest only",
+        "Annual contribution limit",
+        "ended"
+      ],
+      "answer": 2,
+      "explanation": "'Annual contribution limit' is listed as a key term for Topic 9."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "Which of the following appears under KEY TERMS for Topic 9?",
+      "options": [
+        "Stair",
+        "Taxable Income",
+        "Data processing",
+        "Stakeholder"
+      ],
+      "answer": 3,
+      "explanation": "'Stakeholder' is listed as a key term for Topic 9."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "Which of the following appears under KEY TERMS for Topic 9?",
+      "options": [
+        "BASIC BANK ACCOUNTS",
+        "Death benefit",
+        "Start",
+        "Reflection period"
+      ],
+      "answer": 2,
+      "explanation": "'Start' is listed as a key term for Topic 9."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "Which of the following appears under KEY TERMS for Topic 9?",
+      "options": [
+        "Legal capacity",
+        "Benefits cap",
+        "up company",
+        "Data processor"
+      ],
+      "answer": 2,
+      "explanation": "'up company' is listed as a key term for Topic 9."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "Which of the following appears under KEY TERMS for Topic 9?",
+      "options": [
+        "Dividend",
+        "Market Capitalisation",
+        "Gearing",
+        "© CeMap Mock Study 2024"
+      ],
+      "answer": 3,
+      "explanation": "'© CeMap Mock Study 2024' is listed as a key term for Topic 9."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "Which of the following appears under KEY TERMS for Topic 9?",
+      "options": [
+        "2025",
+        "Tested",
+        "Consumer BTL",
+        "Acquiring"
+      ],
+      "answer": 0,
+      "explanation": "'2025' is listed as a key term for Topic 9."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "According to Topic 9, select the statement that best aligns with the material:",
+      "options": [
+        "There is a cash ISA where your money is invested into an account with an interest rate and there is also a stocks and shares ISA where your money is invested…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 9: Tax Wrappers."
+    },
+    {
+      "section": "Topic 9: Tax Wrappers",
+      "question": "According to Topic 9, select the statement that best aligns with the material:",
+      "options": [
+        "Savings made before the age of 50 attract a 25% bonus paid by the government, which is paid monthly so you can get interest on this. The 25% bonus is lost, a…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 9: Tax Wrappers."
+    },
+    {
+      "section": "Topic 10: Pension Products",
+      "question": "Which of the following appears under KEY TERMS for Topic 10?",
+      "options": [
+        "Defined contribution",
+        "Fixed vs flexible portfolio",
+        "Committed expenditure",
+        "Execution Only"
+      ],
+      "answer": 0,
+      "explanation": "'Defined contribution' is listed as a key term for Topic 10."
+    },
+    {
+      "section": "Topic 10: Pension Products",
+      "question": "Which of the following appears under KEY TERMS for Topic 10?",
+      "options": [
+        "Diversification",
+        "Alternative Dispute resolution",
+        "Defined benefit",
+        "Demutualisation"
+      ],
+      "answer": 2,
+      "explanation": "'Defined benefit' is listed as a key term for Topic 10."
+    },
+    {
+      "section": "Topic 10: Pension Products",
+      "question": "Which of the following appears under KEY TERMS for Topic 10?",
+      "options": [
+        "Eligible Complainant",
+        "AVC & FSAVC",
+        "Pure interest only",
+        "Redress"
+      ],
+      "answer": 1,
+      "explanation": "'AVC & FSAVC' is listed as a key term for Topic 10."
+    },
+    {
+      "section": "Topic 10: Pension Products",
+      "question": "Which of the following appears under KEY TERMS for Topic 10?",
+      "options": [
+        "Annuity",
+        "Committed expenditure",
+        "Independent advice",
+        "Disposal"
+      ],
+      "answer": 0,
+      "explanation": "'Annuity' is listed as a key term for Topic 10."
+    },
+    {
+      "section": "Topic 10: Pension Products",
+      "question": "Which of the following appears under KEY TERMS for Topic 10?",
+      "options": [
+        "Financial lifecycle",
+        "Approved",
+        "Open Market Option (OMO)",
+        "Authorised, Appointed, Approved"
+      ],
+      "answer": 2,
+      "explanation": "'Open Market Option (OMO)' is listed as a key term for Topic 10."
+    },
+    {
+      "section": "Topic 10: Pension Products",
+      "question": "Which of the following appears under KEY TERMS for Topic 10?",
+      "options": [
+        "Pension Commencement Lump Sum (PCLS)",
+        "Mortgage protection policy",
+        "Initial interest",
+        "Primary and secondary market"
+      ],
+      "answer": 0,
+      "explanation": "'Pension Commencement Lump Sum (PCLS)' is listed as a key term for Topic 10."
+    },
+    {
+      "section": "Topic 10: Pension Products",
+      "question": "Which of the following appears under KEY TERMS for Topic 10?",
+      "options": [
+        "Coupon",
+        "Long",
+        "Money Purchase Annual Allowance (MPAA)",
+        "Settlor"
+      ],
+      "answer": 2,
+      "explanation": "'Money Purchase Annual Allowance (MPAA)' is listed as a key term for Topic 10."
+    },
+    {
+      "section": "Topic 10: Pension Products",
+      "question": "Which of the following appears under KEY TERMS for Topic 10?",
+      "options": [
+        "Dual and solo regulated firms",
+        "Authorised",
+        "Money market instruments",
+        "Lifetime Allowance"
+      ],
+      "answer": 3,
+      "explanation": "'Lifetime Allowance' is listed as a key term for Topic 10."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Restricted advice",
+        "Term assurance",
+        "Key Person Cover",
+        "Ring"
+      ],
+      "answer": 1,
+      "explanation": "'Term assurance' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Distribution funds",
+        "Sum assured",
+        "Representative",
+        "vivos"
+      ],
+      "answer": 1,
+      "explanation": "'Sum assured' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Independent advice",
+        "Mortgage protection policy",
+        "Occupation class",
+        "Intestate"
+      ],
+      "answer": 1,
+      "explanation": "'Mortgage protection policy' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Articles of association",
+        "Gift inter",
+        "Term assurance",
+        "Mortgage protection policy"
+      ],
+      "answer": 1,
+      "explanation": "'Gift inter' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Actively managed funds",
+        "Authorised, Appointed, Approved",
+        "blowing",
+        "vivos"
+      ],
+      "answer": 3,
+      "explanation": "'vivos' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Primary and secondary market",
+        "Pure interest only",
+        "Surrender value",
+        "Defined benefit"
+      ],
+      "answer": 2,
+      "explanation": "'Surrender value' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Ring",
+        "Acquiring",
+        "Activities of Daily Living (ADL)",
+        "Cum Dividend / Ex"
+      ],
+      "answer": 0,
+      "explanation": "'Ring' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "BASIC BANK ACCOUNTS",
+        "fencing",
+        "Consumer BTL",
+        "Taxable Income"
+      ],
+      "answer": 1,
+      "explanation": "'fencing' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "© CeMap Mock Study 2024",
+        "Income",
+        "Assessment",
+        "Appointed"
+      ],
+      "answer": 0,
+      "explanation": "'© CeMap Mock Study 2024' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Sum assured",
+        "Averaging",
+        "Closed",
+        "2025"
+      ],
+      "answer": 3,
+      "explanation": "'2025' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 11?",
+      "options": [
+        "Acquiring",
+        "LEVEL TERM ASSURANCE (LTA)",
+        "FCA REGULATION OF FIRMS AND INDIVIDUALS",
+        "Partnership deed"
+      ],
+      "answer": 1,
+      "explanation": "'LEVEL TERM ASSURANCE (LTA)' is listed as a key term for Topic 11."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "According to Topic 11, select the statement that best aligns with the material:",
+      "options": [
+        "It is usually used in conjunction with an interest only mortgage or where an individual wishes to guarantee a fixed amount to be paid out on their death, sho…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 11: Life Assurance."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "According to Topic 11, select the statement that best aligns with the material:",
+      "options": [
+        "Unlike a level term policy where the sum assured stays constant, a decreasing term assurance policy has a sum assured that reduces over time. The primary use…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 11: Life Assurance."
+    },
+    {
+      "section": "Topic 11: Life Assurance",
+      "question": "According to Topic 11, select the statement that best aligns with the material:",
+      "options": [
+        "Can be used to protect a specific mortgage loan for a specific term and are designed so that if interest rates do not go above a certain limit, and the borro…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 11: Life Assurance."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "Closed",
+        "Initial interest",
+        "Deferred period",
+        "Actively managed funds"
+      ],
+      "answer": 2,
+      "explanation": "'Deferred period' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "Intestate",
+        "Directives",
+        "Insurance Premium Tax (IPT)",
+        "Inflation"
+      ],
+      "answer": 2,
+      "explanation": "'Insurance Premium Tax (IPT)' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "Clawback",
+        "Accumulation funds",
+        "Defined benefit",
+        "Occupation class"
+      ],
+      "answer": 3,
+      "explanation": "'Occupation class' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "vivos",
+        "Activities of Daily Living (ADL)",
+        "AVC & FSAVC",
+        "Equities"
+      ],
+      "answer": 1,
+      "explanation": "'Activities of Daily Living (ADL)' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "Retail Customer",
+        "Averaging",
+        "Pension Commencement Lump Sum (PCLS)",
+        "real time promotions"
+      ],
+      "answer": 1,
+      "explanation": "'Averaging' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "Averaging",
+        "Long",
+        "Codicil",
+        "Proactive & reactive servicing"
+      ],
+      "answer": 1,
+      "explanation": "'Long' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "term insurance",
+        "Prudential",
+        "© CeMap Mock Study 2024",
+        "Concealing"
+      ],
+      "answer": 0,
+      "explanation": "'term insurance' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "© CeMap Mock Study 2024",
+        "Legal capacity",
+        "Representative",
+        "Par Value"
+      ],
+      "answer": 0,
+      "explanation": "'© CeMap Mock Study 2024' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "Which of the following appears under KEY TERMS for Topic 12?",
+      "options": [
+        "2025",
+        "Dual and solo regulated firms",
+        "Alternative Investment Market",
+        "Acquiring"
+      ],
+      "answer": 0,
+      "explanation": "'2025' is listed as a key term for Topic 12."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "According to Topic 12, select the statement that best aligns with the material:",
+      "options": [
+        "Some policies will allow the benefits to be indexed each year so the pay out each year could go up each year in line with inflation.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 12: Health And General Insurance."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "According to Topic 12, select the statement that best aligns with the material:",
+      "options": [
+        "● Choiceoftimingofcare. ● Betterqualityroom. ● Inpatientcharges,outpatientchargesandsurgicalandmedicalfees. The premium will be influenced by age, quality of…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 12: Health And General Insurance."
+    },
+    {
+      "section": "Topic 12: Health And General Insurance",
+      "question": "According to Topic 12, select the statement that best aligns with the material:",
+      "options": [
+        "The under-insurance could have resulted from a deliberate attempt to keep the premiums low, or it could be that inflation has increased the amount required.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 12: Health And General Insurance."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "Repayment strategy",
+        "Means",
+        "Subject Access Request",
+        "Assessment"
+      ],
+      "answer": 0,
+      "explanation": "'Repayment strategy' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "Senior manager",
+        "Defined benefit",
+        "Pure interest only",
+        "Market Capitalisation"
+      ],
+      "answer": 2,
+      "explanation": "'Pure interest only' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "LEVEL TERM ASSURANCE (LTA)",
+        "Endowment",
+        "Qualifying life policy",
+        "Potentially Exempt Transfer"
+      ],
+      "answer": 1,
+      "explanation": "'Endowment' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "Authorised",
+        "Market Capitalisation",
+        "Death benefit",
+        "Real"
+      ],
+      "answer": 2,
+      "explanation": "'Death benefit' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "Smoothing",
+        "Settlor",
+        "fencing",
+        "Actual authority"
+      ],
+      "answer": 0,
+      "explanation": "'Smoothing' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "Closed",
+        "Reversionary bonus",
+        "Property",
+        "Stakeholder"
+      ],
+      "answer": 1,
+      "explanation": "'Reversionary bonus' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "BASIC BANK ACCOUNTS",
+        "Settlor",
+        "Consumer Prices Index (CPI)",
+        "Terminal bonus"
+      ],
+      "answer": 3,
+      "explanation": "'Terminal bonus' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "Psychometric testing",
+        "Actualauthority.",
+        "Clawback",
+        "vivos"
+      ],
+      "answer": 2,
+      "explanation": "'Clawback' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "Robo advice",
+        "Whistle",
+        "Oversight groups",
+        "Rolled up interest"
+      ],
+      "answer": 3,
+      "explanation": "'Rolled up interest' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "Stair",
+        "Alternative Dispute resolution",
+        "Property",
+        "Alternative Investment Market"
+      ],
+      "answer": 0,
+      "explanation": "'Stair' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "Which of the following appears under KEY TERMS for Topic 13?",
+      "options": [
+        "casing",
+        "Real rate of return",
+        "ended",
+        "Demutualisation"
+      ],
+      "answer": 0,
+      "explanation": "'casing' is listed as a key term for Topic 13."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "According to Topic 13, select the statement that best aligns with the material:",
+      "options": [
+        "Also, in this topic we will consider mortgage interest rate options, mortgage schemes, equity release and some regulatory and other mortgage related issues.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 13: Secured And Unsecured Lending."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "According to Topic 13, select the statement that best aligns with the material:",
+      "options": [
+        "In a mortgage contract there are two parties: the mortgagee and the mortgagor. ● Thelenderissometimesreferredtoasthemortgagee. ● Theborrowerissometimesreferr…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 13: Secured And Unsecured Lending."
+    },
+    {
+      "section": "Topic 13: Secured And Unsecured Lending",
+      "question": "According to Topic 13, select the statement that best aligns with the material:",
+      "options": [
+        "Capital and Interest Mortgage (Repayment)",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 13: Secured And Unsecured Lending."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "Which of the following appears under KEY TERMS for Topic 14?",
+      "options": [
+        "casing",
+        "Dual and solo regulated firms",
+        "Sum assured",
+        "Financial lifecycle"
+      ],
+      "answer": 3,
+      "explanation": "'Financial lifecycle' is listed as a key term for Topic 14."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "Which of the following appears under KEY TERMS for Topic 14?",
+      "options": [
+        "Attitude to risk",
+        "Disinflation",
+        "Regulations",
+        "ended"
+      ],
+      "answer": 0,
+      "explanation": "'Attitude to risk' is listed as a key term for Topic 14."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "Which of the following appears under KEY TERMS for Topic 14?",
+      "options": [
+        "Capacity for loss",
+        "Qualifying life policy",
+        "Annual contribution limit",
+        "Demutualisation"
+      ],
+      "answer": 0,
+      "explanation": "'Capacity for loss' is listed as a key term for Topic 14."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "Which of the following appears under KEY TERMS for Topic 14?",
+      "options": [
+        "Significant harm role",
+        "Hard & soft facts",
+        "PRIIP",
+        "Over the counter"
+      ],
+      "answer": 1,
+      "explanation": "'Hard & soft facts' is listed as a key term for Topic 14."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "Which of the following appears under KEY TERMS for Topic 14?",
+      "options": [
+        "Legal capacity",
+        "Data processing",
+        "Psychometric testing",
+        "Medium of exchange"
+      ],
+      "answer": 2,
+      "explanation": "'Psychometric testing' is listed as a key term for Topic 14."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "Which of the following appears under KEY TERMS for Topic 14?",
+      "options": [
+        "Over the counter",
+        "Vulnerable customer",
+        "Gift inter",
+        "Insurance Premium Tax (IPT)"
+      ],
+      "answer": 1,
+      "explanation": "'Vulnerable customer' is listed as a key term for Topic 14."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "Which of the following appears under KEY TERMS for Topic 14?",
+      "options": [
+        "Proactive & reactive servicing",
+        "Stakeholder",
+        "Capital adequacy",
+        "Ratification."
+      ],
+      "answer": 0,
+      "explanation": "'Proactive & reactive servicing' is listed as a key term for Topic 14."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "According to Topic 14, select the statement that best aligns with the material:",
+      "options": [
+        "There are some general points to be aware of when it comes to financial promotions or inducements (to persuade a client into entering into a specific contrac…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "According to Topic 14, select the statement that best aligns with the material:",
+      "options": [
+        "For some types of investment business, where the firm makes decisions about a client’s assets without the need for authorisation each time (designated invest…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.."
+    },
+    {
+      "section": "Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.",
+      "question": "What is the core function of the FSCS referenced in this topic?",
+      "options": [
+        "Compensates eligible customers of failed firms",
+        "Sets conduct rules",
+        "Runs court appeals",
+        "Approves mortgage adverts"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 14: Understanding And Satisfying Customer Needs A primary requirement for firms when dealing with their customers is to identify which rules apply to their customers. This is to ensure that the appropriate rules and protections are applied.."
+    },
+    {
+      "section": "Topic 15: The Main Financial Advice Areas",
+      "question": "Which of the following appears under KEY TERMS for Topic 15?",
+      "options": [
+        "Endowment",
+        "Key Person Cover",
+        "Accumulation funds",
+        "Reflection period"
+      ],
+      "answer": 1,
+      "explanation": "'Key Person Cover' is listed as a key term for Topic 15."
+    },
+    {
+      "section": "Topic 15: The Main Financial Advice Areas",
+      "question": "Which of the following appears under KEY TERMS for Topic 15?",
+      "options": [
+        "Vulnerable customer",
+        "Restricted advice",
+        "Basic advice",
+        "Ring fencing"
+      ],
+      "answer": 3,
+      "explanation": "'Ring fencing' is listed as a key term for Topic 15."
+    },
+    {
+      "section": "Topic 15: The Main Financial Advice Areas",
+      "question": "Which of the following appears under KEY TERMS for Topic 15?",
+      "options": [
+        "Fiscal tax year",
+        "Financial lifecycle",
+        "Whistleblowing",
+        "Last survivor policy"
+      ],
+      "answer": 3,
+      "explanation": "'Last survivor policy' is listed as a key term for Topic 15."
+    },
+    {
+      "section": "Topic 15: The Main Financial Advice Areas",
+      "question": "Which of the following appears under KEY TERMS for Topic 15?",
+      "options": [
+        "Actively managed funds",
+        "Real rate of return",
+        "Professional Client",
+        "Annual Exempt Amount"
+      ],
+      "answer": 1,
+      "explanation": "'Real rate of return' is listed as a key term for Topic 15."
+    },
+    {
+      "section": "Topic 15: The Main Financial Advice Areas",
+      "question": "According to Topic 15, select the statement that best aligns with the material:",
+      "options": [
+        "With all protection policies, it is important to consider whether the potential pay out from the policy will keep pace with inflation (see the effect of infl…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 15: The Main Financial Advice Areas."
+    },
+    {
+      "section": "Topic 15: The Main Financial Advice Areas",
+      "question": "According to Topic 15, select the statement that best aligns with the material:",
+      "options": [
+        "● As the transfer is an option rather than an obligation, business asset disposal relief is available. THE EFFECT OF INFLATION Inflation reduces the purchasi…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 15: The Main Financial Advice Areas."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Part IV permission",
+        "Domicile & Residence",
+        "ended",
+        "Testator"
+      ],
+      "answer": 3,
+      "explanation": "'Testator' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Pension Commencement Lump Sum (PCLS)",
+        "Professional Client",
+        "Partnership deed",
+        "Settlor"
+      ],
+      "answer": 3,
+      "explanation": "'Settlor' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "2025",
+        "Basic advice",
+        "Codicil",
+        "Attitude to risk"
+      ],
+      "answer": 2,
+      "explanation": "'Codicil' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Dividend",
+        "Floatation",
+        "Disinflation",
+        "Deed of variation"
+      ],
+      "answer": 3,
+      "explanation": "'Deed of variation' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Equities",
+        "Price/earnings ratio",
+        "Inflation",
+        "Intestate"
+      ],
+      "answer": 3,
+      "explanation": "'Intestate' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Settlor",
+        "Company memorandum",
+        "Intermediation & disintermediation",
+        "Mediation"
+      ],
+      "answer": 1,
+      "explanation": "'Company memorandum' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Articles of association",
+        "Key Person Cover",
+        "ended",
+        "Debenture"
+      ],
+      "answer": 0,
+      "explanation": "'Articles of association' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Partnership deed",
+        "Legal capacity",
+        "Primary and secondary market",
+        "Property"
+      ],
+      "answer": 0,
+      "explanation": "'Partnership deed' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Reversionary bonus",
+        "Restricted advice",
+        "Unit",
+        "Legal capacity"
+      ],
+      "answer": 3,
+      "explanation": "'Legal capacity' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Bearer Instrument",
+        "Directives",
+        "Actual authority",
+        "casing"
+      ],
+      "answer": 2,
+      "explanation": "'Actual authority' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Initial interest",
+        "Death benefit",
+        "Universal Credit",
+        "Apparent authority"
+      ],
+      "answer": 3,
+      "explanation": "'Apparent authority' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Zero",
+        "Total Loss Absorbing Capacity (TLAC)",
+        "Ratification",
+        "ApparentAuthority."
+      ],
+      "answer": 2,
+      "explanation": "'Ratification' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Data processor",
+        "Contribution",
+        "Actualauthority.",
+        "Oversight groups"
+      ],
+      "answer": 2,
+      "explanation": "'Actualauthority.' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Unfair terms (in a contract)",
+        "ApparentAuthority.",
+        "Fixed interest security",
+        "Deflation"
+      ],
+      "answer": 1,
+      "explanation": "'ApparentAuthority.' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "Which of the following appears under KEY TERMS for Topic 16?",
+      "options": [
+        "Ratification.",
+        "ApparentAuthority.",
+        "Authorised, Appointed, Approved",
+        "Price/earnings ratio"
+      ],
+      "answer": 0,
+      "explanation": "'Ratification.' is listed as a key term for Topic 16."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "According to Topic 16, select the statement that best aligns with the material:",
+      "options": [
+        "● Buysbackunitsfromunitholdersatthebidprice. ● Issuethecontractnote(usefulforcalculatingtaxliabilities.)",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 16: Managed Funds KEY LEGAL CONCEPTS."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "According to Topic 16, select the statement that best aligns with the material:",
+      "options": [
+        "● Trusteesmustensurethatthereissufficientinvestorprotectioninplacetocomplywiththe FCA.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 16: Managed Funds KEY LEGAL CONCEPTS."
+    },
+    {
+      "section": "Topic 16: Managed Funds KEY LEGAL CONCEPTS",
+      "question": "According to Topic 16, select the statement that best aligns with the material:",
+      "options": [
+        "● Annual Management Charge e.g., 0.5 to 1.5% (although annual charge it may be paid monthly). TAXATION OF UNIT TRUSTS Unit trusts can be equity unit trusts w…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 16: Managed Funds KEY LEGAL CONCEPTS."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "Second charges",
+        "Prudential regulation",
+        "Apparent authority",
+        "Authorised, Appointed, Approved"
+      ],
+      "answer": 1,
+      "explanation": "'Prudential regulation' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "FSMA 2000",
+        "Initial interest",
+        "Intermediation & disintermediation",
+        "Pure interest only"
+      ],
+      "answer": 0,
+      "explanation": "'FSMA 2000' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "Representative",
+        "Attitude to risk",
+        "Prudential Regulatory Authority",
+        "Open"
+      ],
+      "answer": 2,
+      "explanation": "'Prudential Regulatory Authority' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "Financial Policy Committee",
+        "Authorised, Appointed, Approved",
+        "FCA REGULATION OF FIRMS AND INDIVIDUALS",
+        "Loan stock"
+      ],
+      "answer": 0,
+      "explanation": "'Financial Policy Committee' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "Dual and solo regulated firms",
+        "Cum Dividend / Ex",
+        "Zero",
+        "Subject Access Request"
+      ],
+      "answer": 0,
+      "explanation": "'Dual and solo regulated firms' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "linked",
+        "Mediation",
+        "certification",
+        "Competition and Markets Authority"
+      ],
+      "answer": 3,
+      "explanation": "'Competition and Markets Authority' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "Solvency ratio",
+        "Rules, guidance, and evidential provisions",
+        "Money market instruments",
+        "Robo advice"
+      ],
+      "answer": 1,
+      "explanation": "'Rules, guidance, and evidential provisions' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "Annual contribution limit",
+        "BASIC BANK ACCOUNTS",
+        "Whistle",
+        "Last survivor policy"
+      ],
+      "answer": 2,
+      "explanation": "'Whistle' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "Which of the following appears under KEY TERMS for Topic 17?",
+      "options": [
+        "Money laundering",
+        "Property",
+        "Gearing",
+        "blowing"
+      ],
+      "answer": 3,
+      "explanation": "'blowing' is listed as a key term for Topic 17."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "According to Topic 17, select the statement that best aligns with the material:",
+      "options": [
+        "An important milestone was reached with the introduction of the Financial Services and Markets Act 2000 (FSMA 2000). The effect of this legislation was to pi…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 17: Uk Financial Regulation."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "What does the interbank/wholesale money market primarily facilitate?",
+      "options": [
+        "Short-term money market between banks",
+        "Retail deposit protection system",
+        "Equity issuance to the public",
+        "Government bond auctions to retail investors"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 17: Uk Financial Regulation."
+    },
+    {
+      "section": "Topic 17: Uk Financial Regulation",
+      "question": "According to Topic 17, select the statement that best aligns with the material:",
+      "options": [
+        "The FSA were replaced by two new regulators. The Financial Conduct Authority (FCA) were created and given responsibility for the conduct and behaviour of all…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 17: Uk Financial Regulation."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "ended",
+        "Proactive & reactive servicing",
+        "Part IV permission",
+        "Over the counter"
+      ],
+      "answer": 2,
+      "explanation": "'Part IV permission' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Authorised",
+        "Company memorandum",
+        "Hard & soft facts",
+        "Death benefit"
+      ],
+      "answer": 0,
+      "explanation": "'Authorised' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Gilt yield",
+        "Ratification.",
+        "Unfair terms (in a contract)",
+        "Appointed"
+      ],
+      "answer": 3,
+      "explanation": "'Appointed' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Whistle",
+        "Approved",
+        "Prudential",
+        "Start"
+      ],
+      "answer": 1,
+      "explanation": "'Approved' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Fixed vs flexible portfolio",
+        "Long",
+        "Demutualisation",
+        "Peer to peer"
+      ],
+      "answer": 0,
+      "explanation": "'Fixed vs flexible portfolio' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Redress",
+        "Averaging",
+        "Restricted advice",
+        "Representative"
+      ],
+      "answer": 3,
+      "explanation": "'Representative' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Restitution",
+        "Intestate",
+        "Sum assured",
+        "vivos"
+      ],
+      "answer": 0,
+      "explanation": "'Restitution' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Gross Domestic Product (GDP)",
+        "Redress",
+        "Hard & soft facts",
+        "Concealing"
+      ],
+      "answer": 1,
+      "explanation": "'Redress' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Means",
+        "Senior manager",
+        "Unit of account",
+        "Financial Policy Committee"
+      ],
+      "answer": 1,
+      "explanation": "'Senior manager' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Unfair terms (in a contract)",
+        "Significant harm role",
+        "Deed of variation",
+        "Rolled up interest"
+      ],
+      "answer": 1,
+      "explanation": "'Significant harm role' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Gearing",
+        "Prudential Regulatory Authority",
+        "Regulated Mortgage Contract (RMC)",
+        "Whistleblowing"
+      ],
+      "answer": 3,
+      "explanation": "'Whistleblowing' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Initial interest",
+        "Authorised, Appointed, Approved",
+        "Medium of exchange",
+        "Liquidity risk"
+      ],
+      "answer": 1,
+      "explanation": "'Authorised, Appointed, Approved' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "Which of the following appears under KEY TERMS for Topic 18?",
+      "options": [
+        "Estate",
+        "FCA REGULATION OF FIRMS AND INDIVIDUALS",
+        "Senior manager",
+        "Additional Permitted Subscription"
+      ],
+      "answer": 1,
+      "explanation": "'FCA REGULATION OF FIRMS AND INDIVIDUALS' is listed as a key term for Topic 18."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "According to Topic 18, select the statement that best aligns with the material:",
+      "options": [
+        "Individuals within firms that perform significant management roles must be approved by the FCA. These individuals are initially selected by the firm and then…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 18: Regulating Firms And Individuals."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "According to Topic 18, select the statement that best aligns with the material:",
+      "options": [
+        "Covering other roles within firms is a code of conduct, which applies to everyone. Different firms will have different codes of conduct, but they are largely…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 18: Regulating Firms And Individuals."
+    },
+    {
+      "section": "Topic 18: Regulating Firms And Individuals",
+      "question": "According to Topic 18, select the statement that best aligns with the material:",
+      "options": [
+        "The details describing the authorisation and appointment of individuals can be found in the “High Level Standards” section of the FCA handbook.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 18: Regulating Firms And Individuals."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "Which of the following appears under KEY TERMS for Topic 19?",
+      "options": [
+        "Defined benefit",
+        "Capital adequacy",
+        "Additional Permitted Subscription",
+        "Redress"
+      ],
+      "answer": 1,
+      "explanation": "'Capital adequacy' is listed as a key term for Topic 19."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "Which of the following appears under KEY TERMS for Topic 19?",
+      "options": [
+        "Vulnerable customer",
+        "Solvency ratio",
+        "Benefits cap",
+        "Stair"
+      ],
+      "answer": 1,
+      "explanation": "'Solvency ratio' is listed as a key term for Topic 19."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "Which of the following appears under KEY TERMS for Topic 19?",
+      "options": [
+        "Apparent authority",
+        "Primary and secondary market",
+        "Ring fencing",
+        "Operational risk"
+      ],
+      "answer": 3,
+      "explanation": "'Operational risk' is listed as a key term for Topic 19."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "Which of the following appears under KEY TERMS for Topic 19?",
+      "options": [
+        "Liquidity risk",
+        "Designated Investment Business",
+        "vivos",
+        "Redress"
+      ],
+      "answer": 0,
+      "explanation": "'Liquidity risk' is listed as a key term for Topic 19."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "Which of the following appears under KEY TERMS for Topic 19?",
+      "options": [
+        "Codicil",
+        "Prudential",
+        "Property",
+        "Sum assured"
+      ],
+      "answer": 1,
+      "explanation": "'Prudential' is listed as a key term for Topic 19."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "Which of the following appears under KEY TERMS for Topic 19?",
+      "options": [
+        "Risk Weighted Assets (RWA)",
+        "Financial exclusion",
+        "Passively managed funds",
+        "Benefits cap"
+      ],
+      "answer": 0,
+      "explanation": "'Risk Weighted Assets (RWA)' is listed as a key term for Topic 19."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "Which of the following appears under KEY TERMS for Topic 19?",
+      "options": [
+        "Actual authority",
+        "Proactive & reactive servicing",
+        "Whistle",
+        "Total Loss Absorbing Capacity (TLAC)"
+      ],
+      "answer": 3,
+      "explanation": "'Total Loss Absorbing Capacity (TLAC)' is listed as a key term for Topic 19."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "According to Topic 19, select the statement that best aligns with the material:",
+      "options": [
+        "The chief prudential regulator is the Prudential Regulatory Authority (PRA) who set the standards for large firms, smaller firms must meet the prudential sta…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 19: Prudential Supervision."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "According to Topic 19, select the statement that best aligns with the material:",
+      "options": [
+        "FCA/PRA PRUDENTIAL STANDARDS",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 19: Prudential Supervision."
+    },
+    {
+      "section": "Topic 19: Prudential Supervision",
+      "question": "According to Topic 19, select the statement that best aligns with the material:",
+      "options": [
+        "There are different prudential standards for different firms, most of which are found in the subsections of the FCA handbook and the PRA rulebook, e.g., GENP…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 19: Prudential Supervision."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "2025",
+        "certification",
+        "Packaged product",
+        "Terminal bonus"
+      ],
+      "answer": 2,
+      "explanation": "'Packaged product' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Initial interest",
+        "PRIIP",
+        "Eligible Complainant",
+        "Eligible Counterparty"
+      ],
+      "answer": 1,
+      "explanation": "'PRIIP' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Eligible Counterparty",
+        "Part IV permission",
+        "Legal tender",
+        "real time promotions"
+      ],
+      "answer": 0,
+      "explanation": "'Eligible Counterparty' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Professional Client",
+        "Codicil",
+        "Prudential regulation",
+        "Activities of Daily Living (ADL)"
+      ],
+      "answer": 0,
+      "explanation": "'Professional Client' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Actualauthority.",
+        "Representative",
+        "Retail Customer",
+        "Disinflation"
+      ],
+      "answer": 2,
+      "explanation": "'Retail Customer' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Proactive & reactive servicing",
+        "Execution Only",
+        "Concealing",
+        "AVC & FSAVC"
+      ],
+      "answer": 1,
+      "explanation": "'Execution Only' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Inflation",
+        "Acquiring",
+        "© CeMap Mock Study 2024",
+        "Attitude to risk"
+      ],
+      "answer": 3,
+      "explanation": "'Attitude to risk' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Personal data",
+        "Data processing",
+        "Capacity for loss",
+        "Subject Access Request"
+      ],
+      "answer": 2,
+      "explanation": "'Capacity for loss' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Independent advice",
+        "Dividend",
+        "Eligible Complainant",
+        "Start"
+      ],
+      "answer": 0,
+      "explanation": "'Independent advice' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Regulations",
+        "Death benefit",
+        "Tax at Source",
+        "Restricted advice"
+      ],
+      "answer": 3,
+      "explanation": "'Restricted advice' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Secondary market",
+        "coupon security",
+        "Dividends",
+        "Designated Investment Business"
+      ],
+      "answer": 3,
+      "explanation": "'Designated Investment Business' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Redress",
+        "Distribution funds",
+        "Real",
+        "Annuity"
+      ],
+      "answer": 2,
+      "explanation": "'Real' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "Lifetime Allowance",
+        "time vs non",
+        "Committed expenditure",
+        "Fixed vs flexible portfolio"
+      ],
+      "answer": 1,
+      "explanation": "'time vs non' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "Which of the following appears under KEY TERMS for Topic 20?",
+      "options": [
+        "real time promotions",
+        "Robo advice",
+        "Fixed interest security",
+        "Dispensation"
+      ],
+      "answer": 0,
+      "explanation": "'real time promotions' is listed as a key term for Topic 20."
+    },
+    {
+      "section": "Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)",
+      "question": "According to Topic 20, select the statement that best aligns with the material:",
+      "options": [
+        "The FCA also expects advisers to pay attention to customers who may be termed ‘vulnerable’ and have policies in place to prevent or exacerbate customer detri…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 20: The Financial Life Cycle CONDUCT OF BUSINESS REQUIREMENTS (PART ONE)."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "Regulated Mortgage Contract (RMC)",
+        "Annuity",
+        "Financial lifecycle",
+        "Means"
+      ],
+      "answer": 0,
+      "explanation": "'Regulated Mortgage Contract (RMC)' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "BASIC BANK ACCOUNTS",
+        "Consumer BTL",
+        "Real",
+        "Second charges"
+      ],
+      "answer": 1,
+      "explanation": "'Consumer BTL' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "2025",
+        "Articles of association",
+        "Committed expenditure",
+        "Rules, guidance, and evidential provisions"
+      ],
+      "answer": 2,
+      "explanation": "'Committed expenditure' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "Open",
+        "Ratification",
+        "Diversification",
+        "Self"
+      ],
+      "answer": 3,
+      "explanation": "'Self' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "Long",
+        "Vulnerable customer",
+        "casing",
+        "certification"
+      ],
+      "answer": 3,
+      "explanation": "'certification' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "Committed expenditure",
+        "Second charges",
+        "Reflection period",
+        "Accumulation funds"
+      ],
+      "answer": 1,
+      "explanation": "'Second charges' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "Offer/Bid prices",
+        "Insurance Premium Tax (IPT)",
+        "Initial interest",
+        "Gross Domestic Product (GDP)"
+      ],
+      "answer": 2,
+      "explanation": "'Initial interest' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "Last survivor policy",
+        "Reflection period",
+        "Competition and Markets Authority",
+        "Primary and secondary market"
+      ],
+      "answer": 1,
+      "explanation": "'Reflection period' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "Operational risk",
+        "Actual authority",
+        "Basic advice",
+        "Packaged product"
+      ],
+      "answer": 2,
+      "explanation": "'Basic advice' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "Which of the following appears under KEY TERMS for Topic 21?",
+      "options": [
+        "Sensitive data",
+        "Prudential Regulatory Authority",
+        "Robo advice",
+        "Activities of Daily Living (ADL)"
+      ],
+      "answer": 2,
+      "explanation": "'Robo advice' is listed as a key term for Topic 21."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "According to Topic 21, select the statement that best aligns with the material:",
+      "options": [
+        "When explaining the product, the cancellation rights or notice periods must be highlighted to the client.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "According to Topic 21, select the statement that best aligns with the material:",
+      "options": [
+        "● LifePolicies,PensionscontractsandMiFIDbusiness-5years–7yearsmax ● FSAVCs,pensiontransfers&optouts-indefinitely",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)."
+    },
+    {
+      "section": "Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)",
+      "question": "According to Topic 21, select the statement that best aligns with the material:",
+      "options": [
+        "A good place to start this topic is by looking at how a regulated mortgage is defined. Most mortgages in the retail sector are Regulated Mortgage Contracts (…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 21: At the point of recommendation advisers must provide a Key Features Document (KFD), Key Illustration Document (KID) or Key Investor Illustration Document (KIID), depending on the product recommended. This must be provided before an application can be made. CONDUCT OF BUSINESS REQUIREMENTS (PART TWO)."
+    },
+    {
+      "section": "Topic 22: Consumer Credit",
+      "question": "According to Topic 22, select the statement that best aligns with the material:",
+      "options": [
+        "The Consumer Credit Act (CCA) is the main legislation in the UK, and it is overseen by the FCA. Prior to 2014 however, the act was enforced by the Office of …",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 22: Consumer Credit."
+    },
+    {
+      "section": "Topic 22: Consumer Credit",
+      "question": "According to Topic 22, select the statement that best aligns with the material:",
+      "options": [
+        "The act of 1974 introduced a number of safeguards to protect consumers from poor lending practices.",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 22: Consumer Credit."
+    },
+    {
+      "section": "Topic 22: Consumer Credit",
+      "question": "According to Topic 22, select the statement that best aligns with the material:",
+      "options": [
+        "Default, termination, settlement FCA Licensing Extortionate Rates or charges",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 22: Consumer Credit."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "Which of the following appears under KEY TERMS for Topic 23?",
+      "options": [
+        "Regulated Mortgage Contract (RMC)",
+        "Money laundering",
+        "Long",
+        "Qualifying life policy"
+      ],
+      "answer": 1,
+      "explanation": "'Money laundering' is listed as a key term for Topic 23."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "Which of the following appears under KEY TERMS for Topic 23?",
+      "options": [
+        "Hard & soft facts",
+        "Legal capacity",
+        "Money Purchase Annual Allowance (MPAA)",
+        "Concealing"
+      ],
+      "answer": 3,
+      "explanation": "'Concealing' is listed as a key term for Topic 23."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "Which of the following appears under KEY TERMS for Topic 23?",
+      "options": [
+        "Acquiring",
+        "Personal data",
+        "Triple Lock",
+        "Closed"
+      ],
+      "answer": 0,
+      "explanation": "'Acquiring' is listed as a key term for Topic 23."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "Which of the following appears under KEY TERMS for Topic 23?",
+      "options": [
+        "Arranging",
+        "Start",
+        "Occupation class",
+        "Basic advice"
+      ],
+      "answer": 0,
+      "explanation": "'Arranging' is listed as a key term for Topic 23."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "Which of the following appears under KEY TERMS for Topic 23?",
+      "options": [
+        "Execution Only",
+        "Subject Access Request",
+        "Prudential Regulatory Authority",
+        "Real"
+      ],
+      "answer": 1,
+      "explanation": "'Subject Access Request' is listed as a key term for Topic 23."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "Which of the following appears under KEY TERMS for Topic 23?",
+      "options": [
+        "Approved",
+        "Codicil",
+        "Property",
+        "certification"
+      ],
+      "answer": 2,
+      "explanation": "'Property' is listed as a key term for Topic 23."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "Which of the following appears under KEY TERMS for Topic 23?",
+      "options": [
+        "Chargeable Lifetime Transfer",
+        "Robo advice",
+        "Regulations",
+        "Financial exclusion"
+      ],
+      "answer": 3,
+      "explanation": "'Financial exclusion' is listed as a key term for Topic 23."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "Which of the following appears under KEY TERMS for Topic 23?",
+      "options": [
+        "Proactive & reactive servicing",
+        "Senior manager",
+        "Disinflation",
+        "Bribery"
+      ],
+      "answer": 3,
+      "explanation": "'Bribery' is listed as a key term for Topic 23."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "According to Topic 23, select the statement that best aligns with the material:",
+      "options": [
+        "Under the Public Interest Disclosure Act 1998 employees have a right to protection when reporting serious breaches within their firms, e.g., when there is kn…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "According to Topic 23, select the statement that best aligns with the material:",
+      "options": [
+        "● Take action to strengthen procedures and controls and to remedy any deficiencies highlighted in the report. The FCA can also discipline firms and individua…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING."
+    },
+    {
+      "section": "Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING",
+      "question": "According to Topic 23, select the statement that best aligns with the material:",
+      "options": [
+        "Firms are expected to consider guidance provided by the FCA as well as that provided by the Joint Money Laundering Steering Group. The Joint Money Laundering…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 23: Where a person gives false or misleading information with the intention of influencing the share price for personal gain ANTI MONEY LAUNDERING."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "Which of the following appears under KEY TERMS for Topic 24?",
+      "options": [
+        "Data subject",
+        "Income",
+        "Defined benefit",
+        "Actual authority"
+      ],
+      "answer": 0,
+      "explanation": "'Data subject' is listed as a key term for Topic 24."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "Which of the following appears under KEY TERMS for Topic 24?",
+      "options": [
+        "Death benefit",
+        "Pension Commencement Lump Sum (PCLS)",
+        "Data processing",
+        "Vulnerable customer"
+      ],
+      "answer": 2,
+      "explanation": "'Data processing' is listed as a key term for Topic 24."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "Which of the following appears under KEY TERMS for Topic 24?",
+      "options": [
+        "FCA REGULATION OF FIRMS AND INDIVIDUALS",
+        "Personal data",
+        "Medium of exchange",
+        "Passively managed funds"
+      ],
+      "answer": 1,
+      "explanation": "'Personal data' is listed as a key term for Topic 24."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "Which of the following appears under KEY TERMS for Topic 24?",
+      "options": [
+        "Additional Permitted Subscription",
+        "Sensitive data",
+        "Clawback",
+        "Retail Customer"
+      ],
+      "answer": 1,
+      "explanation": "'Sensitive data' is listed as a key term for Topic 24."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "Which of the following appears under KEY TERMS for Topic 24?",
+      "options": [
+        "Data controller",
+        "Rules, guidance, and evidential provisions",
+        "Authorised",
+        "Offer/Bid prices"
+      ],
+      "answer": 0,
+      "explanation": "'Data controller' is listed as a key term for Topic 24."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "Which of the following appears under KEY TERMS for Topic 24?",
+      "options": [
+        "Appointed",
+        "Demutualisation",
+        "Data processor",
+        "Mortgage protection policy"
+      ],
+      "answer": 2,
+      "explanation": "'Data processor' is listed as a key term for Topic 24."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "Which of the following appears under KEY TERMS for Topic 24?",
+      "options": [
+        "Oversight groups",
+        "Open Market Option (OMO)",
+        "Diversification",
+        "Open"
+      ],
+      "answer": 0,
+      "explanation": "'Oversight groups' is listed as a key term for Topic 24."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "According to Topic 24, select the statement that best aligns with the material:",
+      "options": [
+        "The following are important terms to understand in relation to GDPR:",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 24: Other Regulations Affecting The Advice Process."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "According to Topic 24, select the statement that best aligns with the material:",
+      "options": [
+        "In order to demonstrate compliance with GDPR, an organisation must: ● Establishagovernancestructurewithrolesandresponsibilities ● Keepadetailedrecordofalldat…",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 24: Other Regulations Affecting The Advice Process."
+    },
+    {
+      "section": "Topic 24: Other Regulations Affecting The Advice Process",
+      "question": "According to Topic 24, select the statement that best aligns with the material:",
+      "options": [
+        "DATA SUBJECT RIGHTS",
+        "False",
+        "Not covered",
+        "Depends"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 24: Other Regulations Affecting The Advice Process."
+    },
+    {
+      "section": "Topic 25: Consumer Rights, Complaints And Compensation",
+      "question": "Which of the following appears under KEY TERMS for Topic 25?",
+      "options": [
+        "Unfair terms (in a contract)",
+        "Cum Dividend / Ex",
+        "Capacity for loss",
+        "Competition and Markets Authority"
+      ],
+      "answer": 0,
+      "explanation": "'Unfair terms (in a contract)' is listed as a key term for Topic 25."
+    },
+    {
+      "section": "Topic 25: Consumer Rights, Complaints And Compensation",
+      "question": "Which of the following appears under KEY TERMS for Topic 25?",
+      "options": [
+        "Data subject",
+        "Settlor",
+        "Alternative Dispute resolution",
+        "Hard & soft facts"
+      ],
+      "answer": 2,
+      "explanation": "'Alternative Dispute resolution' is listed as a key term for Topic 25."
+    },
+    {
+      "section": "Topic 25: Consumer Rights, Complaints And Compensation",
+      "question": "Which of the following appears under KEY TERMS for Topic 25?",
+      "options": [
+        "Mediation",
+        "Par Value",
+        "Reversionary bonus",
+        "Risk Weighted Assets (RWA)"
+      ],
+      "answer": 0,
+      "explanation": "'Mediation' is listed as a key term for Topic 25."
+    },
+    {
+      "section": "Topic 25: Consumer Rights, Complaints And Compensation",
+      "question": "Which of the following appears under KEY TERMS for Topic 25?",
+      "options": [
+        "Money laundering",
+        "based",
+        "Approved",
+        "Eligible Complainant"
+      ],
+      "answer": 3,
+      "explanation": "'Eligible Complainant' is listed as a key term for Topic 25."
+    },
+    {
+      "section": "Topic 25: Consumer Rights, Complaints And Compensation",
+      "question": "What do the Consumer Rights frameworks discussed here primarily aim to ensure?",
+      "options": [
+        "Fairness, transparency and remedies for faulty goods/services",
+        "Setting monetary policy",
+        "Supervising insurance solvency",
+        "Running national payment rails"
+      ],
+      "answer": 0,
+      "explanation": "This reflects content highlighted in Topic 25: Consumer Rights, Complaints And Compensation."
+    }
+  ]
+}
