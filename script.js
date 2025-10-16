@@ -1,322 +1,272 @@
-// ====== CONFIG ======
-const QUESTIONS_URL = './questions.json'; // keep next to index.html
+/* ===========================
+   CeMAP Quiz App (Topics 1–24)
+   =========================== */
 
-// Interstitial ad settings
-const AD_EVERY_N   = 9;              // show ad after every 9th answered question
-const AD_SECONDS   = 5;              // gate for 5 seconds
-const AD_VIDEO_SRC = './ad-5s.mp4';  // put this MP4 next to index.html
+/* ---- Settings ---- */
+const DATA_URL = "data/cemap_topics_1_24_combined.json"; // change if your file path/name differs
+const SECTION_SIZE = 10;   // Section Quiz
+const PRACTICE_SIZE = 100; // Practice Exam
+const PASS_SECTION = 8;    // pass mark for 10Q section
+const PASS_PRACTICE = 70;  // pass mark for 100Q practice
 
-// ====== UTIL ======
-const $ = (id) => document.getElementById(id);
-const esc = (s) =>
-  String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+/* ---- State ---- */
+let QUESTIONS = [];        // full bank
+let ACTIVE = [];           // current quiz set
+let USER = [];             // user answers (indexes)
+let idx = 0;               // current question index
+let mode = "section";      // "section" | "practice"
 
-// Simple array shuffle
-function shuffle(arr) {
+/* ---- Elements ---- */
+const els = {
+  modeRadios: [...document.querySelectorAll('input[name="mode"]')],
+  sectionSelect: document.getElementById("sectionSelect"),
+  startBtn: document.getElementById("startBtn"),
+  dataNote: document.getElementById("dataNote"),
+
+  quiz: document.getElementById("quiz"),
+  questionText: document.getElementById("questionText"),
+  optionsForm: document.getElementById("optionsForm"),
+  nextBtn: document.getElementById("nextBtn"),
+  toggleReviewBtn: document.getElementById("toggleReviewBtn"),
+
+  modeLabel: document.getElementById("modeLabel"),
+  progressBar: document.getElementById("progressBar"),
+  progressTxt: document.getElementById("progress"),
+
+  review: document.getElementById("review"),
+  reviewList: document.getElementById("reviewList"),
+
+  result: document.getElementById("result"),
+  resultTitle: document.getElementById("resultTitle"),
+  resultStats: document.getElementById("resultStats"),
+  restartBtn: document.getElementById("restartBtn"),
+};
+
+/* ---- Init ---- */
+bootstrap();
+
+async function bootstrap() {
+  // Mode switch
+  els.modeRadios.forEach(r => r.addEventListener("change", () => {
+    mode = document.querySelector('input[name="mode"]:checked').value;
+    updateModeChip();
+  }));
+  updateModeChip();
+
+  // Start button
+  els.startBtn.addEventListener("click", startQuiz);
+
+  // Next / Review / Restart
+  els.nextBtn.addEventListener("click", onNext);
+  els.toggleReviewBtn.addEventListener("click", toggleReview);
+  els.restartBtn.addEventListener("click", resetToSetup);
+
+  // Load questions (note: index.html already overrides dropdown; we just load the bank)
+  try {
+    const res = await fetch(DATA_URL);
+    const payload = await res.json();
+    QUESTIONS = payload.questions || [];
+    if (els.dataNote) {
+      els.dataNote.textContent = `Loaded ${QUESTIONS.length} questions`;
+    }
+  } catch (e) {
+    console.error("Failed to load questions:", e);
+    if (els.dataNote) els.dataNote.textContent = "Could not load questions.";
+  }
+}
+
+/* ---- Start a quiz based on selection ---- */
+function startQuiz() {
+  // Determine topic selection. Value is "__ALL__" or "1".."24"
+  const selected = els.sectionSelect.value || "__ALL__";
+  const isAll = (selected === "__ALL__");
+
+  // Filter pool by Topic if a specific Topic chosen
+  let pool = QUESTIONS;
+  if (!isAll) {
+    const prefix = `Topic ${selected}:`;
+    pool = QUESTIONS.filter(q => (q.section || "").startsWith(prefix));
+  }
+
+  // Choose size + pass mark by mode
+  const size = (mode === "practice") ? PRACTICE_SIZE : SECTION_SIZE;
+  const passMark = (mode === "practice") ? PASS_PRACTICE : PASS_SECTION;
+
+  if (pool.length === 0) {
+    toast("No questions for this topic yet.");
+    return;
+  }
+
+  ACTIVE = sampleN(pool, size);
+  USER = new Array(ACTIVE.length).fill(null);
+  idx = 0;
+
+  // Show quiz UI
+  document.getElementById("setup").classList.add("hidden");
+  els.result.classList.add("hidden");
+  els.review.classList.add("hidden");
+  els.quiz.classList.remove("hidden");
+
+  els.modeLabel.textContent = (mode === "practice")
+    ? "Practice exam (100 Q • pass 70)"
+    : "Section quiz (10 Q • pass 8)";
+  els.modeLabel.className = "chip"; // reset class
+
+  renderQuestion();
+  updateProgress();
+}
+
+/* ---- Render current question ---- */
+function renderQuestion() {
+  const q = ACTIVE[idx];
+  els.questionText.textContent = q.question;
+
+  // options
+  els.optionsForm.innerHTML = "";
+  q.options.forEach((opt, i) => {
+    const id = `opt_${idx}_${i}`;
+    const wrapper = document.createElement("label");
+    wrapper.className = "choice";
+    wrapper.htmlFor = id;
+    wrapper.innerHTML = `
+      <input type="radio" name="q_${idx}" id="${id}" value="${i}">
+      <span>${escapeHtml(opt)}</span>
+    `;
+    els.optionsForm.appendChild(wrapper);
+  });
+
+  // restore previous selection if any
+  if (USER[idx] !== null) {
+    const prev = els.optionsForm.querySelector(`input[value="${USER[idx]}"]`);
+    if (prev) prev.checked = true;
+  }
+
+  // Next button text
+  els.nextBtn.textContent = (idx === ACTIVE.length - 1) ? "Submit" : "Next";
+}
+
+/* ---- Next / Submit handler ---- */
+function onNext() {
+  // Save selection if chosen
+  const chosen = els.optionsForm.querySelector("input[type=radio]:checked");
+  USER[idx] = chosen ? Number(chosen.value) : null;
+
+  if (idx < ACTIVE.length - 1) {
+    idx++;
+    renderQuestion();
+    updateProgress();
+    return;
+  }
+
+  // Submit
+  submitQuiz();
+}
+
+/* ---- Progress bar & text ---- */
+function updateProgress() {
+  const total = ACTIVE.length;
+  const current = idx + 1;
+  els.progressTxt.textContent = `Question ${current} of ${total}`;
+  const pct = Math.round((current - 1) / total * 100);
+  els.progressBar.style.width = `${pct}%`;
+}
+
+/* ---- Submit, Score, Review, Results ---- */
+function submitQuiz() {
+  // Tally
+  let correct = 0;
+  const details = [];
+
+  ACTIVE.forEach((q, i) => {
+    const user = USER[i];
+    const ok = (user === q.answer);
+    if (ok) correct++;
+    details.push({
+      i,
+      section: q.section,
+      question: q.question,
+      correctText: q.options[q.answer],
+      userText: (user !== null ? q.options[user] : "—"),
+      ok,
+      explanation: q.explanation || ""
+    });
+  });
+
+  // Decide pass mark
+  const passMark = (mode === "practice") ? PASS_PRACTICE : PASS_SECTION;
+  const total = ACTIVE.length;
+  const pct = Math.round(100 * correct / total);
+  const passed = correct >= passMark;
+
+  // Build review list
+  els.reviewList.innerHTML = "";
+  details.forEach(d => {
+    const row = document.createElement("div");
+    row.className = "review-item";
+    row.innerHTML = `
+      <div class="review-q"><strong>${escapeHtml(d.section)}</strong><br>${escapeHtml(d.question)}</div>
+      <div class="review-a">Correct: <strong>${escapeHtml(d.correctText)}</strong></div>
+      <div class="review-u">Your answer: ${escapeHtml(d.userText)} ${d.ok ? "✅" : "❌"}</div>
+      ${d.explanation ? `<div class="review-expl">${escapeHtml(d.explanation)}</div>` : ""}
+    `;
+    els.reviewList.appendChild(row);
+  });
+
+  // Show results UI
+  els.quiz.classList.add("hidden");
+  els.review.classList.remove("hidden");
+  els.result.classList.remove("hidden");
+
+  els.resultTitle.textContent = passed ? "Pass 🎉" : "Try again 💪";
+  const passText = (mode === "practice") ? `pass ${PASS_PRACTICE}` : `pass ${PASS_SECTION}`;
+  els.resultStats.textContent = `Score: ${correct}/${total} (${pct}%) — required ${passText}`;
+  toast(`You scored ${correct}/${total}`);
+
+  // Fill the bar to 100%
+  els.progressBar.style.width = "100%";
+}
+
+/* ---- Review panel toggle ---- */
+function toggleReview() {
+  els.review.classList.toggle("hidden");
+}
+
+/* ---- Restart ---- */
+function resetToSetup() {
+  els.result.classList.add("hidden");
+  els.quiz.classList.add("hidden");
+  els.review.classList.add("hidden");
+  document.getElementById("setup").classList.remove("hidden");
+  window.scrollTo({ top: document.getElementById("setup").offsetTop, behavior: "smooth" });
+}
+
+/* ---- Helpers ---- */
+function sampleN(arr, n) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
-  return a;
+  return a.slice(0, Math.min(n, a.length));
 }
 
-function showToast(msg) { window.showToast ? window.showToast(msg) : alert(msg); }
-
-// ====== CACHE DOM ======
-const setupEl = $('setup');
-const quizEl = $('quiz');
-const resultEl = $('result');
-
-const sectionPickerEl = $('sectionPicker');
-const sectionSelectEl = $('sectionSelect');
-const dataNoteEl = $('dataNote');
-
-const startBtn = $('startBtn');
-const nextBtn = $('nextBtn');
-const restartBtn = $('restartBtn');
-
-const modeLabelEl = $('modeLabel');
-const progressBarEl = $('progressBar');
-const progressTxtEl = $('progress');
-const questionTextEl = $('questionText');
-const optionsFormEl = $('optionsForm');
-
-const toggleReviewBtn = $('toggleReviewBtn');
-const reviewEl = $('review');
-const reviewListEl = $('reviewList');
-
-// Interstitial ad elements
-const adModal = $('adModal');
-const adVideo = $('adVideo');
-const adSkipBtn = $('adSkipBtn');
-
-// ====== STATE ======
-let allQuestions = [];
-const run = { questions: [], index: 0, correct: 0, answers: [], revealed: false };
-
-// ====== RENDERING ======
-function renderCurrent() {
-  const total = run.questions.length;
-  const i = run.index;
-  const q = run.questions[i];
-  if (!q) return;
-
-  if (!q._view) {
-    const base = q.options.map((_, idx) => idx);
-    q._view = shuffle(base);
-  }
-  const viewOrder = q._view;
-
-  questionTextEl.textContent = q.question;
-  optionsFormEl.innerHTML = viewOrder.map((origIdx, idxInView) => `
-    <label class="choice" data-idx="${origIdx}">
-      <input type="radio" name="choice" value="${idxInView}">
-      <span>${esc(q.options[origIdx])}</span>
-    </label>
-  `).join('');
-
-  const pct = Math.round((i / total) * 100);
-  progressBarEl.style.width = pct + '%';
-  progressTxtEl.textContent = `${i + 1} / ${total}`;
-
-  nextBtn.disabled = true;
-  nextBtn.textContent = 'Reveal answer';
-  optionsFormEl.addEventListener('change', () => {
-    nextBtn.disabled = (getSelectedIndex() === null);
-  }, { once: true });
-
-  if (toggleReviewBtn && reviewEl) {
-    toggleReviewBtn.textContent = 'Review answers';
-    reviewEl.classList.add('hidden');
-  }
-
-  run.revealed = false;
+function escapeHtml(s){
+  return (s || "").toString().replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
 }
 
-function getSelectedIndex() {
-  const picked = optionsFormEl.querySelector('input[name="choice"]:checked');
-  return picked ? Number(picked.value) : null;
+function toast(msg){
+  if (window.showToast) window.showToast(msg);
 }
 
-function revealAnswer(q, chosenOriginal) {
-  const labels = optionsFormEl.querySelectorAll('label.choice');
-  labels.forEach(l => l.classList.add('choice-disabled'));
-  optionsFormEl.querySelectorAll('input[type="radio"]').forEach(i => i.disabled = true);
-
-  const correctLabel = optionsFormEl.querySelector(`label.choice[data-idx="${q.answer}"]`);
-  if (correctLabel) correctLabel.classList.add('choice-correct');
-
-  if (chosenOriginal !== q.answer) {
-    const chosenLabel = optionsFormEl.querySelector(`label.choice[data-idx="${chosenOriginal}"]`);
-    if (chosenLabel) chosenLabel.classList.add('choice-wrong');
+/* ---- Mode chip label ---- */
+function updateModeChip(){
+  const label = (document.querySelector('input[name="mode"]:checked') || {}).value || "section";
+  mode = label;
+  if (els.modeLabel) {
+    els.modeLabel.textContent = (mode === "practice")
+      ? "Practice exam (100 Q • pass 70)"
+      : "Section quiz (10 Q • pass 8)";
   }
 }
-
-// ====== FLOW ======
-function startQuiz() {
-  const mode = document.querySelector('input[name="mode"]:checked')?.value || 'section';
-  let selectedSection = sectionSelectEl?.value || 'All';
-
-  let pool = allQuestions;
-  if (mode === 'section' && selectedSection !== 'All') {
-    const needle = selectedSection.trim().toLowerCase();
-    pool = pool.filter(q => (q.section || '').trim().toLowerCase() === needle);
-  }
-
-  if (!pool.length) {
-    showToast('No questions available for this selection.');
-    return;
-  }
-
-  run.questions = shuffle(pool).slice(0, mode === 'section' ? 10 : 100);
-  run.index = 0;
-  run.correct = 0;
-  run.answers = [];
-
-  modeLabelEl.textContent = (mode === 'section')
-    ? `${selectedSection} • ${run.questions.length}Q`
-    : `Practice • ${run.questions.length}Q`;
-
-  setupEl.classList.add('hidden');
-  resultEl.classList.add('hidden');
-  quizEl.classList.remove('hidden');
-
-  renderCurrent();
-}
-
-function handleNext() {
-  const q = run.questions[run.index];
-
-  if (!run.revealed) {
-    const chosenInView = getSelectedIndex();
-    if (chosenInView === null) { showToast('Pick an answer'); return; }
-    const chosenOriginal = (q._view ? q._view[chosenInView] : chosenInView);
-
-    run.answers.push({ chosen: chosenOriginal, correctIndex: q.answer });
-    if (chosenOriginal === q.answer) run.correct++;
-
-    revealAnswer(q, chosenOriginal);
-    run.revealed = true;
-    nextBtn.textContent = 'Next question';
-    nextBtn.disabled = false;
-    return;
-  }
-
-  run.index++;
-  if (run.index < run.questions.length) {
-    maybeShowAd().then(() => renderCurrent());
-  } else {
-    showResult();
-  }
-}
-
-function showResult() {
-  const total = run.questions.length;
-  const passMark = (total >= 100) ? 70 : 8;
-  $('resultTitle').textContent = (run.correct >= passMark) ? 'Pass 🎉' : 'Keep going 💪';
-  $('resultStats').textContent = `You scored ${run.correct} / ${total}. Pass mark: ${passMark}.`;
-  quizEl.classList.add('hidden');
-  resultEl.classList.remove('hidden');
-}
-
-// ====== REVIEW PANEL ======
-function renderReview() {
-  if (!run.questions.length) { reviewListEl.innerHTML = ''; return; }
-
-  reviewListEl.innerHTML = run.questions.map((q, i) => {
-    const a = run.answers[i];
-    const chosen = a ? a.chosen : null;
-    const correct = q.answer;
-    const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
-
-    const optionsHtml = q.options.map((opt, idx) => {
-      const cls =
-        (idx === correct) ? 'review-opt correct' :
-        (idx === chosen && chosen !== correct) ? 'review-opt wrong' :
-        'review-opt';
-      const letter = letters[idx] || String.fromCharCode(65 + idx);
-      return `<div class="${cls}"><strong>${letter}.</strong> ${esc(opt)}</div>`;
-    }).join('');
-
-    const outcome = (chosen === correct) ? '✅ Correct' : '❌ Incorrect';
-
-    return `
-      <div class="review-q card">
-        <div class="review-title">Q${i + 1}. ${esc(q.question)}</div>
-        ${optionsHtml}
-        <div class="review-expl">${outcome}${q.explanation ? ` — 💡 ${esc(q.explanation)}` : ''}</div>
-      </div>
-    `;
-  }).join('');
-}
-
-// ====== INTERSTITIAL AD ======
-const LS_AD = 'cemapAdStatsV1';
-function adStats() {
-  try { return JSON.parse(localStorage.getItem(LS_AD)) || { plays:0, clicks:0 }; }
-  catch { return { plays:0, clicks:0 }; }
-}
-function saveAdStats(s) { localStorage.setItem(LS_AD, JSON.stringify(s)); }
-
-function playInterstitialAd() {
-  return new Promise((resolve) => {
-    if (!adModal || !adVideo || !adSkipBtn) { resolve(); return; }
-
-    document.body.classList.add('modal-open');
-    const a = adStats(); a.plays++; saveAdStats(a);
-
-    adVideo.src = AD_VIDEO_SRC;
-    adModal.classList.remove('hidden');
-
-    let seconds = AD_SECONDS;
-    adSkipBtn.disabled = true;
-    adSkipBtn.textContent = `Continue in ${seconds}`;
-
-    const timer = setInterval(() => {
-      seconds--;
-      if (seconds > 0) adSkipBtn.textContent = `Continue in ${seconds}`;
-      else { clearInterval(timer); adSkipBtn.disabled = false; adSkipBtn.textContent = 'Continue'; }
-    }, 1000);
-
-    adVideo.play().catch(()=>{});
-    const closeAd = (countClick=false) => {
-      if (countClick) { const b = adStats(); b.clicks++; saveAdStats(b); }
-      adVideo.pause(); adVideo.currentTime = 0; adVideo.src = '';
-      adModal.classList.add('hidden');
-      document.body.classList.remove('modal-open');
-      adSkipBtn.onclick = null; adVideo.onended = null;
-      resolve();
-    };
-    adSkipBtn.onclick = () => { if (!adSkipBtn.disabled) closeAd(true); };
-    adVideo.onended = () => closeAd(false);
-  });
-}
-
-function maybeShowAd() {
-  const answeredCount = run.index;
-  if (answeredCount > 0 && answeredCount % AD_EVERY_N === 0 && run.index < run.questions.length) {
-    return playInterstitialAd();
-  }
-  return Promise.resolve();
-}
-
-// ====== EVENTS ======
-if (startBtn) startBtn.addEventListener('click', startQuiz);
-if (nextBtn) nextBtn.addEventListener('click', handleNext);
-if (restartBtn) restartBtn.addEventListener('click', () => {
-  quizEl.classList.add('hidden');
-  resultEl.classList.add('hidden');
-  setupEl.classList.remove('hidden');
-  if (reviewEl) reviewEl.classList.add('hidden');
-  if (toggleReviewBtn) toggleReviewBtn.textContent = 'Review answers';
-});
-if (toggleReviewBtn && reviewEl) {
-  toggleReviewBtn.addEventListener('click', () => {
-    renderReview();
-    const isHidden = reviewEl.classList.contains('hidden');
-    reviewEl.classList.toggle('hidden', !isHidden);
-    toggleReviewBtn.textContent = isHidden ? 'Hide review' : 'Review answers';
-  });
-}
-document.querySelectorAll('input[name="mode"]').forEach(r => {
-  r.addEventListener('change', (e) => {
-    sectionPickerEl.style.display = (e.target.value === 'section') ? 'block' : 'none';
-  });
-});
-
-// ====== LOAD QUESTIONS ======
-(async () => {
-  try {
-    const res = await fetch(QUESTIONS_URL, { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const raw = await res.text();
-    const data = JSON.parse(raw);
-    if (!Array.isArray(data)) throw new Error('questions.json must be an array');
-
-    const valid = [];
-    const issues = [];
-    data.forEach((q, i) => {
-      if (!q || typeof q !== 'object') return;
-      if (!q.question || !Array.isArray(q.options)) return;
-      const ans = Number(q.answer);
-      if (isNaN(ans) || ans < 0 || ans >= q.options.length) return;
-      valid.push({
-        section: q.section || 'General',
-        question: q.question,
-        options: q.options,
-        answer: ans,
-        explanation: q.explanation || ''
-      });
-    });
-    allQuestions = valid;
-
-    const sections = ['All', ...[...new Set(allQuestions.map(q => q.section))]];
-    sectionSelectEl.innerHTML = sections.map(s => `<option>${esc(s)}</option>`).join('');
-    dataNoteEl.textContent = `Loaded ${allQuestions.length} valid questions.`;
-    startBtn.disabled = allQuestions.length === 0;
-  } catch (err) {
-    dataNoteEl.textContent = `Error: ${err.message}`;
-    startBtn.disabled = true;
-  }
-})();
