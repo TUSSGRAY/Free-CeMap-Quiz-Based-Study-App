@@ -215,19 +215,82 @@
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 2200);
     };
-    
   </script>
+
   <!-- 5-second advert popup -->
-<div id="adModal" class="modal hidden">
-  <div class="modal-body">
-    <h3>Sponsored break</h3>
-    <video id="adVideo" muted playsinline></video>
-    <div class="ad-controls">
-      <button id="adSkipBtn" class="btn btn-secondary" disabled>Continue in 5</button>
+  <div id="adModal" class="modal hidden">
+    <div class="modal-body">
+      <h3>Sponsored break</h3>
+      <video id="adVideo" muted playsinline></video>
+      <div class="ad-controls">
+        <button id="adSkipBtn" class="btn btn-secondary" disabled>Continue in 5</button>
+      </div>
+      <p class="ad-note">Thanks for supporting this free site 🙌</p>
     </div>
-    <p class="ad-note">Thanks for supporting this free site 🙌</p>
   </div>
-</div>
+
   <script src="./script.js"></script>
+
+  <!-- ▼▼▼ NEW: Override dropdown with Topics 1–24 from your JSON ▼▼▼ -->
+  <script>
+  (function(){
+    const DATA_URL = "data/cemap_topics_1_24_combined.json"; // change if your file/path differs
+    const select = document.getElementById("sectionSelect");
+    const note   = document.getElementById("dataNote");
+
+    // Build Topic index from section strings like: "Topic 2: Economic Policy ..."
+    function buildTopicIndex(qs) {
+      const map = new Map();
+      const re = /^Topic\s*(\d{1,2})\s*:\s*(.+)$/i;
+      for (const q of qs) {
+        const sec = (q.section || "").trim();
+        const m = sec.match(re);
+        if (!m) continue;
+        const num = Number(m[1]);
+        const title = m[2].trim();
+        const item = map.get(num) || { num, title, count: 0 };
+        item.count += 1;
+        if (!item.title && title) item.title = title;
+        map.set(num, item);
+      }
+      // If you only want up to Topic 24, uncomment the next line:
+      // for (const k of [...map.keys()]) if (k > 24) map.delete(k);
+      return [...map.values()].sort((a,b) => a.num - b.num);
+    }
+
+    async function init() {
+      try {
+        const res = await fetch(DATA_URL);
+        const payload = await res.json();
+        const QUESTIONS = payload.questions || [];
+
+        const topics = buildTopicIndex(QUESTIONS);
+
+        // Replace whatever script.js put in the select
+        select.innerHTML = "";
+        select.appendChild(new Option("All topics", "__ALL__"));
+        for (const t of topics) {
+          const label = `Topic ${t.num}: ${t.title} (${t.count})`;
+          select.appendChild(new Option(label, String(t.num)));
+        }
+        if (note) {
+          note.textContent = `Loaded ${QUESTIONS.length} questions • ${topics.length} topics`;
+        }
+      } catch (err) {
+        console.error("Topic dropdown init failed:", err);
+        if (note) note.textContent = "Could not load topics JSON.";
+      }
+    }
+
+    // Run after script.js has done its thing, so we override any Unit options
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      setTimeout(init, 0);
+    }
+  })();
+  </script>
+  <!-- ▲▲▲ NEW: End override ▲▲▲ -->
+
 </body>
 </html>
