@@ -1,14 +1,27 @@
 // ====== CONFIG ======
 const QUESTIONS_URL = './questions.json'; // keep next to index.html
 
-// Show a 5-second video after every 9th answered question (but not after the last)
-const AD_EVERY_N   = 9;
-const AD_SECONDS   = 5;
-const AD_VIDEO_SRC = './ad-5s.mp4'; // put this MP4 next to index.html
+// Interstitial ad settings
+const AD_EVERY_N   = 9;              // show ad after every 9th answered question
+const AD_SECONDS   = 5;              // gate for 5 seconds
+const AD_VIDEO_SRC = './ad-5s.mp4';  // put this MP4 next to index.html
 
 // ====== UTIL ======
 const $ = (id) => document.getElementById(id);
-const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+const esc = (s) =>
+  String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+
+// Simple array shuffle (in-place copy)
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function showToast(msg) { window.showToast ? window.showToast(msg) : alert(msg); }
 
 // ====== CACHE DOM ======
 const setupEl         = $('setup');
@@ -39,28 +52,14 @@ const adVideo   = $('adVideo');
 const adSkipBtn = $('adSkipBtn');
 
 // ====== STATE ======
-let allQuestions = [];   // validated questions
+let allQuestions = [];   // validated questions from JSON
 const run = {
   questions: [],
-  index: 0,     // 0-based current question index
+  index: 0,        // 0-based
   correct: 0,
-  answers: []   // { chosen, correctIndex }
+  answers: [],     // { chosen, correctIndex }
+  revealed: false, // has the current question been revealed?
 };
-
-// ====== HELPERS ======
-function shuffle(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-function getSelectedIndex() {
-  const picked = optionsFormEl.querySelector('input[name="choice"]:checked');
-  return picked ? Number(picked.value) : null;
-}
-function showToast(msg) { window.showToast ? window.showToast(msg) : alert(msg); }
 
 // ====== RENDERING ======
 function renderCurrent() {
@@ -69,14 +68,21 @@ function renderCurrent() {
   const q = run.questions[i];
   if (!q) return;
 
-  // Question
+  // Build & cache a shuffled view order ONCE per question
+  if (!q._view) {
+    const base = q.options.map((_, idx) => idx); // [0,1,2,3...]
+    q._view = shuffle(base);                     // shuffled original indices
+  }
+  const viewOrder = q._view;
+
+  // Question text
   questionTextEl.textContent = q.question;
 
-  // Options
-  optionsFormEl.innerHTML = q.options.map((opt, idx) => `
-    <label class="choice">
-      <input type="radio" name="choice" value="${idx}">
-      <span>${esc(opt)}</span>
+  // Render options as labels with a data-idx that points to ORIGINAL option index
+  optionsFormEl.innerHTML = viewOrder.map((origIdx, idxInView) => `
+    <label class="choice" data-idx="${origIdx}">
+      <input type="radio" name="choice" value="${idxInView}">
+      <span>${esc(q.options[origIdx])}</span>
     </label>
   `).join('');
 
@@ -85,16 +91,42 @@ function renderCurrent() {
   progressBarEl.style.width = pct + '%';
   progressTxtEl.textContent = `${i + 1} / ${total}`;
 
-  // Next disabled until pick
+  // Ensure Next is disabled until a choice is made
   nextBtn.disabled = true;
+  nextBtn.textContent = 'Reveal answer';
   optionsFormEl.addEventListener('change', () => {
     nextBtn.disabled = (getSelectedIndex() === null);
   }, { once: true });
 
-  // Ensure review panel is closed when a new question renders
+  // Close review panel if open
   if (toggleReviewBtn && reviewEl) {
     toggleReviewBtn.textContent = 'Review answers';
     reviewEl.classList.add('hidden');
+  }
+
+  // Mark current question as not yet revealed
+  run.revealed = false;
+}
+
+function getSelectedIndex() {
+  const picked = optionsFormEl.querySelector('input[name="choice"]:checked');
+  return picked ? Number(picked.value) : null; // index in VIEW space
+}
+
+function revealAnswer(q, chosenOriginal) {
+  // Disable all choices
+  const labels = optionsFormEl.querySelectorAll('label.choice');
+  labels.forEach(l => l.classList.add('choice-disabled'));
+  optionsFormEl.querySelectorAll('input[type="radio"]').forEach(i => i.disabled = true);
+
+  // Highlight correct in green
+  const correctLabel = optionsFormEl.querySelector(`label.choice[data-idx="${q.answer}"]`);
+  if (correctLabel) correctLabel.classList.add('choice-correct');
+
+  // If wrong, mark chosen in red
+  if (chosenOriginal !== q.answer) {
+    const chosenLabel = optionsFormEl.querySelector(`label.choice[data-idx="${chosenOriginal}"]`);
+    if (chosenLabel) chosenLabel.classList.add('choice-wrong');
   }
 }
 
@@ -116,6 +148,7 @@ function startQuiz() {
     return;
   }
 
+  // 10 for section, up to 100 for practice
   run.questions = shuffle(pool).slice(0, mode === 'section' ? 10 : 100);
   run.index = 0;
   run.correct = 0;
@@ -134,20 +167,33 @@ function startQuiz() {
 
 function handleNext() {
   const q = run.questions[run.index];
-  const chosen = getSelectedIndex();
-  if (chosen === null) {
-    showToast('Pick an answer to continue');
+
+  // First click after a selection -> reveal
+  if (!run.revealed) {
+    const chosenInView = getSelectedIndex();
+    if (chosenInView === null) {
+      showToast('Pick an answer to continue');
+      return;
+    }
+
+    // Translate from view index to original option index
+    const chosenOriginal = (q._view ? q._view[chosenInView] : chosenInView);
+
+    // Record result once
+    run.answers.push({ chosen: chosenOriginal, correctIndex: q.answer });
+    if (chosenOriginal === q.answer) run.correct++;
+
+    // Reveal highlights; stay on question
+    revealAnswer(q, chosenOriginal);
+    run.revealed = true;
+    nextBtn.textContent = 'Next question';
+    nextBtn.disabled = false; // ensure enabled after reveal
     return;
   }
 
-  const correctIndex = q.answer;
-  run.answers.push({ chosen, correctIndex });
-  if (chosen === correctIndex) run.correct++;
-
+  // Second click -> advance (and maybe show ad)
   run.index++;
-
   if (run.index < run.questions.length) {
-    // Show interstitial ad after every 9th answered question before rendering next
     maybeShowAd().then(() => renderCurrent());
   } else {
     showResult();
@@ -180,8 +226,8 @@ function renderReview() {
             return `<div>${mark} ${esc(opt)}</div>`;
           }).join('')}
         </div>
-        ${q.explanation ? `<div style="margin-top:6px; color:#a9b2d6;">💡 ${esc(q.explanation)}</div>` : ''}
-        <div style="margin-top:6px; ${isCorrect ? 'color:#6be38f' : 'color:#ff9b9b'};">
+        ${q.explanation ? `<div style="margin-top:6px; color:#475569;">💡 ${esc(q.explanation)}</div>` : ''}
+        <div style="margin-top:6px; ${isCorrect ? 'color:#16a34a' : 'color:#ef4444'};">
           ${isCorrect ? 'Correct' : 'Incorrect'}
         </div>
       </div>
@@ -190,9 +236,22 @@ function renderReview() {
 }
 
 // ====== INTERSTITIAL AD ======
+const LS_AD = 'cemapAdStatsV1';
+function adStats() {
+  try { return JSON.parse(localStorage.getItem(LS_AD)) || { plays:0, clicks:0 }; }
+  catch { return { plays:0, clicks:0 }; }
+}
+function saveAdStats(s) { localStorage.setItem(LS_AD, JSON.stringify(s)); }
+
 function playInterstitialAd() {
   return new Promise((resolve) => {
     if (!adModal || !adVideo || !adSkipBtn) { resolve(); return; }
+
+    // lock background scroll
+    document.body.classList.add('modal-open');
+
+    // count a play
+    const a = adStats(); a.plays++; saveAdStats(a);
 
     adVideo.src = AD_VIDEO_SRC;
     adModal.classList.remove('hidden');
@@ -212,27 +271,26 @@ function playInterstitialAd() {
       }
     }, 1000);
 
-    // Try autoplay (muted + playsinline improves success on mobile)
-    adVideo.play().catch(() => { /* if blocked, countdown still runs */ });
+    // Try autoplay
+    adVideo.play().catch(() => { /* countdown still runs if blocked */ });
 
-    const closeAd = () => {
-      adVideo.pause();
-      adVideo.currentTime = 0;
-      adVideo.src = '';
+    const closeAd = (countClick=false) => {
+      if (countClick) { const b = adStats(); b.clicks++; saveAdStats(b); }
+      adVideo.pause(); adVideo.currentTime = 0; adVideo.src = '';
       adModal.classList.add('hidden');
-      adSkipBtn.onclick = null;
-      adVideo.onended = null;
+      document.body.classList.remove('modal-open'); // unlock
+      adSkipBtn.onclick = null; adVideo.onended = null;
       resolve();
     };
 
-    adSkipBtn.onclick = () => { if (!adSkipBtn.disabled) closeAd(); };
-    adVideo.onended = closeAd;
+    adSkipBtn.onclick = () => { if (!adSkipBtn.disabled) closeAd(true); };
+    adVideo.onended = () => closeAd(false);
   });
 }
 
 function maybeShowAd() {
-  // After Q9, Q18, Q27... (i.e., after incrementing index), but not when quiz is finished
-  const answeredCount = run.index; // number already answered
+  // After Q9, Q18, Q27... (i.e., after incrementing index), but not when finished
+  const answeredCount = run.index;
   if (answeredCount > 0 && answeredCount % AD_EVERY_N === 0 && run.index < run.questions.length) {
     return playInterstitialAd();
   }
@@ -313,7 +371,7 @@ document.querySelectorAll('input[name="mode"]').forEach(r => {
     console.log('Validated questions:', allQuestions.length, allQuestions);
 
     // Build sections (case-insensitive unique), with “All” first
-    const sectionSet = new Map(); // lowercased -> original display
+    const sectionSet = new Map(); // lowercased -> display
     allQuestions.forEach(q => {
       const key = q.section.trim().toLowerCase();
       if (!sectionSet.has(key)) sectionSet.set(key, q.section);
