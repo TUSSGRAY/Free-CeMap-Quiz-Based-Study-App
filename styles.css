@@ -198,3 +198,25 @@ select{
 /* Helpers */
 .hidden{ display:none !important; }
 code{ background:#f3f4f6; padding:2px 6px; border-radius:6px; }
+/* 5-second advert popup styling */
+.modal.hidden { display: none !important; }
+.modal {
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  background: rgba(6, 8, 20, 0.75);
+  z-index: 9999;
+}
+.modal-body {
+  width: min(680px, 92vw);
+  background: #161b2e;
+  border: 1px solid #2a315a;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+#adVideo {
+  width: 100%; max-height: 60vh; border-radius: 10px;
+  background: #0f1430;
+}
+.ad-controls { margin-top: 10px; }
+.ad-note { margin: 8px 0 0; color: #a9b2d6; font-size: .9rem; }
