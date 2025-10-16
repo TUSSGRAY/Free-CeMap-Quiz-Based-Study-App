@@ -215,8 +215,19 @@
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 2200);
     };
+    
   </script>
-
+  <!-- 5-second advert popup -->
+<div id="adModal" class="modal hidden">
+  <div class="modal-body">
+    <h3>Sponsored break</h3>
+    <video id="adVideo" muted playsinline></video>
+    <div class="ad-controls">
+      <button id="adSkipBtn" class="btn btn-secondary" disabled>Continue in 5</button>
+    </div>
+    <p class="ad-note">Thanks for supporting this free site 🙌</p>
+  </div>
+</div>
   <script src="./script.js"></script>
 </body>
 </html>
