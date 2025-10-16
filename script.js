@@ -1,5 +1,5 @@
 /* ===========================
-   CeMAP Quiz App (Full Version with Colour Feedback + Review Fixes)
+   CeMAP Quiz App (with visual feedback fixed)
    =========================== */
 
 const CANDIDATE_URLS = [
@@ -84,8 +84,7 @@ async function loadQuestionsRobust() {
       let payload;
       try {
         payload = JSON.parse(text);
-      } catch (e) {
-        console.error(`[quiz] ${url} JSON parse error`);
+      } catch {
         continue;
       }
 
@@ -227,6 +226,7 @@ function renderQuestion() {
     els.optionsForm.appendChild(label);
   });
 
+  // Ensure we only process the first selection for this question
   els.optionsForm.addEventListener("change", handleAnswerSelection, { once: true });
   els.nextBtn.textContent = (idx === ACTIVE.length - 1) ? "Submit" : "Next";
 }
@@ -237,21 +237,27 @@ function handleAnswerSelection(e) {
   USER[idx] = selected;
 
   const labels = [...els.optionsForm.querySelectorAll("label")];
+
+  // Disable all inputs, apply classes aligned with CSS: .choice.correct / .choice.wrong / .choice.disabled
   labels.forEach((lbl, i) => {
-    lbl.classList.add("choice-disabled");
+    lbl.classList.add("disabled");
     if (i === q.answer) {
-      lbl.classList.add("choice-correct");
-    } else if (i === selected) {
-      lbl.classList.add("choice-wrong");
+      lbl.classList.add("correct");   // highlight the correct answer
     }
-    lbl.querySelector("input").disabled = true;
+    if (i === selected && selected !== q.answer) {
+      lbl.classList.add("wrong");     // selected wrong goes red
+    }
+    const input = lbl.querySelector("input");
+    if (input) input.disabled = true;
   });
 
+  // Explanation block
   const expl = document.createElement("p");
   expl.className = "explanation";
   expl.textContent = q.explanation || "No explanation provided.";
   els.optionsForm.appendChild(expl);
 
+  // Toast feedback
   if (selected === q.answer) {
     toast("✅ Correct!");
   } else {
@@ -306,13 +312,14 @@ function submitQuiz() {
   const passReq = (mode === "practice") ? PASS_PRACTICE : PASS_SECTION;
   const passed = correct >= passReq;
 
+  // Build review list with clear reveal of each question's correct answer
   els.reviewList.innerHTML = "";
   rows.forEach(r => {
     const div = document.createElement("div");
     div.className = "review-item";
     div.innerHTML = `
       <div class="review-q"><strong>${escapeHtml(r.section)}</strong><br>${escapeHtml(r.question)}</div>
-      <div class="review-a ${r.ok ? "choice-correct" : "choice-wrong"}">
+      <div class="review-a ${r.ok ? "correct" : "wrong"}">
         Correct: <strong>${escapeHtml(r.correctText)}</strong>
       </div>
       <div class="review-u">
