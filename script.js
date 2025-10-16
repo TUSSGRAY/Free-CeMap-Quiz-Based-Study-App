@@ -1,9 +1,7 @@
 /* ===========================
-   CeMAP Quiz App (robust topic loader)
+   CeMAP Quiz App (with visual feedback)
    =========================== */
 
-/* 1) EDIT THIS LIST to include the exact path to your JSON if you know it.
-      The script will try each, in order, until one works. */
 const CANDIDATE_URLS = [
   "data/cemap_topics_1_24_combined.json",
   "./data/cemap_topics_1_24_combined.json",
@@ -20,9 +18,9 @@ const PRACTICE_SIZE = 100;
 const PASS_SECTION = 8;
 const PASS_PRACTICE = 70;
 
-let QUESTIONS = [];   // full bank
-let ACTIVE = [];      // current quiz set
-let USER = [];        // user answers
+let QUESTIONS = [];
+let ACTIVE = [];
+let USER = [];
 let idx = 0;
 let mode = "section";
 
@@ -31,16 +29,13 @@ const els = {
   sectionSelect: document.getElementById("sectionSelect"),
   startBtn: document.getElementById("startBtn"),
   dataNote: document.getElementById("dataNote"),
-
   setup: document.getElementById("setup"),
   quiz: document.getElementById("quiz"),
   result: document.getElementById("result"),
-
   questionText: document.getElementById("questionText"),
   optionsForm: document.getElementById("optionsForm"),
   nextBtn: document.getElementById("nextBtn"),
   toggleReviewBtn: document.getElementById("toggleReviewBtn"),
-
   modeLabel: document.getElementById("modeLabel"),
   progressBar: document.getElementById("progressBar"),
   progressTxt: document.getElementById("progress"),
@@ -66,8 +61,6 @@ async function bootstrap() {
   els.restartBtn.addEventListener("click", resetToSetup);
 
   QUESTIONS = await loadQuestionsRobust();
-
-  // If some other script already loaded a bank into window.QUESTIONS, use it
   if ((!QUESTIONS || QUESTIONS.length === 0) && Array.isArray(window.QUESTIONS)) {
     console.warn("[quiz] Falling back to window.QUESTIONS");
     QUESTIONS = normalizeBank(window.QUESTIONS);
@@ -83,35 +76,23 @@ async function bootstrap() {
 async function loadQuestionsRobust() {
   for (const url of CANDIDATE_URLS) {
     try {
-      console.log(`[quiz] Trying ${url}`);
       const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) {
-        console.warn(`[quiz] ${url} -> HTTP ${res.status}`);
-        continue;
-      }
+      if (!res.ok) continue;
       const text = await res.text();
-      // quick sanity: empty file?
-      if (!text || !text.trim()) {
-        console.warn(`[quiz] ${url} -> empty file`);
-        continue;
-      }
-      // Try parse JSON
+      if (!text.trim()) continue;
+
       let payload;
       try {
         payload = JSON.parse(text);
       } catch (e) {
-        console.error(`[quiz] ${url} -> JSON parse error:`, e);
-        console.error(`[quiz] First 200 chars:\n${text.slice(0,200)}…`);
+        console.error(`[quiz] ${url} JSON parse error`);
         continue;
       }
+
       const bank = extractQuestions(payload);
       if (bank.length) {
-        console.log(`[quiz] Loaded ${bank.length} questions from ${url}`);
-        // show a quick “open data” link for debugging
         addDataLink(url);
         return bank;
-      } else {
-        console.warn(`[quiz] ${url} parsed, but did not contain questions[] or an array`);
       }
     } catch (e) {
       console.warn(`[quiz] Fetch failed for ${url}:`, e);
@@ -133,7 +114,6 @@ function addDataLink(url) {
   note.appendChild(a);
 }
 
-/* Accepts {questions:[...]} or raw [...] */
 function extractQuestions(payload) {
   if (!payload) return [];
   if (Array.isArray(payload)) return normalizeBank(payload);
@@ -141,7 +121,6 @@ function extractQuestions(payload) {
   return [];
 }
 
-/* Normalize to {section, question, options, answer, explanation} */
 function normalizeBank(arr) {
   return arr.map(x => {
     const section = (x.section || x.topic || "").toString();
@@ -161,19 +140,17 @@ function normalizeBank(arr) {
 }
 
 /* ----------------
-   Topic dropdown from QUESTIONS
+   Topic dropdown
 ------------------*/
 function populateTopicDropdown(bank) {
   const sel = els.sectionSelect;
   if (!sel) return;
 
-  const topics = buildTopicIndex(bank); // [{num, title, count}]
-  sel.innerHTML = ""; // wipe any Unit options
+  const topics = buildTopicIndex(bank);
+  sel.innerHTML = "";
   sel.appendChild(new Option("All topics", "__ALL__"));
 
   topics.forEach(t => {
-    // Strictly 1..24? uncomment next line:
-    // if (t.num < 1 || t.num > 24) return;
     const label = `Topic ${t.num}: ${t.title} (${t.count})`;
     sel.appendChild(new Option(label, String(t.num)));
   });
@@ -193,18 +170,17 @@ function buildTopicIndex(bank) {
     const title = m[2].trim();
     const item = map.get(num) || { num, title, count: 0 };
     item.count += 1;
-    if (!item.title && title) item.title = title;
     map.set(num, item);
   }
   return [...map.values()].sort((a, b) => a.num - b.num);
 }
 
 /* ----------------
-   Start a quiz
+   Start Quiz
 ------------------*/
 function startQuiz() {
   const selected = els.sectionSelect.value || "__ALL__";
-  const isAll = (selected === "__ALL__");
+  const isAll = selected === "__ALL__";
   let pool = QUESTIONS;
 
   if (!isAll) {
@@ -233,7 +209,7 @@ function startQuiz() {
 }
 
 /* ----------------
-   Render Q / Next
+   Render Question + Feedback
 ------------------*/
 function renderQuestion() {
   const q = ACTIVE[idx];
@@ -251,18 +227,37 @@ function renderQuestion() {
     els.optionsForm.appendChild(label);
   });
 
-  if (USER[idx] !== null) {
-    const prev = els.optionsForm.querySelector(`input[value="${USER[idx]}"]`);
-    if (prev) prev.checked = true;
-  }
-
+  els.optionsForm.addEventListener("change", handleAnswerSelection, { once: true });
   els.nextBtn.textContent = (idx === ACTIVE.length - 1) ? "Submit" : "Next";
 }
 
-function onNext() {
-  const chosen = els.optionsForm.querySelector("input[type=radio]:checked");
-  USER[idx] = chosen ? Number(chosen.value) : null;
+function handleAnswerSelection(e) {
+  const selected = parseInt(e.target.value);
+  const q = ACTIVE[idx];
+  USER[idx] = selected;
 
+  const labels = [...els.optionsForm.querySelectorAll("label")];
+  labels.forEach((lbl, i) => {
+    lbl.classList.add(i === q.answer ? "correct" : i === selected ? "wrong" : "");
+    lbl.querySelector("input").disabled = true;
+  });
+
+  const expl = document.createElement("p");
+  expl.className = "explanation";
+  expl.textContent = q.explanation || "No explanation provided.";
+  els.optionsForm.appendChild(expl);
+
+  if (selected === q.answer) {
+    toast("✅ Correct!");
+  } else {
+    toast(`❌ Incorrect. Correct: ${q.options[q.answer]}`);
+  }
+}
+
+/* ----------------
+   Navigation
+------------------*/
+function onNext() {
   if (idx < ACTIVE.length - 1) {
     idx++;
     renderQuestion();
@@ -273,7 +268,7 @@ function onNext() {
 }
 
 /* ----------------
-   Progress / Score
+   Progress & Score
 ------------------*/
 function updateProgress() {
   const total = ACTIVE.length;
@@ -289,7 +284,7 @@ function submitQuiz() {
 
   ACTIVE.forEach((q, i) => {
     const user = USER[i];
-    const ok = (user === q.answer);
+    const ok = user === q.answer;
     if (ok) correct++;
     rows.push({
       section: q.section,
@@ -302,7 +297,7 @@ function submitQuiz() {
   });
 
   const total = ACTIVE.length;
-  const pct = Math.round(100 * correct / total);
+  const pct = Math.round((correct / total) * 100);
   const passReq = (mode === "practice") ? PASS_PRACTICE : PASS_SECTION;
   const passed = correct >= passReq;
 
@@ -327,6 +322,10 @@ function submitQuiz() {
   els.progressBar.style.width = "100%";
   toast(`You scored ${correct}/${total}`);
 }
+
+/* ----------------
+   Reset / Helpers
+------------------*/
 function resetToSetup() {
   els.quiz.classList.add("hidden");
   els.result.classList.add("hidden");
@@ -337,9 +336,6 @@ function resetToSetup() {
   ACTIVE = [];
 }
 
-/* ----------------
-   Helpers
-------------------*/
 function sampleN(arr, n) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -348,13 +344,16 @@ function sampleN(arr, n) {
   }
   return a.slice(0, Math.min(n, a.length));
 }
-function escapeHtml(s){
+
+function escapeHtml(s) {
   return (s || "").toString().replace(/[&<>"']/g, c => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[c]));
 }
-function toast(msg){ if (window.showToast) window.showToast(msg); }
-function updateModeChip(){
+
+function toast(msg) { if (window.showToast) window.showToast(msg); }
+
+function updateModeChip() {
   const val = (document.querySelector('input[name="mode"]:checked') || {}).value || "section";
   mode = val;
   els.modeLabel.textContent = (mode === "practice")
