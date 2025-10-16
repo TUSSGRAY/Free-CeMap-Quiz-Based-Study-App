@@ -327,6 +327,15 @@ function submitQuiz() {
   els.progressBar.style.width = "100%";
   toast(`You scored ${correct}/${total}`);
 }
+function resetToSetup() {
+  els.quiz.classList.add("hidden");
+  els.result.classList.add("hidden");
+  els.setup.classList.remove("hidden");
+  els.review.classList.add("hidden");
+  idx = 0;
+  USER = [];
+  ACTIVE = [];
+}
 
 /* ----------------
    Helpers
