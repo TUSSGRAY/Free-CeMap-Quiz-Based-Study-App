@@ -1,76 +1,269 @@
-:root { --primary:#2442A2; --bg:#0e1222; --card:#161b2e; --text:#e9edff; --muted:#a9b2d6; }
+// ====== CONFIG ======
+const QUESTIONS_URL = './questions.json'; // place questions.json next to index.html
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--text); background: linear-gradient(180deg, #0d1120, #0b0f1b); }
-.wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+// ====== UTIL ======
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 
-.topbar { position: sticky; top: 0; background: rgba(10,14,30,.7); backdrop-filter: blur(8px); border-bottom: 1px solid #222944; z-index: 10; }
-.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
-.brand { display:flex; align-items:center; gap:10px; font-weight: 700; }
-.i { width: 20px; height: 20px; color: var(--text); }
-.i.big { width: 36px; height: 36px; }
+// ====== CACHE DOM ======
+const setupEl         = $('setup');
+const quizEl          = $('quiz');
+const resultEl        = $('result');
 
-.nav a { color: var(--muted); text-decoration: none; margin-left: 16px; }
-.nav a:hover { color: var(--text); }
+const sectionPickerEl = $('sectionPicker');
+const sectionSelectEl = $('sectionSelect');
+const dataNoteEl      = $('dataNote');
 
-.hero { padding: 48px 0 24px; background: radial-gradient(1200px 400px at 50% -80px, rgba(36,66,162,.25), transparent); }
-.hero-inner { display:flex; align-items:center; justify-content: space-between; gap: 24px; }
-.hero-copy h1 { margin: 0 0 8px; }
-.hero-copy p { color: var(--muted); margin: 0 0 16px; }
-.hero-art { display:grid; grid-template-columns: repeat(2, minmax(120px, 1fr)); gap: 12px; }
-.hero .tile { background: #151a2d; border: 1px solid #20274a; border-radius: 10px; padding: 12px; display:flex; align-items:center; gap: 10px; }
+const startBtn        = $('startBtn');
+const nextBtn         = $('nextBtn');
+const restartBtn      = $('restartBtn');
 
-.app { padding: 24px 0 64px; }
-.stack { margin: 32px 0; }
-.cards { display:grid; grid-template-columns: 2fr 1fr; gap: 16px; }
-.card { background: var(--card); border: 1px solid #20274a; border-radius: 12px; padding: 16px; }
-.card-head { display:flex; align-items:center; gap: 10px; margin-bottom: 12px; }
+const modeLabelEl     = $('modeLabel');
+const progressBarEl   = $('progressBar');
+const progressTxtEl   = $('progress');
+const questionTextEl  = $('questionText');
+const optionsFormEl   = $('optionsForm');
 
-.field { margin: 12px 0; }
-.field label { display:block; margin-bottom: 6px; color: var(--muted); }
-select { background: #0f1430; color: var(--text); border: 1px solid #2a315a; border-radius: 8px; padding: 10px; width: 100%; }
+const toggleReviewBtn = $('toggleReviewBtn');
+const reviewEl        = $('review');
+const reviewListEl    = $('reviewList');
 
-.options-grid { display:grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin: 12px 0 8px; }
-.option { display:flex; gap: 10px; align-items:center; padding: 10px; border: 1px solid #283058; border-radius: 10px; cursor: pointer; }
-.option input { accent-color: var(--primary); }
+// ====== STATE ======
+let allQuestions = [];   // loaded + validated questions
+const run = {
+  questions: [],
+  index: 0,
+  correct: 0,
+  answers: [] // { chosen, correctIndex }
+};
 
-.actions { display:flex; align-items:center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
-.btn { border: 1px solid #2a315a; background: #141a33; color: var(--text); padding: 10px 14px; border-radius: 10px; cursor: pointer; }
-.btn-primary { background: var(--primary); border-color: #2f50bf; }
-.btn-secondary { background: #202955; }
-.btn:disabled { opacity: .6; cursor: not-allowed; }
-.btn-link { background: transparent; border: none; color: var(--primary); text-decoration: underline; cursor: pointer; }
+// ====== HELPERS ======
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function getSelectedIndex() {
+  const picked = optionsFormEl.querySelector('input[name="choice"]:checked');
+  return picked ? Number(picked.value) : null;
+}
+function showToast(msg) { window.showToast ? window.showToast(msg) : alert(msg); }
 
-.note { color: #9fb0ff; font-size: .9rem; }
+// ====== RENDERING ======
+function renderCurrent() {
+  const total = run.questions.length;
+  const i = run.index;
+  const q = run.questions[i];
+  if (!q) return;
 
-.quiz-top { display:flex; align-items:center; gap: 10px; }
-.chip { background: #202955; padding: 6px 10px; border-radius: 999px; }
-.progress-wrap { background: #0f1430; border: 1px solid #2a315a; border-radius: 999px; height: 10px; flex: 1; overflow: hidden; }
-.progress-bar { background: var(--primary); height: 100%; width: 0%; transition: width .2s ease; }
-.progress-txt { min-width: 64px; text-align: right; color: var(--muted); }
+  // Question text
+  questionTextEl.textContent = q.question;
 
-.question { margin: 16px 0 10px; }
-.choices { display:grid; gap: 10px; }
-.choice { display:flex; gap: 10px; align-items:flex-start; padding: 10px; border: 1px solid #283058; border-radius: 10px; cursor: pointer; }
-.choice input { margin-top: 4px; accent-color: var(--primary); }
+  // Options
+  optionsFormEl.innerHTML = q.options.map((opt, idx) => `
+    <label class="choice">
+      <input type="radio" name="choice" value="${idx}">
+      <span>${esc(opt)}</span>
+    </label>
+  `).join('');
 
-.result .lead { color: var(--muted); }
+  // Progress
+  const pct = Math.round((i / total) * 100);
+  progressBarEl.style.width = pct + '%';
+  progressTxtEl.textContent = `${i + 1} / ${total}`;
 
-.footer { border-top: 1px solid #222944; padding: 16px 0; color: var(--muted); }
+  // Next is disabled until the user picks
+  nextBtn.disabled = true;
+  optionsFormEl.addEventListener('change', () => {
+    nextBtn.disabled = (getSelectedIndex() === null);
+  }, { once: true });
 
-.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: #111735; border: 1px solid #2a315a; color: #e9edff; padding: 10px 14px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
-.toast.show { opacity: 1; }
-
-.badges { display:flex; gap: 8px; flex-wrap: wrap; }
-.badge { background:#1a1f3a; border:1px solid #293262; padding:4px 8px; border-radius:999px; color:#a9b2d6; font-size:.85rem; }
-
-.hidden { display: none !important; }
-
-@media (max-width: 900px) {
-  .cards { grid-template-columns: 1fr; }
-  .hero-inner { flex-direction: column; align-items: flex-start; }
+  // Clear review button label for consistency
+  toggleReviewBtn.textContent = 'Review answers';
+  reviewEl.classList.add('hidden');
 }
 
+// ====== FLOW ======
+function startQuiz() {
+  const mode = document.querySelector('input[name="mode"]:checked')?.value || 'section';
+  const selectedSection = sectionSelectEl?.value;
 
+  // Build question pool
+  let pool = allQuestions;
+  if (mode === 'section') {
+    pool = pool.filter(q => q.section === selectedSection);
+  }
 
+  if (!pool.length) {
+    showToast('No questions for this selection yet.');
+    return;
+  }
 
+  // Size: 10 for section, up to 100 for practice
+  run.questions = shuffle(pool).slice(0, mode === 'section' ? 10 : 100);
+  run.index = 0;
+  run.correct = 0;
+  run.answers = [];
+
+  // Labels
+  modeLabelEl.textContent = (mode === 'section')
+    ? `${selectedSection} • ${run.questions.length}Q`
+    : `Practice • ${run.questions.length}Q`;
+
+  // Show quiz UI
+  setupEl.classList.add('hidden');
+  resultEl.classList.add('hidden');
+  quizEl.classList.remove('hidden');
+
+  renderCurrent();
+}
+
+function handleNext() {
+  const q = run.questions[run.index];
+  const chosen = getSelectedIndex();
+  if (chosen === null) {
+    showToast('Pick an answer to continue');
+    return;
+  }
+
+  const correctIndex = q.answer;
+  run.answers.push({ chosen, correctIndex });
+  if (chosen === correctIndex) run.correct++;
+
+  run.index++;
+  if (run.index < run.questions.length) {
+    renderCurrent();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  const total = run.questions.length;
+  const passMark = (total >= 100) ? 70 : 8;
+  $('resultTitle').textContent = (run.correct >= passMark) ? 'Pass 🎉' : 'Keep going 💪';
+  $('resultStats').textContent = `You scored ${run.correct} / ${total}. Pass mark: ${passMark}.`;
+
+  quizEl.classList.add('hidden');
+  resultEl.classList.remove('hidden');
+}
+
+// ====== REVIEW PANEL ======
+function renderReview() {
+  if (!run.questions.length) { reviewListEl.innerHTML = ''; return; }
+  reviewListEl.innerHTML = run.questions.map((q, i) => {
+    const a = run.answers[i];
+    const chosen = a ? a.chosen : null;
+    const correct = q.answer;
+    const isCorrect = chosen === correct;
+    return `
+      <div class="card" style="margin:8px 0; padding:10px;">
+        <div><strong>Q${i + 1}.</strong> ${esc(q.question)}</div>
+        <div style="margin-top:6px;">
+          ${q.options.map((opt, idx) => {
+            const mark = (idx === correct) ? '✅' : (idx === chosen ? '❌' : '•');
+            return `<div>${mark} ${esc(opt)}</div>`;
+          }).join('')}
+        </div>
+        ${q.explanation ? `<div style="margin-top:6px; color:#a9b2d6;">💡 ${esc(q.explanation)}</div>` : ''}
+        <div style="margin-top:6px; ${isCorrect ? 'color:#6be38f' : 'color:#ff9b9b'};">
+          ${isCorrect ? 'Correct' : 'Incorrect'}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ====== EVENTS ======
+if (startBtn)  startBtn.addEventListener('click', startQuiz);
+if (nextBtn)   nextBtn.addEventListener('click', handleNext);
+if (restartBtn) restartBtn.addEventListener('click', () => {
+  quizEl.classList.add('hidden');
+  resultEl.classList.add('hidden');
+  setupEl.classList.remove('hidden');
+  // reset review
+  reviewEl.classList.add('hidden');
+  toggleReviewBtn.textContent = 'Review answers';
+});
+
+if (toggleReviewBtn && reviewEl) {
+  toggleReviewBtn.addEventListener('click', () => {
+    // Build the review content on each toggle to reflect latest answers
+    renderReview();
+    const isHidden = reviewEl.classList.contains('hidden');
+    reviewEl.classList.toggle('hidden', !isHidden);
+    toggleReviewBtn.textContent = isHidden ? 'Hide review' : 'Review answers';
+  });
+}
+
+// Mode switch shows/hides section picker
+document.querySelectorAll('input[name="mode"]').forEach(r => {
+  r.addEventListener('change', (e) => {
+    sectionPickerEl.style.display = (e.target.value === 'section') ? 'block' : 'none';
+  });
+});
+
+// ====== LOAD QUESTIONS + VALIDATE ======
+(async () => {
+  try {
+    const res = await fetch(QUESTIONS_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status} — can't fetch questions.json (wrong path/name?)`);
+    const raw = await res.text();
+
+    let data;
+    try { data = JSON.parse(raw); }
+    catch (e) {
+      throw new Error(`JSON parse error in questions.json: ${e.message}. Tip: ensure it starts with [ and ends with ].`);
+    }
+
+    if (!Array.isArray(data)) throw new Error('questions.json must be a JSON array [ ... ].');
+
+    const issues = [];
+    const valid = [];
+
+    data.forEach((q, i) => {
+      const path = `#${i+1}`;
+      if (!q || typeof q !== 'object') { issues.push(`${path} not an object`); return; }
+      if (typeof q.question !== 'string' || !q.question.trim()) { issues.push(`${path} missing "question" text`); return; }
+      if (!Array.isArray(q.options) || q.options.length < 2) { issues.push(`${path} "options" must be array of 2+`); return; }
+
+      let ans = (typeof q.answer === 'string') ? Number(q.answer) : q.answer;
+      if (!Number.isInteger(ans)) { issues.push(`${path} "answer" must be an integer index`); return; }
+      if (ans < 0 || ans >= q.options.length) { issues.push(`${path} "answer" index ${ans} out of range (0..${q.options.length-1})`); return; }
+
+      valid.push({
+        section: q.section || 'Unspecified',
+        question: q.question,
+        options: q.options,
+        answer: ans,
+        explanation: q.explanation || ''
+      });
+    });
+
+    allQuestions = valid;
+
+    // Fill section dropdown
+    const sections = [...new Set(allQuestions.map(q => q.section))].sort();
+    sectionSelectEl.innerHTML = sections.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+
+    // Status note + start availability
+    const msgParts = [];
+    msgParts.push(`Found ${data.length} item(s); using ${allQuestions.length} valid.`);
+    if (issues.length) {
+      const top = issues.slice(0, 3).join(' • ');
+      msgParts.push(`Ignored ${issues.length} invalid item(s): ${top}${issues.length > 3 ? ' …' : ''}`);
+    }
+    dataNoteEl.textContent = msgParts.join('  ');
+    startBtn.disabled = allQuestions.length === 0;
+
+  } catch (err) {
+    console.error(err);
+    startBtn.disabled = true;
+    dataNoteEl.textContent =
+      `Error loading questions: ${err.message}. ` +
+      `Checklist: 1) questions.json sits next to index.html, 2) exact file name, 3) valid JSON array.`;
+  }
+})();
