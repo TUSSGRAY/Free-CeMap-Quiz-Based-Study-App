@@ -1,12 +1,10 @@
 /* ===========================
-   CeMAP Quiz App (grouped 24 topics + full practice mode)
+   CeMAP Quiz App — Grouped Topics + Ad Popup
    =========================== */
 
 const CANDIDATE_URLS = [
   "data/cemap_topics_1_24_combined.json",
   "./data/cemap_topics_1_24_combined.json",
-  "cemap_topics_1_24_combined.json",
-  "./cemap_topics_1_24_combined.json",
   "data/questions.json",
   "./data/questions.json",
   "questions.json",
@@ -18,7 +16,6 @@ const PRACTICE_SIZE = 100;
 const PASS_SECTION = 8;
 const PASS_PRACTICE = 70;
 
-// Grouped section quizzes
 const QUIZ_GROUPS = [
   { label: "Quiz 1: Topics 1–5", range: [1, 5] },
   { label: "Quiz 2: Topics 6–10", range: [6, 10] },
@@ -48,21 +45,26 @@ const els = {
   progressBar: document.getElementById("progressBar"),
   progressTxt: document.getElementById("progress"),
   review: document.getElementById("review"),
-  reviewList: document.getElementById("reviewList"),
   resultTitle: document.getElementById("resultTitle"),
   resultStats: document.getElementById("resultStats"),
   restartBtn: document.getElementById("restartBtn"),
+  adModal: document.getElementById("adModal"),
+  adCountdown: document.getElementById("adCountdown")
 };
 
+/* ===========================
+   INIT
+   =========================== */
 bootstrap();
 
 async function bootstrap() {
-  els.modeRadios.forEach(r => r.addEventListener("change", () => {
-    mode = document.querySelector('input[name="mode"]:checked').value;
-    updateModeChip();
-    toggleDropdownForMode();
-  }));
-  updateModeChip();
+  els.modeRadios.forEach(r =>
+    r.addEventListener("change", () => {
+      mode = document.querySelector('input[name="mode"]:checked').value;
+      updateModeChip();
+      toggleDropdownForMode();
+    })
+  );
 
   els.startBtn.addEventListener("click", startQuiz);
   els.nextBtn.addEventListener("click", onNext);
@@ -79,9 +81,9 @@ async function bootstrap() {
   if (els.dataNote) els.dataNote.textContent = `Loaded ${QUESTIONS.length} questions`;
 }
 
-/* ----------------
-   Robust loader
-------------------*/
+/* ===========================
+   LOAD + NORMALIZE QUESTIONS
+   =========================== */
 async function loadQuestionsRobust() {
   for (const url of CANDIDATE_URLS) {
     try {
@@ -91,11 +93,17 @@ async function loadQuestionsRobust() {
       if (!text.trim()) continue;
 
       let payload;
-      try { payload = JSON.parse(text); } catch { continue; }
+      try {
+        payload = JSON.parse(text);
+      } catch {
+        continue;
+      }
 
       const bank = extractQuestions(payload);
       if (bank.length) return bank;
-    } catch (e) { console.warn(`[quiz] Fetch failed for ${url}:`, e); }
+    } catch (e) {
+      console.warn(`[quiz] Fetch failed for ${url}:`, e);
+    }
   }
   toast("Could not load topics JSON.");
   return [];
@@ -109,26 +117,34 @@ function extractQuestions(payload) {
 }
 
 function normalizeBank(arr) {
-  return arr.map(x => {
-    const section = (x.section || x.topic || "").toString();
-    const question = (x.question || x.q || "").toString();
-    const options = (x.options || x.choices || []).map(o => o.toString());
-    let answer = Number.isInteger(x.answer) ? x.answer : x.answerIndex;
-    if (!Number.isInteger(answer) && typeof x.correct === "string") {
-      const i = options.findIndex(o => o.trim().toLowerCase() === x.correct.trim().toLowerCase());
-      if (i >= 0) answer = i;
-    }
-    const explanation = (x.explanation || x.explain || "").toString();
-    return { section, question, options, answer, explanation };
-  }).filter(q =>
-    q.section && q.question && Array.isArray(q.options) &&
-    q.options.length > 1 && Number.isInteger(q.answer)
-  );
+  return arr
+    .map(x => {
+      const section = (x.section || x.topic || "").toString();
+      const question = (x.question || x.q || "").toString();
+      const options = (x.options || x.choices || []).map(o => o.toString());
+      let answer = Number.isInteger(x.answer) ? x.answer : x.answerIndex;
+      if (!Number.isInteger(answer) && typeof x.correct === "string") {
+        const i = options.findIndex(
+          o => o.trim().toLowerCase() === x.correct.trim().toLowerCase()
+        );
+        if (i >= 0) answer = i;
+      }
+      const explanation = (x.explanation || x.explain || "").toString();
+      return { section, question, options, answer, explanation };
+    })
+    .filter(
+      q =>
+        q.section &&
+        q.question &&
+        Array.isArray(q.options) &&
+        q.options.length > 1 &&
+        Number.isInteger(q.answer)
+    );
 }
 
-/* ----------------
-   Populate section dropdown
-------------------*/
+/* ===========================
+   DROPDOWN
+   =========================== */
 function populateQuizDropdown() {
   const sel = els.sectionSelect;
   if (!sel) return;
@@ -143,50 +159,39 @@ function populateQuizDropdown() {
 }
 
 function toggleDropdownForMode() {
-  // hide the grouped dropdown when in practice mode
-  els.sectionSelect.disabled = (mode === "practice");
-  els.sectionSelect.style.opacity = (mode === "practice") ? "0.5" : "1";
+  els.sectionSelect.disabled = mode === "practice";
+  els.sectionSelect.style.opacity = mode === "practice" ? "0.5" : "1";
 }
 
-/* ----------------
-   Start Quiz
-------------------*/
+/* ===========================
+   START QUIZ
+   =========================== */
 function startQuiz() {
   let pool = [];
 
   if (mode === "practice") {
-    // full 24-topic random 100-question practice exam
     pool = QUESTIONS;
-    if (pool.length < PRACTICE_SIZE) {
-      toast("Not enough questions in total — using all available.");
-    }
     ACTIVE = sampleN(pool, PRACTICE_SIZE);
-    document.getElementById("modeLabel").textContent =
-      "Full Practice Exam • 100 Questions";
+    els.modeLabel.textContent = "Full Practice Exam • 100 Questions";
   } else {
-    // grouped section quiz
     const selectedIndex = parseInt(els.sectionSelect.value);
     const selectedGroup = QUIZ_GROUPS[selectedIndex];
     if (!selectedGroup) {
       toast("Please select a quiz group.");
       return;
     }
-
     const [start, end] = selectedGroup.range;
     pool = QUESTIONS.filter(q => {
       const m = q.section.match(/^Topic\s+(\d+)/i);
       const topicNum = m ? parseInt(m[1]) : 0;
       return topicNum >= start && topicNum <= end;
     });
-
     if (pool.length === 0) {
       toast("No questions found for this quiz range.");
       return;
     }
-
     ACTIVE = sampleN(pool, SECTION_SIZE);
-    document.getElementById("modeLabel").textContent =
-      `${selectedGroup.label} • ${SECTION_SIZE} Questions`;
+    els.modeLabel.textContent = `${selectedGroup.label} • ${SECTION_SIZE} Questions`;
   }
 
   USER = new Array(ACTIVE.length).fill(null);
@@ -195,15 +200,14 @@ function startQuiz() {
   els.setup.classList.add("hidden");
   els.result.classList.add("hidden");
   els.quiz.classList.remove("hidden");
-  els.review.classList.add("hidden");
 
   renderQuestion();
   updateProgress();
 }
 
-/* ----------------
-   Render Question + Feedback
-------------------*/
+/* ===========================
+   RENDER + ANSWER
+   =========================== */
 function renderQuestion() {
   const q = ACTIVE[idx];
   els.questionText.textContent = q.question;
@@ -221,7 +225,7 @@ function renderQuestion() {
   });
 
   els.optionsForm.addEventListener("change", handleAnswerSelection, { once: true });
-  els.nextBtn.textContent = (idx === ACTIVE.length - 1) ? "Submit" : "Next";
+  els.nextBtn.textContent = idx === ACTIVE.length - 1 ? "Submit" : "Next";
 }
 
 function handleAnswerSelection(e) {
@@ -242,17 +246,45 @@ function handleAnswerSelection(e) {
   expl.textContent = q.explanation || "No explanation provided.";
   els.optionsForm.appendChild(expl);
 
-  if (selected === q.answer) {
-    toast("✅ Correct!");
+  toast(selected === q.answer ? "✅ Correct!" : `❌ Incorrect. Correct: ${q.options[q.answer]}`);
+}
+
+/* ===========================
+   NAVIGATION + AD POPUP
+   =========================== */
+function showAdvert(callback) {
+  const modal = els.adModal;
+  const countdownEl = els.adCountdown;
+  if (!modal || !countdownEl) {
+    if (callback) callback();
+    return;
+  }
+
+  let counter = 5;
+  modal.classList.remove("hidden");
+  countdownEl.textContent = `Ad ends in ${counter}s...`;
+
+  const timer = setInterval(() => {
+    counter--;
+    countdownEl.textContent = `Ad ends in ${counter}s...`;
+    if (counter <= 0) {
+      clearInterval(timer);
+      modal.classList.add("hidden");
+      if (callback) callback();
+    }
+  }, 1000);
+}
+
+function onNext() {
+  // Show ad every 9th question (except the last)
+  if ((idx + 1) % 9 === 0 && idx < ACTIVE.length - 1) {
+    showAdvert(() => nextStep());
   } else {
-    toast(`❌ Incorrect. Correct: ${q.options[q.answer]}`);
+    nextStep();
   }
 }
 
-/* ----------------
-   Navigation
-------------------*/
-function onNext() {
+function nextStep() {
   if (idx < ACTIVE.length - 1) {
     idx++;
     renderQuestion();
@@ -262,9 +294,9 @@ function onNext() {
   }
 }
 
-/* ----------------
-   Progress & Score
-------------------*/
+/* ===========================
+   SCORING + RESET
+   =========================== */
 function updateProgress() {
   const total = ACTIVE.length;
   const current = idx + 1;
@@ -276,33 +308,34 @@ function updateProgress() {
 function submitQuiz() {
   let correct = 0;
   ACTIVE.forEach((q, i) => {
-    const user = USER[i];
-    if (user === q.answer) correct++;
+    if (USER[i] === q.answer) correct++;
   });
 
   const total = ACTIVE.length;
   const pct = Math.round((correct / total) * 100);
-  const passReq = (mode === "practice") ? PASS_PRACTICE : PASS_SECTION;
+  const passReq = mode === "practice" ? PASS_PRACTICE : PASS_SECTION;
   const passed = correct >= passReq;
 
   els.quiz.classList.add("hidden");
   els.result.classList.remove("hidden");
   els.resultTitle.textContent = passed ? "Pass 🎉" : "Try again 💪";
-  els.resultStats.textContent = `Score: ${correct}/${total} (${pct}%) — required pass ${passReq}`;
+  els.resultStats.textContent = `Score: ${correct}/${total} (${pct}%) — pass mark ${passReq}`;
   els.progressBar.style.width = "100%";
   toast(`You scored ${correct}/${total}`);
 }
 
-/* ----------------
-   Helpers
-------------------*/
 function resetToSetup() {
   els.quiz.classList.add("hidden");
   els.result.classList.add("hidden");
   els.setup.classList.remove("hidden");
-  idx = 0; USER = []; ACTIVE = [];
+  idx = 0;
+  USER = [];
+  ACTIVE = [];
 }
 
+/* ===========================
+   HELPERS
+   =========================== */
 function sampleN(arr, n) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -314,16 +347,21 @@ function sampleN(arr, n) {
 
 function escapeHtml(s) {
   return (s || "").toString().replace(/[&<>"']/g, c => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
   }[c]));
 }
 
-function toast(msg) { if (window.showToast) window.showToast(msg); }
+function toast(msg) {
+  if (window.showToast) window.showToast(msg);
+}
 
 function updateModeChip() {
   const val = (document.querySelector('input[name="mode"]:checked') || {}).value || "section";
   mode = val;
-  els.modeLabel.textContent = (mode === "practice")
-    ? "Practice exam (100 Q • pass 70)"
-    : "Section quiz (10 Q • pass 8)";
+  els.modeLabel.textContent =
+    mode === "practice" ? "Practice exam (100 Q • pass 70)" : "Section quiz (10 Q • pass 8)";
 }
